@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+
+body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+.circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #898989;
+            display: flex;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+.lentele {
+    width: 1100px;
+    font-weight: 400;
+    text-transform:uppercase ;
+    
+}
+    
+.lentele tr:nth-child(1){
+            padding-bottom: 70px; 
+            color: grey; 
+            font-size: 40px;
+        }
+
+        .lentele2 {
+    width: 800px;
+    margin-top: 40px;
+}
+
+.lentele2 td:nth-child(2){
+    text-align: center;
+    border-bottom: 1px solid grey;
+    color: rgba(28, 74, 97, 0.855);
+    padding-bottom: 10px;
+    font-weight: 700;
+    
+}
+
+.lentele2 td:nth-child(1){
+    color: rgba(106, 106, 106, 0.855);
+}
+
+.lentele3 {
+    width: 800px; 
+    text-align: left; 
+    margin-top: 40px; 
+}
+
+.lentele3 th:nth-child(odd) {
+    padding-bottom: 5px;
+    color: rgba(28, 74, 97, 0.855);
+    border-bottom: 1px solid black;
+}
+
+.lentele3 td:nth-child(even){
+width: 30px;
+}
+.margins{
+    margin-top: 20px;
+}
+.lentele4{
+    width: 800px; 
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.lentele4 th{
+        background-color: rgb(96, 96, 251);
+            font-size: 12px;
+            height: 25px;
+            color: white;
+           font-weight: 900;
+}
+
+.lentele4 td{
+    border-right: 1px solid rgb(220, 220, 220);
+}
+
+.lentele4 td:nth-child(1){
+  width: 320px;  
+}
+.lentele4 td:nth-child(2){
+  width: 70px;  
+}
+.lentele4 td:nth-child(3){
+  width: 110px;  
+}
+.lentele4 tr:nth-child(odd){
+    background-color: rgb(255, 255, 255); 
+    height: 25px; 
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.lentele4 tr:nth-child(even){
+    background-color: rgba(46, 50, 48, 0.085); 
+    height: 25px; 
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.lentele4 tr:nth-last-child(-n+3) {
+  background-color: transparent;
+border: 0;
+}
+
+.theEnd td {
+  border-right: none;
+  text-align: right;
+  font-size: 20px; 
+  color: rgba(0, 0, 0, 0.855);
+}
+.theEnd1 td:nth-child(4) {
+    border-bottom: 1px solid rgb(167, 167, 167);
+}
+
+.theEnd1 td {
+    font-size: 13px;
+    color: rgba(28, 74, 97, 0.855);
+}
+
+.theEnd2 td:nth-child(4) {
+    background-color: rgba(42, 42, 100, 0.103); 
+    border-bottom: 1px solid black;
+}
+
+    </style>
+</head>
+<body>
+    <table class="lentele">
+        <tbody>
+        <tr>
+        <td>Invoice</td>
+        <td class="circle">LOGO</td>
+        </tr>
+        </tbody>
+        </table>
+      
+        <table class="lentele2">
+            <tbody>
+                <tr>
+                    <td>Your Company Name</td>
+                    <td>2023-06-16</td>
+                  </tr>
+
+                  <tr>
+                    <td>123 Street Address</td>
+                  </tr>
+
+                  <tr>
+                    <td>City, State, Zip/Post Code</td>
+                    <td>20230616</td>
+                  </tr>
+
+                  <tr>
+                    <td>Phone Number</td>
+                  </tr>
+                  <tr>
+                    <td>Email Address</td>
+                  </tr>
+            </tbody>
+            </table>
+
+            <table class="lentele3">
+                <thead>
+                    <tr>
+                    <th>BILL TO</th>
+                    <th></th>
+                        <th>SHIP TO</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> <div class="margins">Contact Name</td></div>
+                        <td></td>
+                        <td> <div class="margins">Name / Dept</div> </td>
+                    </tr>
+                    <tr>
+                        <td>Client Company Name</td>
+                        <td></td>
+                        <td>Client Company Name</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td></td>
+                        <td>Address</td>
+                    </tr>
+                    <tr>
+                        <td>Phone, Email</td>
+                        <td></td>
+                        <td>Phone</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="lentele4">
+                <thead>
+                    <tr>
+                        <th>DESCRIPTION</th>
+                        <th>QTY</th>
+                        <th>UNIT PRICE</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monitorius</td>
+                        <td>10</td>
+                        <td>100.99</td>
+                        <td>1,009.9</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+        
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+        
+                    <tr >
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr >
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr class = "theEnd theEnd1">
+                        <td></td>
+                        <td></td>
+                        <td><strong>SUBTOTAL</strong></td>
+                        <td>1,009.9</td>
+                    </tr>
+        
+                    <tr class = "theEnd theEnd1" >
+                        <td></td>
+                        <td></td>
+                        <td><strong>DISCOUNT</strong>
+                        </td>
+                        <td>0.00</td>
+                    </tr>
+        
+                    <tr class = "theEnd theEnd2">
+                        <td></td>
+                        <td></td>
+                        <td><strong>Balance<br>Due</strong></td>
+                        <td><strong>EUR 1,009.90</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+          
+            
+
+</body>
+</html>

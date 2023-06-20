@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page structure</title>
+    <style>
+        body {
+            /* nunuliname */
+            margin: 0; 
+        }
+    ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+        header {
+        background-color: rgb(232, 180, 232);
+       padding: 10px 0 5px;
+        }
+
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            /* gap: 20px; */
+        }
+
+        header nav ul li a{
+           color: white;
+           text-decoration: none;
+           display: block;
+           padding: 5px 10px;
+        }
+
+        header nav ul li a:hover{
+          background-color: white;
+          color: purple;
+        }
+
+    header .container{
+    display: flex;
+    justify-content: space-between;
+    }
+
+    header .logo{
+        width: 100px;
+    }
+
+    section{
+        background-color: black;
+        background-image: url(cat.jpg);
+        /* kad nesikartotu nuotrauka */
+        /* fono nuotrauka kartojama pagal asis
+        background-repeat: repeat-x; */
+        /* no-repeat nekartoja fono nuotraukos */
+        background-repeat: no-repeat;
+        /* background tiesiog bendrinis variantas */
+       /* background-size: 1000px 500px; */
+       /* background-size: 100%; */
+       background-size: cover;
+       /* background-position: center center; */
+       /* background-position: 20px 50px; */
+       /* viska apjungti galima */
+       background: black url(cat.jpg) no-repeat 0 0 / cover;
+        height: 500px;
+    }
+
+    h1{
+        color: white;
+        margin: 0;
+    }
+        .container {
+            width: 100%;
+            /* automatiskai stojasi i centra istempus */
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="twitter.png" alt="Logo"/>
+        </div>
+<nav>
+    <ul>
+        <li><a href="">Titulinis</a></li>
+        <li><a href="">Apie mus</a></li>
+        <li><a href="">Kontaktai</a></li>
+        <li><a href="">Karjera</a></li>
+    </ul>
+</nav></div>
+</header>
+
+<main>
+<ul>
+    <section>
+        <div class="container">
+        <h1>Sveiki visi</h1> </div>
+    </section>
+</ul>
+</main>
+
+<footer>
+
+ 2023 BIT. Visos teisės saugomos
+</footer>
+
+</body>
+</html>

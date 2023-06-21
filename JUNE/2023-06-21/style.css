@@ -1,129 +1,127 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap');
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    /* nunuliname */
-    margin: 0; 
-    font-family: 'Poppins', sans-serif;
+  /* nunuliname */
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 ul {
-margin: 0;
-padding: 0;
-list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 img {
-max-width: 100%;
+  max-width: 100%;
 }
 
 header {
-background-color: rgb(255, 255, 255);
-padding: 10px 0 5px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 0 5px;
 }
 
 header nav ul {
-    display: flex;
-    justify-content: center;
-    /* gap: 20px; */
+  display: flex;
+  justify-content: center;
+  /* gap: 20px; */
 }
 
-header nav ul li a{
-   color: black;
-   text-decoration: none;
-   display: block;
-   padding: 5px 10px;
+header nav ul li a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
 }
 
-header nav ul li a:hover{
+header nav ul li a:hover {
   background-color: rgb(221, 221, 221);
   color: rgb(55, 55, 55);
 }
 
-header .container{
-display: flex;
-justify-content: space-between;
-align-items: center;
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header .logo{
-width: 100px;
-margin-bottom: -5px;
+header .logo {
+  width: 100px;
+  margin-bottom: -5px;
 }
 
-section{
-    background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-/* background-color: rgb(236, 182, 220); */
-/* background-image: url(cat.jpg);
+section {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  /* background-color: rgb(236, 182, 220); */
+  /* background-image: url(cat.jpg);
 /* kad nesikartotu nuotrauka */
-/* fono nuotrauka kartojama pagal asis
+  /* fono nuotrauka kartojama pagal asis
 background-repeat: repeat-x; */
-/* no-repeat nekartoja fono nuotraukos */
-/* background-repeat: no-repeat; */
-/* background tiesiog bendrinis variantas */
-/* background-size: 1000px 500px; */
-/* background-size: 100%; */
-/* background-size: cover; */
-/* background-position: center center; */
-/* background-position: 20px 50px; */
-/* viska apjungti galima */
-/* background: black url(cat.jpg) no-repeat 0 0 / cover; */
-/* height: 500px; */
-padding: 30px 0;
-} 
-
-section h1{
-color: white;
-margin: 0;
+  /* no-repeat nekartoja fono nuotraukos */
+  /* background-repeat: no-repeat; */
+  /* background tiesiog bendrinis variantas */
+  /* background-size: 1000px 500px; */
+  /* background-size: 100%; */
+  /* background-size: cover; */
+  /* background-position: center center; */
+  /* background-position: 20px 50px; */
+  /* viska apjungti galima */
+  /* background: black url(cat.jpg) no-repeat 0 0 / cover; */
+  /* height: 500px; */
+  padding: 30px 0;
 }
 
-section .content{
-   display: flex;
-   padding-top: 20px;
-   gap: 50px;
+section h1 {
+  color: white;
+  margin: 0;
 }
 
-section .content .image{
-    width: 70%;
-    /* flex: 0 0 30%; */
+section .content {
+  display: flex;
+  padding-top: 20px;
+  gap: 50px;
 }
 
+section .content .image {
+  width: 70%;
+  /* flex: 0 0 30%; */
+}
 
-section .content .text{
-    /* width: 70%;
+section .content .text {
+  /* width: 70%;
     padding-top: 150px; */
-    /* turinio lygiavimas flex elemento viduje */
-    align-self: center;
-    
-
+  /* turinio lygiavimas flex elemento viduje */
+  align-self: center;
 }
 
-section.alternate{
-    background: pink;
-    
+section.alternate {
+  background: pink;
 }
 
-section.alternate .content{
-    flex-direction: row-reverse;
-    /* Galimos reiksmes:
+section.alternate .content {
+  flex-direction: row-reverse;
+  /* Galimos reiksmes:
     row - standartine reiksme, lygiavimas eilute
     row-reverse - elementu rikiavimas atvirkstine pozicija eilute
     column - rikiavimas stulpeliu
     column-reverse - rikiavimas stulpeliu atvirksciai */
-
 }
 
-#titulinis{
-    background-color: aqua;
+#titulinis {
+  background-color: aqua;
 }
-
 
 .container {
-    width: 100%;
-    max-width: 1140px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
 }
-

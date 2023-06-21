@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,800;1,100&display=swap');
+
+body {
+  /* nunuliname */
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* first section */
+section {
+  margin: 35px 0;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#first-section {
+  /* 0 horizontal offset, 5 vertical offset, 10 blur radius, rgba color */
+  background: linear-gradient(
+    141deg,
+    rgba(251, 220, 152, 1) 0%,
+    rgba(255, 68, 138, 1) 22%,
+    rgba(116, 49, 171, 1) 66%,
+    rgba(10, 19, 82, 1) 100%
+  );
+}
+
+section .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 70px;
+}
+
+.logo {
+  width: 20%;
+}
+
+/* text under logo  */
+
+.text {
+  width: 40%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.text1 {
+  width: 40%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 300;
+}
+
+/* second section  */
+#second-section {
+  background: rgb(251, 220, 152);
+  background: linear-gradient(
+    312deg,
+    rgba(251, 220, 152, 1) 0%,
+    rgba(255, 68, 138, 1) 22%,
+    rgba(116, 49, 171, 1) 66%,
+    rgba(10, 19, 82, 1) 100%
+  );
+}
+section .content1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* icons and info */
+.flex-container {
+  padding: 8px;
+}
+
+/* white rectangles  */
+
+.rectangle {
+  height: 145px;
+  width: 290px;
+  background-color: white;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-right: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.rectangle1 {
+  background-color: white;
+  width: 9px;
+  height: 145px;
+  margin-right: 12px;
+}
+
+/* text on the rectangle  */
+.name {
+  color: #590864;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 900;
+  margin-right: 12px;
+}
+
+.name1 {
+  color: black;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 300;
+  margin-right: 12px;
+  letter-spacing: 3px;
+}
+
+/* icons */
+.image1 {
+  width: 10px;
+  padding: 11px 0;
+}
+
+/* info text  */
+
+.text2 {
+  padding: 11px 0;
+  height: 100%;
+  color: white;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+/* container  */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  height: 350px;
+  margin: 0 auto;
+  display: flex;
+}

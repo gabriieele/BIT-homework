@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  background: #faf8ef;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+/* heading content  */
+.content {
+  display: flex;
+  gap: 122px;
+}
+
+/* heading  */
+
+.heading h1 {
+  font-size: 90px;
+  margin: 0;
+  color: #776e65;
+}
+
+.heading p,
+a {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #776e65;
+  font-weight: 700px;
+}
+
+/* score and best score blocks  */
+
+.scoreBlocks {
+  gap: 5px;
+  display: flex;
+}
+
+.scoreText {
+  background-color: #bbada0;
+  padding: 15px 30px;
+  height: 25px;
+  text-align: center;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.scoreBlocks .title {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #e4d6c8;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 25px;
+  color: #f9f6f2;
+  text-align: center;
+}
+
+/* new game block  */
+
+.startBlock {
+  background-color: #8f7a66;
+  padding: 10px 25px;
+  margin-left: 70px;
+  margin-top: 60px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* main block  */
+.big-block {
+  width: 600px;
+  height: 600px;
+  background-color: #bbada0;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+/* block rows */
+.rows {
+  display: flex;
+  gap: 20px;
+}
+
+/* all little blocks */
+.block {
+  width: 125px;
+  height: 125px;
+  background-color: #cdc1b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: 800;
+  border-radius: 4px;
+}
+/* colorful blocks */
+.no2 {
+  background-color: #eee4da;
+  color: #776e65;
+}
+
+.no4 {
+  background-color: #eee1c9;
+  color: #776e65;
+}
+
+.no8 {
+  background-color: #f3b27a;
+  color: #f9f6f2;
+}
+
+.no32 {
+  background-color: #f77c5f;
+  color: #f9f6f2;
+}
+
+.no128 {
+  background-color: #edd073;
+  color: #f9f6f2;
+}
+
+.no256 {
+  background-color: #ecc54c;
+  color: #f9f6f2;
+}

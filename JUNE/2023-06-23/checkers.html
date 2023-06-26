@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="rows">
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+  </div>
+  <div class="rows">
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+  </div>
+  <div class="thirdRow">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+  </div>
+  <div class="rows">
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+  </div>
+  <div class="rows">
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+    <div class="circle"><div class="block1"></div></div>
+    <div class="block"></div>
+  </div>
+</div>
+
+<style>
+  body {
+    margin: 0;
+    background: #e3516e;
+  }
+  .container {
+    display: flex;
+    width: 400px;
+    margin: 50px auto;
+    align-items: center;
+    flex-direction: column;
+  }
+  .rows,
+  .thirdRow {
+    display: flex;
+    gap: 10px;
+  }
+  .thirdRow {
+    gap: 40px;
+  }
+  .block,
+  .block1 {
+    width: 40px;
+    height: 40px;
+    background-color: #fade8b;
+  }
+  .circle {
+    display: flex;
+    align-items: center;
+  }
+  .block1 {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+  }
+</style>

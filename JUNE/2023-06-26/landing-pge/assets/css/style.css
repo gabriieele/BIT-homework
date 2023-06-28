@@ -4,6 +4,11 @@
   src: url('CerebriSansPro-Bold.ttf') format('truetype');
 }
 
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: 'Mandali', sans-serif;
@@ -55,7 +60,6 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  text-decoration: none;
 }
 
 img {
@@ -81,21 +85,19 @@ header nav ul {
 
 header nav ul li a {
   color: #6c757d;
-  text-decoration: none;
   padding: 0 10px;
   font-size: 16px;
-  /* position: relative; */
 }
 
-/* header nav ul li:nth-child(1)::after {
+header nav ul li a.active1::after {
   content: '';
   position: absolute;
-  bottom: -2px; 
-  left: 0;
-  width: 100%;
-  height: 2px; 
-  background-color: #1ce1ac; 
-} */
+  bottom: 0;
+  left: calc((100% - 50%) / 2);
+  width: 50%;
+  height: 2px;
+  background-color: #1ce1ac;
+}
 
 header nav ul li a:hover {
   color: #1ce1ac;
@@ -116,13 +118,13 @@ p {
   line-height: 1.7;
   margin-top: 0;
   margin-bottom: 1rem;
+  color: #6c757d;
 }
 
 .section1 {
   background: white url(../images/hero-bg.png) no-repeat 0 0 / cover;
   height: 100%;
-  /* padding virsus, kaire desine, apacia */
-  padding-top: 90px;
+  padding-top: 200px;
   padding-bottom: 90px;
 }
 h1,
@@ -153,12 +155,18 @@ h2 {
   color: #6c757d;
   border-radius: 3px;
   margin-bottom: 18px;
+  line-height: 1.5;
 }
-.text-under,
+.text-under {
+  color: #6c757d;
+  padding: 0 0 48px;
+  font-size: 18px;
+}
+
 .moreAbout,
 .red {
   color: #6c757d;
-  padding: 0 10px;
+  margin-right: 20px;
 }
 
 .red::after {
@@ -172,15 +180,13 @@ h2 {
   border: none;
   color: white;
   box-shadow: 0 5px 20px rgba(52, 58, 64, 0.1);
-  text-decoration: none;
   border-radius: 100px;
   font-size: 16px;
-  padding: 8px 24px;
+  padding: 3px 24px;
   margin-right: 24px;
 }
 
 .text-under2 {
-  text-decoration: none;
   font-size: 16px;
   color: #536976;
 }
@@ -206,7 +212,10 @@ svg {
 
 .section2,
 .section3,
-.section4 {
+.section4,
+.section5,
+.section6,
+.section7 {
   padding: 90px 0px;
   background-color: #f8f9fa;
 }
@@ -220,14 +229,16 @@ h4 {
   font-family: 'Carebri Sans', sans-serif;
 }
 
+.section2 h2 {
+  margin-bottom: 100px;
+}
+
 h2 {
   font-size: 30px;
   margin-top: 18px;
   text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 100px;
   margin-top: 18px;
+  margin-bottom: 15px;
 }
 
 .bigIcons {
@@ -248,8 +259,7 @@ h2 {
 
 h5 {
   font-family: 'Mandali', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
   padding-top: 16px;
   margin-bottom: 16px;
   margin-top: 24px;
@@ -297,7 +307,6 @@ h5 {
   line-height: 34px;
   border-radius: 3px;
   text-transform: capitalize;
-  text-decoration: none;
 }
 
 .active {
@@ -307,18 +316,20 @@ h5 {
 }
 .active1 {
   color: #1ce1ac;
+  position: relative;
 }
-.section3 .row {
-  gap: 5px;
+.section3 .row:nth-child(4),
+.section3 .row:nth-child(5) {
+  gap: 20px;
 }
 .card {
-  position: relative;
   box-shadow: 0 5px 20px rgba(52, 58, 64, 0.1);
   border-radius: 3px;
   margin-bottom: 25px;
-  width: 360px;
   align-items: start;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .card p,
@@ -327,7 +338,6 @@ h5 {
 }
 .bottomImages {
   border-radius: 3px;
-  width: 360px;
 }
 .section4 {
   background-color: rgba(255, 194, 18, 0.25);
@@ -336,8 +346,132 @@ h5 {
 .section4 h4 {
   color: black;
 }
+
+.section4 h2 {
+  font-size: 30px;
+  margin-top: 18px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 18px;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(52, 58, 64, 0.1);
+  margin-bottom: 25px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 3px;
+  height: 100%;
+}
+.section4 .row:nth-child(4) {
+  gap: 30px;
+  padding: 20px 0 50px;
+}
+
+.mb {
+  margin-bottom: 48px;
+}
+
+.card1 .users {
+  border-radius: 100px;
+  box-shadow: 0 5px 20px rgba(52, 58, 64, 0.2);
+  width: 60px;
+}
+
+.card1 h5,
+.card1 h6 {
+  font-size: 18px;
+  font-family: 'Mandali', sans-serif;
+}
+.card1 p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.card1 h5 {
+  padding-top: 10px;
+  margin-bottom: 20px;
+  margin-top: 24px;
+}
+.card1 h6 {
+  font-size: 16px;
+}
+
+.card1 {
+  margin-bottom: 0;
+  line-height: 1.7;
+  text-align: left;
+  box-shadow: 0 5px 20px rgba(52, 58, 64, 0.1);
+  position: relative;
+}
+
+.dots {
+  border-radius: 100px;
+  width: 8px;
+  height: 8px;
+  background-color: #343a40;
+}
+
+.dots:nth-child(1),
+.dots:nth-child(3) {
+  opacity: 15%;
+}
+
+.section4 .row:nth-child(5) {
+  gap: 10px;
+  margin: 0;
+  justify-content: center;
+}
+
+.quote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 45px;
+}
+
+.section5 h2 {
+  margin-top: 16px;
+  font-size: 40px;
+  margin: 0;
+}
+
+.section5 p {
+  text-align: center;
+}
+
+.section6 {
+  background-color: white;
+}
+
+.section6 .row:nth-child(4) {
+  gap: 24px;
+}
+.pb {
+  padding-bottom: 48px;
+}
+.section6 h5 {
+  margin: 0;
+}
+
+.teamBackground {
+  background-color: #f2f4f6;
+}
+
+.darkBg {
+  position: relative;
+  top: -250px;
+  height: 180px;
+  margin-top: 70px;
+  background: #343a40 url(../images/cta-bg.png) no-repeat 0 0 / cover;
+  border-radius: 3px;
+}
+
 .container {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+  padding: 0 15px;
 }

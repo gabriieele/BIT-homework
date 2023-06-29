@@ -1,14 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
 @font-face {
-  font-family: 'CustomFont';
+  font-family: 'Carebri Sans', sans-serif;
   src: url('CerebriSansPro-Bold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Carebri Sans', sans-serif;
+  src: url('CerebriSansPro-SemiBold.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Carebri Sans', sans-serif;
+  src: url('CerebriSansPro-Medium.ttf') format('truetype');
+  font-weight: 400;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
   text-decoration: none;
 }
-
+a {
+  color: #6c757d;
+}
 body {
   margin: 0;
   font-family: 'Mandali', sans-serif;
@@ -130,10 +146,12 @@ p {
 h1,
 h6,
 h2,
-h5 {
+h5,
+h3 {
   font-family: 'Carebri Sans', sans-serif;
   font-size: 60px;
   margin: 0;
+  line-height: 1.2;
 }
 
 h1 {
@@ -214,8 +232,7 @@ svg {
 .section3,
 .section4,
 .section5,
-.section6,
-.section7 {
+.section6 {
   padding: 90px 0px;
   background-color: #f8f9fa;
 }
@@ -243,6 +260,7 @@ h2 {
 
 .bigIcons {
   position: relative;
+  z-index: 0;
 }
 
 .bigIcons::before {
@@ -255,6 +273,7 @@ h2 {
   width: 100px;
   background: linear-gradient(to top right, transparent 0%, #1ce1ac 100%);
   opacity: 0.15;
+  z-index: -1;
 }
 
 h5 {
@@ -462,13 +481,96 @@ h5 {
 
 .darkBg {
   position: relative;
-  top: -250px;
-  height: 180px;
-  margin-top: 70px;
+  margin-top: -298px;
   background: #343a40 url(../images/cta-bg.png) no-repeat 0 0 / cover;
   border-radius: 3px;
+  padding: 48px;
+  height: 100%;
+}
+.darkBg .row {
+  justify-content: center;
+  align-items: center;
 }
 
+.darkBg p {
+  color: white;
+  opacity: 75%;
+  margin: 0;
+}
+.darkBg h3 {
+  font-size: 26px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+footer {
+  background: #f8f9fa url(../images/footer-light-bg.png) no-repeat bottom;
+  padding: 200px 0 70px;
+}
+
+.footerLogo {
+  margin-bottom: 24px;
+}
+
+.footerInfo {
+  display: flex;
+  gap: 55px;
+}
+
+footer h5 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  padding: 0;
+  margin-top: 0;
+}
+
+.footerColumn li {
+  padding-bottom: 2px;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 18px 179px 15px 45px;
+  border-radius: 3px;
+  height: 62px;
+  margin-left: 173px;
+  border: none;
+  position: relative;
+}
+
+input::placeholder {
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 50%;
+  right: 432px;
+  transform: translateY(-50%);
+  color: #fff;
+  opacity: 0.3;
+  font-size: 20px;
+}
+
+button {
+  background-color: #1ce1ac;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 91px;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  color: white;
+  line-height: 1.5;
+}
+
+button:hover {
+  box-shadow: 0px 8px 12px 0px rgba(28, 225, 172, 0.25);
+}
 .container {
   width: 100%;
   max-width: 1140px;

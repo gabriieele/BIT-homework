@@ -1,19 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
 @font-face {
-  font-family: 'Carebri Sans', sans-serif;
-  src: url('CerebriSansPro-Bold.ttf') format('truetype');
+  font-family: 'Cerebri Sans', sans-serif;
+  src: url('fonts/CerebriSansPro-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Cerebri Sans', sans-serif;
+  src: url('fonts/CerebriSansPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Cerebri Sans', sans-serif;
+  src: url('/fonts/CerebriSansPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Cerebri Sans', sans-serif;
+  src: url('/fonts/CerebriSansPro-SemiBold.ttf') format('truetype');
   font-weight: 600;
 }
 @font-face {
-  font-family: 'Carebri Sans', sans-serif;
-  src: url('CerebriSansPro-SemiBold.ttf') format('truetype');
-  font-weight: 500;
+  font-family: 'Cerebri Sans' sans-serif;
+  src: url('/fonts/CerebriSansPro-Bold.ttf') format('truetype');
+  font-weight: 700;
 }
-@font-face {
-  font-family: 'Carebri Sans', sans-serif;
-  src: url('CerebriSansPro-Medium.ttf') format('truetype');
-  font-weight: 400;
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -148,7 +161,7 @@ h6,
 h2,
 h5,
 h3 {
-  font-family: 'Carebri Sans', sans-serif;
+  font-family: 'Cerebri Sans', sans-serif;
   font-size: 60px;
   margin: 0;
   line-height: 1.2;
@@ -243,7 +256,7 @@ h4 {
   font-size: 16px;
   margin: 0;
   color: #6c757d;
-  font-family: 'Carebri Sans', sans-serif;
+  font-family: 'Cerebri Sans', sans-serif;
 }
 
 .section2 h2 {
@@ -277,7 +290,6 @@ h2 {
 }
 
 h5 {
-  font-family: 'Mandali', sans-serif;
   font-size: 18px;
   padding-top: 16px;
   margin-bottom: 16px;
@@ -512,11 +524,6 @@ footer {
   margin-bottom: 24px;
 }
 
-.footerInfo {
-  display: flex;
-  gap: 55px;
-}
-
 footer h5 {
   margin-bottom: 16px;
   font-size: 22px;
@@ -525,7 +532,27 @@ footer h5 {
 }
 
 .footerColumn li {
-  padding-bottom: 2px;
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.footerColumn li::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 7px;
+  height: 7px;
+  background-color: #1ce1ac;
+  border-radius: 50%;
+  visibility: hidden;
+}
+.footerColumn li:hover::before {
+  visibility: visible;
+}
+.footerColumn li:hover {
+  padding-left: 2px;
 }
 
 input {
@@ -539,7 +566,8 @@ input {
 }
 
 input::placeholder {
-  font-weight: 600;
+  font-family: 'Cerebri Sans', sans-serif;
+  font-weight: 500;
   font-size: 15px;
   text-align: left;
 }
@@ -571,6 +599,7 @@ button {
 button:hover {
   box-shadow: 0px 8px 12px 0px rgba(28, 225, 172, 0.25);
 }
+
 .container {
   width: 100%;
   max-width: 1140px;

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@300;400&display=swap');
 html {
   scroll-behavior: smooth;
 }
@@ -9,10 +10,20 @@ html {
 body {
   margin: 0 auto;
   color: #323232;
+  font-family: 'Bangers', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
 img {
   max-width: 100%;
+}
+
+h1 {
+  font-size: 50px;
+}
+h1,
+h2 {
+  font-family: 'Bangers', cursive;
 }
 
 .sectionSettings {
@@ -31,6 +42,8 @@ img {
 
 .navbar-nav {
   --bs-nav-link-color: rgb(255, 255, 255);
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .section1 {
@@ -85,4 +98,9 @@ p {
 
 .paddingFooter {
   padding-top: 10px;
+}
+
+.copyrightText {
+  font-weight: 300;
+  font-size: 15px;
 }

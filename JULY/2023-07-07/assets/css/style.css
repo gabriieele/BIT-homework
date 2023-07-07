@@ -1,0 +1,88 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+body {
+  margin: 0 auto;
+  color: #323232;
+}
+
+img {
+  max-width: 100%;
+}
+
+.sectionSettings {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+}
+.logo {
+  width: 100px;
+  margin-left: 30px;
+}
+
+.bg-light {
+  background-color: #323232 !important;
+}
+
+.navbar-nav {
+  --bs-nav-link-color: rgb(255, 255, 255);
+}
+
+.section1 {
+  background-color: #fdc5af63;
+  background-image: url(../images/sparkling.png);
+  background-size: cover;
+  background-position: center;
+  background-size: 1200px;
+}
+
+.navbar-expand {
+  padding-right: 20px;
+}
+
+.section1Pic {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.marginsss {
+  margin-right: 30px;
+}
+
+p {
+  margin: 12px;
+}
+
+.btn-primary {
+  background-color: #323232;
+  border: none;
+  color: white;
+  width: 30%;
+  margin-top: 15px;
+}
+
+.section2 {
+  background-color: #beeaffbf;
+}
+
+.section3 {
+  background-color: #e1ef94;
+}
+
+.team {
+  width: 150px;
+  padding-top: 20px;
+  background-image: url(../images/sparkle.png);
+  background-size: cover;
+  background-position: center;
+  background-size: 300px;
+}
+
+.paddingFooter {
+  padding-top: 10px;
+}

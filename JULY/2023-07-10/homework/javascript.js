@@ -1,7 +1,14 @@
 //1 uzduotis
 let vardas = 'Matthew'
 let pavarde = 'McConaughey'
-console.log(vardas)
+
+if (vardas.length > pavarde.length) {
+  console.log(pavarde)
+} else if (vardas.length === pavarde.length) {
+  console.log('vardai lygus')
+} else {
+  console.log(vardas)
+}
 
 //2 uzduotis
 let manoVardas = 'Gabrielė'

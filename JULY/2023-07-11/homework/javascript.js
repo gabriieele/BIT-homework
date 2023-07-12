@@ -79,14 +79,16 @@ console.log(third)
 
 let minNumber = Math.min(first, second, third)
 let maxNumber = Math.max(first, second, third)
+let mid = first + second + third - (minNumber + maxNumber)
+console.log('Vidurine reiksme: ', mid)
 
-if (first !== minNumber && first !== maxNumber) {
-  console.log(`Vidurinis skaičius: ${first}`)
-} else if (second !== minNumber && second !== maxNumber) {
-  console.log(`Vidurinis skaičius: ${second}`)
-} else {
-  console.log(`Vidurinis skaičius: ${third}`)
-}
+// if (first !== minNumber && first !== maxNumber) {
+//   console.log(`Vidurinis skaičius: ${first}`)
+// } else if (second !== minNumber && second !== maxNumber) {
+//   console.log(`Vidurinis skaičius: ${second}`)
+// } else {
+//   console.log(`Vidurinis skaičius: ${third}`)
+// }
 
 // if ((second <= first && first <= third) || (second >= first && first >= third)) {
 //   console.log(first)

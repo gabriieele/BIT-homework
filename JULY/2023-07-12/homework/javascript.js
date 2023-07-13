@@ -14,9 +14,8 @@ function rand(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
-
-let randomNo = rand(1, 6)
-document.getElementById('randomNumber').innerText = randomNo
+let numeris = rand(1, 6)
+document.write(`<h${numeris}>Labas Pasauli</h${numeris}>`)
 
 //3uzduotis Naudokite funkcija rand(). Atspausdinkite 3 skaičius nuo -10 iki 10. Skaičiai mažesni už 0 turi būti žali, 0 - raudonas, didesni už 0 mėlyni.
 
@@ -59,12 +58,14 @@ let count = 0
 
 while (i < 300) {
   let newNumbers = rand(0, 300)
-  rezultatas += newNumbers + ' '
+
   if (newNumbers > 150) {
     count++
   }
   if (newNumbers > 275) {
     rezultatas += '<span style="color: red;">' + newNumbers + '</span> '
+  } else {
+    rezultatas += newNumbers + ' '
   }
   i++
 }

@@ -38,7 +38,7 @@ console.log(colorfulNumbers)
 document.getElementById('colors').innerHTML = colorfulNumbers
 
 //4uzduotis  Sukurkite kintamąjį su stringu: “An American in Paris”. Jame ištrinti visas balses. Rezultatą atspausdinti. Kodą pakartoti su stringais: “Breakfast at Tiffany's”, “2001: A Space Odyssey” ir “It's a Wonderful Life”.
-
+result = ''
 let strings = [
   'An American in Paris',
   "Breakfast at Tiffany's",

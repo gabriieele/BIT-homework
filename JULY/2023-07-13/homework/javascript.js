@@ -1,21 +1,21 @@
 //1uzd Nupieškite kvadratą iš “*”, kurio kraštines sudaro 100 “*”. Panaudokite css stilių, kad kvadratas ekrane atrodytų kvadratinis.
-// * * * * * * * * * * *
-// * * * * * * * * * * *
-// * * * * * * * * * * *
-// * * * * * * * * * * *
-// * * * * * * * * * * *
-// * * * * * * * * * * *
-// * * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
 
 //2 uzd Prieš tai nupieštam kvadratui nupieškite raudonas istrižaines.
 let result = ''
-for (let i = 1; i <= 100; i++) {
-  if ((i - 1) % 11 === 0 || (i - 10) % 9 === 0) {
+for (let i = 1; i <= 625; i++) {
+  if ((i - 1) % 26 === 0 || (i - 25) % 24 === 0) {
     result += '<span style="color: red">*</span> '
   } else {
     result += '* '
   }
-  if (i % 10 === 0) {
+  if (i % 25 === 0) {
     result += '<br>'
   }
 }
@@ -38,12 +38,12 @@ document.write('<h4>Pirmas scenarijus</h4>')
 while (true) {
   let random = rand(0, 1)
   if (random === 0) {
-    result = 'H'
+    result += 'H'
     console.log('Iskrito herbas, ciklas stabdomas', result)
     document.write('<br>Iskrito herbas, ciklas stabdomas ', result)
     break
   } else {
-    result = 'S'
+    result += 'S'
     console.log(result, 'Iskrito skaicius')
     document.write('<br>Iskrito skaicius ', result)
   }
@@ -53,12 +53,12 @@ document.write('<h4>Antras scenarijus</h4>')
 while (true) {
   let random = rand(0, 1)
   if (random === 0) {
-    result = 'H'
+    result += 'H'
     count++
     console.log(result)
     document.write('<br>Iskrito herbas ', result)
   } else {
-    result = 'S'
+    result += 'S'
     console.log(result, 'Iskrito skaicius')
     document.write('<br>Iskrito skaicius ', result)
   }
@@ -74,12 +74,12 @@ let count1 = 0
 while (true) {
   let random = rand(0, 1)
   if (random === 0) {
-    result = 'H'
+    result += 'H'
     count1++
     console.log(result)
     document.write('<br>Iskrito herbas ', result)
   } else {
-    result = 'S'
+    result += 'S'
     console.log(result, 'Iskrito skaicius')
     count1 = 0
     document.write('<br>Iskrito skaicius ', result)

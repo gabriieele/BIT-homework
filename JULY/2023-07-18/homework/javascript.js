@@ -33,16 +33,16 @@ console.log('Didžiausia masyvo reikšmė: ', max)
 console.log('Didžiausios reikšmės indeksas: ', maxIndex)
 
 //c) Suskaičiuokite visų porinių (lyginių) indeksų reikšmių sumą;
-sum = 0
+let sum = 0
 for (let i = 0; i < firstArray.length; i++) {
   if (i % 2 === 0) {
-    sum += i
+    sum += firstArray[i]
   }
 }
 console.log('Porinių indeksų reikšmių sumą lygi: ', sum)
 
 //d) Sukurkite naują masyvą, kurio reikšmės yra 1 uždavinio masyvo reikšmes minus tos reikšmės indeksas;
-let newArray = []
+const newArray = []
 for (let i = 0; i < firstArray.length; i++) {
   newArray.push(firstArray[i] - i)
 }
@@ -60,9 +60,9 @@ const evenArray = []
 const oddArray = []
 for (let i = 0; i < firstArray.length; i++) {
   if (i % 2 === 0) {
-    evenArray.push(i)
+    evenArray.push(firstArray[i])
   } else {
-    oddArray.push(i)
+    oddArray.push(firstArray[i])
   }
 }
 console.log('Porinių indeksų reikšmių masyvas: ', evenArray)
@@ -77,14 +77,20 @@ for (let i = 0; i < firstArray.length; i++) {
 }
 console.log('Masyvas, kurių indeksų reikšmės diesnės už 15, lygios 0: ', firstArray)
 
-//Suraskite pirmą pasinaudodami metodu splice() iš masyvo ištrinkite visus elementus žiausią) indeksą, kurio elemento reikšmė didesnė už 10;
-//turinčius porinį indeksą;
+// h) Naudodami funkciją splice() iš masyvo ištrinkite visus elementus kurių reikšmės didesnės už 10;
 
-//h) Jeigu turime masyva: [10, 20, 30] Tai naujame masyve turime gauti [10, 21, 32]; 10 - 0 = 10; 20 - 1 = 21; 30 - 2 = 32; Ir t.t.
-//NEINA ISSIFRUOTI UZDUOTIES
-for (let i = 0; i < firstArray.length; i++) {
-  if (firstArray[i] > 10) {
-    firstArray[i] = firstArray[i] + i
+for (let i = firstArray.length - 1; i >= 0; i--) {
+  if (i > 10) {
+    firstArray.splice(i, 1)
   }
 }
-console.log('Masyvas su splice metodu: ', firstArray)
+console.log('Pirmas masyvas su splice metodu: ', firstArray)
+
+// i) Naudodami funkciją splice() iš masyvo ištrinkite visus elementus turinčius porinį indeksą
+
+for (let i = firstArray.length - 1; i >= 0; i--) {
+  if (i % 2 === 0) {
+    firstArray.splice(i, 1)
+  }
+}
+console.log('Pirmas masyvas su splice metodu: ', firstArray)

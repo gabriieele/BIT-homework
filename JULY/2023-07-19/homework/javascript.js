@@ -103,13 +103,24 @@ document.write(`<br>Antras masyvas: ${secondArray}`)
 console.log(secondArray)
 
 // 5 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
+document.write('<h2>Naujas masyvas sudarytas iš pirmojo masyvo reikšmių, kurių nėra antrajame</h2>')
 const arr = []
 for (let i = 0; i < firstArray.length; i++) {
-  if (secondArray.indexOf(firstArray[i]) === -1) {
-    arr.push(firstArray[i])
-  }
+  //   if (secondArray.indexOf(firstArray[i]) === -1) {
+  //     arr.push(firstArray[i])
+  //   }
+  if (!secondArray.includes(firstArray[i])) arr.push(firstArray[i])
 }
 console.log(arr)
 document.write(`<br>Masyvas, kurio reikšmės yra pirmame masyve, bet nėra antrame: ${arr}`)
 // 6 Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose.
+document.write('<h2>Naujas masyvas sudarytas iš pirmojo ir antrojo masyvo reikšmių</h2>')
+const arr1 = []
+for (let i = 0; i < firstArray.length; i++) {
+  if (secondArray.includes(firstArray[i])) {
+    arr1.push(firstArray[i])
+  }
+}
+console.log(arr1)
+document.write(`<br>Masyvas, kurio reikšmės yra ir pirmame ir antrame masyvuose: ${arr1}`)
 // 7 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės būtų iš antrojo masyvo.

@@ -7,15 +7,17 @@ const arr = [
 let rez = []
 let rez1 = 0
 let rez2 = 0
+// cikle visada bus atnaujinta min reikšmė, kai bus rastas mažesnis skirtumas, su 0 sąlyga neišsipildytų
 let min = Infinity
 let skaicius = 0
 for (let i = 0; i < arr.length; i++) {
+  //surandame daugiklį, kurį sudauginus bus gaunamas artimiausias skaičius targetui
   const multiplier = number / arr[i]
   const roundedMultiplier = Math.round(multiplier)
   let sandauga = arr[i] * roundedMultiplier
+  //skirtumas tarp targeto ir gautos skaičių sandaugos
   const difference = Math.abs(number - sandauga)
   //   console.log(difference)
-
   console.log(`${arr[i]} dauginant iš ${roundedMultiplier} lygu ${sandauga}`)
 
   if (number === sandauga) {
@@ -24,7 +26,7 @@ for (let i = 0; i < arr.length; i++) {
     rez2 = sandauga + arr[i]
   } else if (difference < min) {
     min = difference
-    console.group(difference)
+    // console.group(difference)
     rez1 = sandauga
     skaicius = arr[i]
     rez2 = sandauga + arr[i]

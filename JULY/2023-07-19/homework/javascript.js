@@ -128,4 +128,12 @@ for (let i = 0; i < firstArray.length; i++) {
 }
 console.log(arr1)
 document.write(`Masyvas, kurio reikšmės yra ir pirmame ir antrame masyvuose: ${arr1}`)
-// 7 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės būtų iš antrojo masyvo.
+
+// 7 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 4 uždavinio masyvo reikšmės, o jo reikšmės būtų iš antrojo masyvo.
+document.write('<h2>Paskutinis masyvas</h2>')
+const newArr = []
+for (const i in firstArray) {
+  newArr[firstArray[i]] = secondArray[i]
+}
+document.write(`Sugeneruotas masyvas: ${newArr}`)
+console.log('Paskutinis masyvas, ', newArr)

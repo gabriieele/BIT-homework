@@ -61,21 +61,27 @@ const arrayFour = []
 let letterCounter = 0
 let combinationCounter = 0
 for (let i = 0; i < arrayOne.length; i++) {
-  arrayFour.push(arrayOne[i] + arrayTwo[i] + arrayThree[i])
-  if (
-    arrayOne[i] !== arrayTwo[i] &&
-    arrayOne[i] !== arrayThree[i] &&
-    arrayTwo[i] !== arrayThree[i]
-  ) {
-    letterCounter++
-  }
+  const val = arrayOne[i] + arrayTwo[i] + arrayThree[i]
+  arrayFour.push(val)
+  // if (
+  //   arrayOne[i] !== arrayTwo[i] &&
+  //   arrayOne[i] !== arrayThree[i] &&
+  //   arrayTwo[i] !== arrayThree[i]
+  // ) {
+  //   letterCounter++
+  // }
+  if (val === 'AAA') letterCounter++
+  if (val === 'BBB') letterCounter++
+  if (val === 'CCC') letterCounter++
+  if (val === 'DDD') letterCounter++
+
   if (!arrayFour.includes(arrayFour[i])) {
     combinationCounter++
   }
 }
 console.log('Naujas array ', arrayFour)
 document.write(`<br>Naujas masyvas sudėtas iš trijų kitų: ${arrayFour}`)
-console.log('Unikalių reikšmių yra: ', letterCounter)
+console.log('Unikalių reikšmių yra: ', arrayFour.length - letterCounter)
 document.write(`<br>Unikalių reikšmių yra: ${letterCounter}`)
 console.log('Unikalių kombinacijų yra: ', combinationCounter)
 document.write(`<br>Unikalių kombinacijų yra: ${combinationCounter}`)
@@ -96,7 +102,6 @@ function uniqueNumbers(length, min, max) {
 const firstArray = uniqueNumbers(100, 100, 999)
 const secondArray = uniqueNumbers(100, 100, 999)
 
-document.write('<h2>Unikalių reikšmių masyvai</h2>')
 document.write(`Pirmas masyvas: ${firstArray}`)
 console.log(firstArray)
 document.write(`<br>Antras masyvas: ${secondArray}`)
@@ -122,5 +127,5 @@ for (let i = 0; i < firstArray.length; i++) {
   }
 }
 console.log(arr1)
-document.write(`<br>Masyvas, kurio reikšmės yra ir pirmame ir antrame masyvuose: ${arr1}`)
+document.write(`Masyvas, kurio reikšmės yra ir pirmame ir antrame masyvuose: ${arr1}`)
 // 7 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės būtų iš antrojo masyvo.

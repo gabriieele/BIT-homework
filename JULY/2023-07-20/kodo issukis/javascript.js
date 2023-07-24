@@ -103,3 +103,26 @@ while (true) {
     break
   }
 }
+
+//3uzd Bangos gena viena kitą ir tam tikru dėsningumu. Prie gale esančios bangelės nauja bangelė susiformuoja sudėjus pirmosios ir paskutinės bangelių skaitmenis. Jei sudėjus skaitmenis suma vienaženklė – prisideda viena bangelė, kurios skaičius ir yra gauta suma. Jei suma didesnė nei skaičius 9, t.y. jei suma dviženklis skaičius, pridedamos dvi atskiros bangelės. Pavyzdžiui, jei suma yra 15, susiformuoja dvi naujos – bangelė numeriu 1 ir bangelė numeriu 5. Tačiau jei suma yra lygi 10 – bangelė numeriu 0 nėra pridedama prie bangų grandinės, pridedama tik bangelė numeriu 1.
+
+// Vėliau, visos bangelės persirikiuoja tam, kad pajudėtų į priekį, t.y. X bangelių iš grandinėlės galo persikelia į grandinėlės priekį. X yra mažesnis skaičius, gaunamas palyginus pirmosios ir paskutinės bangelės numerius.
+
+// „Tam, kad pagaliau pasiekčiau krantą, toks dviejų etapų dėsningumas turi būti pakartotas 5 kartus. O paskutiniosios bangelių grandinės suma bus atsakymas, kurio ieškai”, – ištarė Venera ir ranka paragino pradėti užduotį.
+let suma = 0
+let dvizenklisSk = 0
+const waves = [4, 7, 7, 5, 7, 8, 9, 6, 9, 3]
+const wavesArr = []
+
+for (let i = 0; i < 5; i++) {
+  suma = waves[0] + waves[waves.length - 1]
+  if (suma >= 10 && suma <= 99) {
+    const firstDigit = Math.floor(suma / 10)
+    const secondDigit = suma % 10
+    waves.push(firstDigit)
+    waves.push(secondDigit)
+  } else {
+    waves.push(suma)
+  }
+  console.log(waves)
+}

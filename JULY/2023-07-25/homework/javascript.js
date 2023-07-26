@@ -40,19 +40,16 @@ for (const child of arr) {
 console.log('Didžiausia reikšmė: ', max)
 
 // Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
-let sumArray = []
+const sums = []
+for (let x = 0; x < 5; x++) {
+  sums[x] = 0
 
-for (let i = 0; i < arr[0].length; i++) {
-  let sum = 0
-  for (let j = 0; j < arr.length; j++) {
-    if (j === j) {
-      sum += arr[j][i]
-    }
+  for (let i = 0; i < arr.length; i++) {
+    sums[x] += arr[i][x]
   }
-
-  sumArray.push(sum)
-  console.log(`Indekso ${i} reikšmių suma lygi: ${sum}`)
 }
+
+console.log('Masyvų su vienodais indeksais suma lygi ', sums)
 
 // Visus antro lygio masyvus “pailginkite” iki 7 elementų
 
@@ -64,6 +61,12 @@ const newArr = arr.map(smallerArr => {
 })
 
 console.log('Prailgintas masyvas: ', newArr)
+
+// for(const index in masyvas) {
+//   for(let i = 5; i < 7; i++) {
+//       masyvas[index][i] = rand(5, 25);
+//   }
+// }
 
 // Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos raidės iš intervalo A-Z. Išrūšiuokite antro lygio masyvus pagal abėcėlę (t.y. tuos kur su raidėm).
 const array = []
@@ -108,7 +111,11 @@ for (let i = 0; i < 10; i++) {
   //Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad elementai kurių masyvai trumpiausi eitų pradžioje.
   array.sort((a, b) => a.length - b.length)
 }
-
+// raidziuMasyvas.sort((a, b) => {
+//   if (a.includes("K") && !b.includes("K")) return -1;
+//       else if (!a.includes("K") && b.includes("K")) return 1;
+//       else return a.length - b.length;
+// });
 console.log('Išrūšiuotas atsitiktinių raidžių masyvas: ', array)
 //Masyvai kurie turi bent vieną “K” raidę, visada būtų didžiojo masyvo visai pradžioje
 const arrK = array.filter(value => value.includes('K'))

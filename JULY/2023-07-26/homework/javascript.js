@@ -403,7 +403,7 @@ allProducts.products.forEach(product => {
   <div clas="priceTag ">
   <div class="flexClass1">
   <span class="orgPrice">$${prc.toFixed(2)}</span>
-<span class="discPrice">$${Math.round(prc - (prc * discount) / 100).toFixed(2)}</span></div>
+<span class="discPrice">$${Math.round(prc + (prc * discount) / 100).toFixed(2)}</span></div>
   <button>Add to cart</button>
   </div>
   </div>

@@ -94,8 +94,8 @@
                             <td>${product.brand}</td>
                             <td>${product.category}</td>
                             <td>
-                                <button onclick="deleteProduct(event, ${product.id});" class="btn btn-danger">Ištrinti</button>    
-                                <button class="btn btn-primary">Redaguoti</button>
+                                <button onclick="deleteProduct(event, ${product.id});" class="btn btn-danger">Ištrinti</button>
+                                <button onclick="updateProduct(event, ${product.id});" class="btn btn-primary">Redaguoti</button>
                             </td>
                         </tr>
                     `
@@ -144,6 +144,53 @@
         const index = products.findIndex(val => val.id === id)
         products.splice(index, 1)
         showList()
+      }
+
+      function updateProduct(el, id) {
+        const index = products.findIndex(val => val.id === id)
+        //duomenys nukeliami i inputo laukeli
+        if (index !== -1) {
+          const title = document.querySelector('[name="title"]')
+          title.value = products[index].title
+
+          const price = document.querySelector('[name="price"]')
+          price.value = products[index].price
+
+          const stock = document.querySelector('[name="stock"]')
+          stock.value = products[index].stock
+
+          const brand = document.querySelector('[name="brand"]')
+          brand.value = products[index].brand
+
+          const category = document.querySelector('[name="category"]')
+          category.value = products[index].category
+
+          //seno mygtuko salinimas
+          const newButton = document.querySelector('.btn-primary')
+          newButton.removeEventListener('click', saveProduct)
+          newButton.textContent = 'Atnaujinti'
+
+          newButton.addEventListener('click', function (e) {
+            e.preventDefault()
+
+            //pridedamos naujos reiksmes
+            products[index].title = title.value
+            products[index].price = price.value
+            products[index].stock = stock.value
+            products[index].brand = brand.value
+            products[index].category = category.value
+
+            //isvalo inputo laukelius
+            document.querySelector('form').reset()
+
+            showList()
+
+            //atkeiciami mygtukai
+            newButton.removeEventListener('click', updateProduct)
+            newButton.addEventListener('click', saveProduct)
+            newButton.textContent = 'Pridėti prekę'
+          })
+        }
       }
 
       showList()

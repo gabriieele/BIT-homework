@@ -1,14 +1,21 @@
 let interval
 const timer = document.getElementById('timer')
-const iputValue = document.getElementById('minutes')
+const startBtn = document.querySelector('.startBtn')
+let inputValue = document.getElementById('minutes')
 let time = 0
 let timerRunning = false
 function run(e) {
+  const checkingNumber = parseInt(inputValue.value)
+  if (isNaN(checkingNumber)) {
+    alert(`Please enter a number!`)
+    return
+  }
+
   if (!timerRunning) {
     if (time === 0) {
-      time = iputValue.value * 60
+      time = inputValue.value * 60
     }
-    timerRunning = true
+
     interval = setInterval(() => {
       let minutes = Math.floor(time / 60)
       let seconds = time % 60
@@ -19,18 +26,19 @@ function run(e) {
       if (time < 0) {
         clearInterval(interval)
         timerRunning = false
-        //document.querySelector('.timer').innerHTML = `Time is over`
         e.target.textContent = 'Start'
-        e.target.style.backgroundColor = 'rgb(185, 185, 185)'
+        e.target.style.backgroundColor = '#3e4359'
+        timer.innerHTML = `Time is over!`
+        shake()
       }
     }, 1000)
-    timerRunning = true
     e.target.textContent = 'Pause'
-    e.target.style.backgroundColor = 'rgb(235, 235, 235'
+    e.target.style.backgroundColor = '#5a6181'
+    timerRunning = true
   } else {
     clearInterval(interval)
     e.target.textContent = 'Start'
-    e.target.style.backgroundColor = 'rgb(185, 185, 185)'
+    e.target.style.backgroundColor = '#3e4359'
     timerRunning = false
   }
 }
@@ -40,10 +48,20 @@ document.querySelector('.startBtn').onclick = run
 function reset() {
   clearInterval(interval)
   timerRunning = false
-  document.querySelector('.startBtn').textContent = 'Start'
-  document.querySelector('.startBtn').style.backgroundColor = 'rgb(185, 185, 185)'
+  startBtn.textContent = 'Start'
+  startBtn.style.backgroundColor = '#3e4359'
+  time = 0
   timer.innerHTML =
-    '<label for="minutes">Minutes:</label>  <input type="number" id="minutes" min="0" value="0" />'
+    '<label for="minutes">Reset your timer</label> <input type="text" id="minutes" class="form-control" placeholder="Enter your time in minutes"/>'
+  inputValue = document.getElementById('minutes')
 }
 
 document.querySelector('.resetBtn').onclick = reset
+
+function shake() {
+  const timeisOver = document.querySelector('.background') // Use querySelector to select the first element with class 'background'
+  timeisOver.classList.add('shake')
+  setTimeout(() => {
+    timeisOver.classList.remove('shake')
+  }, 500)
+}

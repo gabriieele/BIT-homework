@@ -9,20 +9,39 @@
       rel="stylesheet"
     />
   </head>
+  <style>
+    #select {
+      width: 500px;
+    }
+  </style>
   <body>
     <div class="container mt-5" style="max-width: 700px">
       <div id="app">
         <form class="input-group" onsubmit="getPhoto(event);">
-          <input type="text" class="form-control" placeholder="Enter dog breed" />
+          <!-- <input type="text" class="form-control" placeholder="Enter dog breed" /> -->
+          <select class="form-control"></select>
           <button class="btn btn-primary">Search</button>
         </form>
       </div>
       <div id="result"></div>
     </div>
     <script>
+      const breedName = document.querySelector('select')
+      fetch('https://dog.ceo/api/breeds/list/all')
+        .then(resp => resp.json())
+        .then(resp => {
+          console.log(resp)
+          if (resp.status != 'success') return
+          //kieviena veisle dar turi masyva, todel naudojame for cikla
+          //message:{buhund[norwegian]}
+          for (const i in resp.message) {
+            breedName.innerHTML += `<option>${i}</option>`
+          }
+        })
+
       function getPhoto(e) {
         e.preventDefault()
-        const breed = e.target.querySelector('input').value.toLowerCase()
+        const breed = e.target.querySelector('select').value.toLowerCase()
         //https://dog.ceo/api/breed/buhund/norwegian/images/random
         //https://dog.ceo/api/breed/bulldog/boston/images/random
         fetch(`https://dog.ceo/api/breed/${breed}/images/random`)

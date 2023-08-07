@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="result"></div>
+    <script>
+      fetch(`http://90.135.74.251:5000/api/custom-api/oiuafhai6874uoshf`)
+      http://90.135.74.251:5000/api/custom-api/oiu6gai6874uoshf
+        .then(resp => resp.json())
+        .then(resp => {
+          console.log(resp)
+          if (resp.status != 'success') return
+          document.querySelector('#result').innerHTML = resp.message
+        })
+    </script>
+  </body>
+</html>

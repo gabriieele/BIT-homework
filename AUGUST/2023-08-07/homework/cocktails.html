@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktails</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      img {
+        max-width: 500px;
+        cursor: pointer;
+      }
+      h3 {
+        margin: 10px 0;
+      }
+
+      .dropdown {
+        padding: 10px;
+        background-color: #f7f7f7;
+        position: absolute;
+        z-index: 1;
+        width: 500px;
+        margin-bottom: 70px;
+      }
+
+      .hide {
+        margin-top: 20px;
+        background-color: rgb(115, 115, 115);
+        border: none;
+        width: 80px;
+        height: 30px;
+        font-size: 13px;
+      }
+
+      .hide:hover {
+        background-color: rgb(163, 163, 163);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="input-group mt-3 mb-3" onsubmit="getCocktail(event);">
+        <select class="form-control"></select>
+        <button class="btn btn-primary">Search</button>
+      </form>
+      <div id="app"></div>
+      <div id="app1"></div>
+    </div>
+    <script>
+      const name = document.querySelector('select')
+      fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        .then(resp => resp.json())
+        .then(resp => {
+          console.log(resp)
+          resp.drinks.forEach(cocktail => {
+            name.innerHTML += `<option>${cocktail.strDrink}</option>`
+          })
+        })
+
+      function getCocktail(e) {
+        e.preventDefault()
+        const cocktailName = e.target.querySelector('select').value.toLowerCase()
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
+          .then(resp => resp.json())
+          .then(resp => {
+            //tikrinama ar masyve yra daugiau elementu (be sios salygos, pasirinkus margaritos kokteili, grazindavo masyva su 6 elementais)
+            if (resp.drinks.length > 0) {
+              const margaritaCocktail = resp.drinks[0]
+              document.getElementById('app').innerHTML = `<div>
+                                  <img src="${margaritaCocktail.strDrinkThumb}" idNumber = "${margaritaCocktail.idDrink}" onclick="details(event)" alt="${margaritaCocktail.strDrink}" />
+                                  <h3>${margaritaCocktail.strDrink}</h3>
+                              </div>
+                              `
+            } else {
+              resp.drinks.forEach(cocktail => {
+                document.getElementById('app').innerHTML = `<div>
+                                  <img src="${cocktail.strDrinkThumb}" idNumber = "${cocktail.idDrink}" onclick="details(event)" alt="${cocktail.strDrink}" />
+                                  <h3>${cocktail.strDrink}</h3>
+                              </div>
+                              `
+                document.getElementById('app1').innerHTML = ''
+              })
+            }
+          })
+      }
+
+      function details(e) {
+        e.preventDefault()
+        const id = e.target.getAttribute('idNumber')
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+          .then(resp => resp.json())
+          .then(resp => {
+            console.log(resp)
+            let html = ''
+            resp.drinks.forEach(cocktail => {
+              const ingredients = []
+              //nustatomi ingridientai. Masyve ingridientai buvo aprasomi kaip skirtingi elementai strIngridient1 .... - strIngridient15, todel naudojamas ciklas, kad nereiktu po viena numeriuka rasyt ir is karto butu aisku kiek ingridientu yra
+              for (let i = 1; i <= 15; i++) {
+                const ingredient = cocktail['strIngredient' + i]
+                const measure = cocktail['strMeasure' + i]
+                //jei nera ingridientu ciklas stabdomas ir reiksmes neuzpildomos su null
+                if (!ingredient) break
+                ingredients.push(`${measure} ${ingredient}`)
+              }
+              html += `<div class="dropdown" id="description">
+                              Category: ${cocktail.strAlcoholic} ${cocktail.strCategory}<br>
+                              <br>Ingredients: ${ingredients.join(', ')}<br>
+                              <br>Instructions: ${cocktail.strInstructions}<br>
+                          <button class="btn btn-primary hide" onclick="hide()">Hide</button>
+                        </div>`
+            })
+            document.getElementById('app1').innerHTML = html
+          })
+      }
+
+      function hide() {
+        document.getElementById('description').style = 'display:none'
+      }
+    </script>
+  </body>
+</html>

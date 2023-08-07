@@ -33,12 +33,12 @@
           console.log(resp)
           if (resp.status != 'success') return
           for (const i in resp.message) {
-            if (resp.message[i].lenght > 0) {
+            if (resp.message[i].length > 0) {
               for (const value of resp.message[i]) {
-                breedName.innerHTML += `<option value="${value}/${i}"> ${value} ${i} </option>`
+                breedName.innerHTML += `<option value="${i}/${value}">${value} ${i}</option>`
               }
             } else {
-              breedName.innerHTML += `<option>${i}</option>`
+              breedName.innerHTML += `<option value="${i}">${i}</option>`
             }
           }
         })

@@ -32,10 +32,14 @@
         .then(resp => {
           console.log(resp)
           if (resp.status != 'success') return
-          //kieviena veisle dar turi masyva, todel naudojame for cikla
-          //message:{buhund[norwegian]}
           for (const i in resp.message) {
-            breedName.innerHTML += `<option>${i}</option>`
+            if (resp.message[i].lenght > 0) {
+              for (const value of resp.message[i]) {
+                breedName.innerHTML += `<option value="${value}/${i}"> ${value} ${i} </option>`
+              }
+            } else {
+              breedName.innerHTML += `<option>${i}</option>`
+            }
           }
         })
 

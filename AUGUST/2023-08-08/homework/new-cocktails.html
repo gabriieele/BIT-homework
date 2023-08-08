@@ -191,7 +191,7 @@
 
             resp.drinks.map(data => {
               html += `<div class="col-4">
-                                <img src="${data.strDrinkThumb}" idNumber="${data.idDrink}" onclick="details(event)" alt="${data.strDrink}" />
+                                <img src="${data.strDrinkThumb}"  onclick="details(event, '${data.idDrink}')" alt="${data.strDrink}" />
                                 <h3>${data.strDrink}</h3>
                             </div>`
             })

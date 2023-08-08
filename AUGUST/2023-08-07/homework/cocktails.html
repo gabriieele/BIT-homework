@@ -43,26 +43,26 @@
   <body>
     <div class="container">
       <form class="input-group mt-3 mb-3" onsubmit="getCocktail(event);">
-        <select class="form-control"></select>
+        <input type="text" class="form-control" placeholder="Enter cocktail name" />
         <button class="btn btn-primary">Search</button>
       </form>
       <div id="app"></div>
       <div id="app1"></div>
     </div>
     <script>
-      const name = document.querySelector('select')
-      fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-        .then(resp => resp.json())
-        .then(resp => {
-          console.log(resp)
-          resp.drinks.forEach(cocktail => {
-            name.innerHTML += `<option>${cocktail.strDrink}</option>`
-          })
-        })
+      // const name = document.querySelector('select')
+      // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+      //   .then(resp => resp.json())
+      //   .then(resp => {
+      //     console.log(resp)
+      //     resp.drinks.forEach(cocktail => {
+      //       name.innerHTML += `<option>${cocktail.strDrink}</option>`
+      //     })
+      //   })
 
       function getCocktail(e) {
         e.preventDefault()
-        const cocktailName = e.target.querySelector('select').value.toLowerCase()
+        const cocktailName = e.target.querySelector('input').value.toLowerCase()
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
           .then(resp => resp.json())
           .then(resp => {

@@ -8,34 +8,84 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style></style>
   </head>
   <body>
+    <div class="container mb-5 mt-5">
+      <form onsubmit="getData(event)" class="input-group" id="form">
+        <input type="text" id="search" class="form-control" />
+        <button class="btn btn-warning">Search</button>
+      </form>
+    </div>
     <div id="result" class="container"></div>
+    <nav class="container">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link disabled" href="#" onclick="previous(event)" id="previous"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" onclick="next(event)" id="next">Next</a>
+        </li>
+      </ul>
+    </nav>
+
     <script>
-      function getData() {
-        fetch('https://www.omdbapi.com/?apikey=2e9b1f46&s=marvel')
+      let page = 1
+      let results
+
+      function getData(e) {
+        e.preventDefault()
+
+        let value = document.getElementById('search').value
+        fetch(`https://www.omdbapi.com/?apikey=671cb9d0&s=${value}&page=${page}`)
           .then(resp => resp.json())
           .then(resp => {
             console.log(resp)
             const result = document.getElementById('result')
-
+            results = resp.totalResults
             let html = `<div class="row">`
             resp.Search.map(data => {
               html += `<div class="col-4">
-                                <a href="#">
-                                    <img src="${data.Poster}" alt="${data.Title}" />
-                                    <h3>${data.Title}</h3>
-                                </a>
-                            </div>`
+                                      <a href="#" class="d-flex flex-column align-items-center">
+                                          <img src="${data.Poster}" alt="${data.Title}" />
+                                          <h3>${data.Title}</h3>
+                                      </a>
+                                  </div>`
             })
-
             html += `</div>`
-
             result.innerHTML = html
           })
       }
 
-      getData()
+      let nextButton = document.getElementById('next')
+      let previousButton = document.getElementById('previous')
+      // next mygtukas
+      function next(e) {
+        e.preventDefault()
+        previousButton.classList.remove('disabled')
+        page++
+        let calculated = Math.ceil(results / 10)
+        console.log(results)
+        console.log(calculated)
+        if (page >= calculated) {
+          page = calculated
+          e.target.classList.add('disabled')
+        }
+        getData(e)
+      }
+      // previous mygtukas
+      function previous(e) {
+        e.preventDefault()
+        nextButton.classList.remove('disabled')
+        page--
+        if (page <= 1) {
+          e.target.classList.add('disabled')
+          page = 1
+        }
+        getData(e)
+      }
     </script>
   </body>
 </html>

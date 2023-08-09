@@ -64,7 +64,7 @@
       </form>
       <div id="letters"></div>
       <br />
-      <button class="btn btn-primary mb-3" onclick="randomCocktail()">Man sekasi</button>
+      <button class="btn btn-primary mb-3" onclick="randomCocktail(event)">Man sekasi</button>
       <button class="btn btn-primary mb-3" onclick="getCocktail(event);">Į bendrą sąrašą</button>
       <div id="app"></div>
       <div id="app1"></div>
@@ -79,6 +79,7 @@
           .then(resp => {
             document.getElementById('app').innerHTML = ''
             console.log(resp)
+
             let html = `
         <div class="row">`
             resp.drinks.forEach(data => {
@@ -88,8 +89,10 @@
         </div>`
             })
             html += `</div>`
+
             document.getElementById('app').innerHTML = html
             document.getElementById('app1').innerHTML = ''
+            localStorage.setItem('mainView', html)
           })
       }
 
@@ -119,17 +122,19 @@
                             Name: ${cocktail.strDrink}<br>
                             <br>Type: <a href="#" onclick="isAlcocolic(event, '${cocktail.strAlcoholic}') ">${cocktail.strAlcoholic}</a> <br>Category: <a href="#" onclick="category(event, '${cocktail.strCategory}')">${cocktail.strCategory}</a><br>
                               Glass type: <a href="#" onclick="byGlass(event, '${cocktail.strGlass}')">${cocktail.strGlass}</a><br>
-                            
+
                             <br> Ingredients: ${ingredients}<br>
                               Instructions: ${cocktail.strInstructions}<br>
                           <button class="btn btn-primary hide" onclick="getCocktail(event)">Hide</button></div></div>
                         </div>`
             })
             document.getElementById('app1').innerHTML = html
+            localStorage.setItem('savedCocktail', html)
           })
       }
       ////random cocktail button search
-      function randomCocktail() {
+      function randomCocktail(e) {
+        e.preventDefault()
         fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
           .then(resp => resp.json())
           .then(resp => {
@@ -151,7 +156,7 @@
                             Name: ${cocktail.strDrink}<br>
                             <br>Type: <a href="#" onclick="isAlcocolic(event, '${cocktail.strAlcoholic}') ">${cocktail.strAlcoholic}</a> <br>Category: <a href="#" onclick="category(event, '${cocktail.strCategory}')">${cocktail.strCategory}</a><br>
                               Glass type: <a href="#" onclick="byGlass(event, '${cocktail.strGlass}')">${cocktail.strGlass}</a><br>
-                            
+
                             <br> Ingredients: ${ingredients}<br>
                               Instructions: ${cocktail.strInstructions}<br>
                           <button class="btn btn-primary hide" onclick="getCocktail(event)">Hide</button></div></div>
@@ -180,6 +185,7 @@
             html += `</div>`
             document.getElementById('app1').innerHTML = html
           })
+        localStorage.setItem('alkCocktail', alk)
       }
       function category(e, categ) {
         e.preventDefault()
@@ -197,6 +203,7 @@
             })
             html += `</div>`
             document.getElementById('app1').innerHTML = html
+            localStorage.setItem('isAlk', alk)
           })
       }
       function ingredientFilter(e, alk) {
@@ -267,6 +274,7 @@
             html += `</div>`
             document.getElementById('app1').innerHTML = html
             document.getElementById('app').innerHTML = ''
+            localStorage.setItem('filteredByLetter', html)
           })
           .catch(err => {
             document.getElementById('app1').innerHTML = 'Kokteilių nerasta'
@@ -274,12 +282,29 @@
       }
 
       //not working
-      const view = document.getElementById('app').innerHTML
-      localStorage.setItem('previousView', view)
-      const view1 = document.getElementById('app1').innerHTML
-      localStorage.setItem('previousView1', view1)
 
-      localStorage.getItem('previousView')
+      const savedCocktail = localStorage.getItem('savedCocktail')
+      const mainView = localStorage.getItem('mainView')
+      const letter = localStorage.getItem('filteredByLetter')
+      //  const alko = localStorage.getItem('alk')
+
+      if (savedCocktail) {
+        document.getElementById('app').innerHTML = savedCocktail
+
+        localStorage.removeItem('filteredByLetter')
+        localStorage.removeItem('mainView')
+        localStorage.removeItem('savedCocktail')
+      } else if (letter) {
+        document.getElementById('app').innerHTML = letter
+
+        localStorage.removeItem('savedCocktail')
+        localStorage.removeItem('mainView')
+      } else if (mainView) {
+        document.getElementById('app').innerHTML = mainView
+
+        localStorage.removeItem('savedCocktail')
+        localStorage.removeItem('filteredByLetter')
+      }
     </script>
   </body>
 </html>

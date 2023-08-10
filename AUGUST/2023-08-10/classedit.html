@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.querySelector('#pirmas').classList.add('klase') //Klases pridejimas
+
+      document.querySelector('#pirmas').classList.remove('klase') //Klases panaikinimas
+
+      document.querySelector('#pirmas').classList.toggle('klase') //Jeigu tokia klase buvo, tuomet ji pasalinama. Jeigu nebuvo tuomet priskiriama
+
+      // if(document.querySelector('#pirmas').classList.contains('klase')) {
+
+      //   document.querySelector('#pirmas').classList.remove('klase');
+
+      // } else {
+
+      //    document.querySelector('#pirmas').classList.add('klase');
+
+      // }
+
+      document.querySelector('#pirmas').getAttribute('id') //Atributo paemimas
+
+      document.querySelector('#pirmas').setAttribute('id', 'pirmas') //Atributo priskyrimas
+
+      document.querySelector('#pirmas').removeAttribute('id') //ID atributo panaikinimas
+    </script>
+  </body>
+</html>

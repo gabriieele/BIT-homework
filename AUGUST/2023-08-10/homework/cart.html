@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      margin: 0 auto;
+      background-color: rgb(193, 193, 193);
+      font-family: 'Montserrat', sans-serif;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    img {
+      max-width: 60px;
+      margin-bottom: 5px;
+    }
+    .background {
+      width: 700px;
+      height: 500px;
+      background-color: white;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+      position: relative;
+    }
+
+    .background2 {
+      background-color: rgb(215, 215, 215);
+      width: 400px;
+      height: 500px;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    hr {
+      color: rgb(170, 170, 170);
+      margin: 5px 0;
+      text-align: left;
+    }
+    h4,
+    h5 {
+      font-size: 13px;
+      color: rgb(130, 143, 160);
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    h5 {
+      color: black;
+    }
+    h3 {
+      font-weight: 600;
+    }
+    p {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qnt .btn {
+      padding: 0.1rem 0.25rem;
+      line-height: 1;
+      height: 20px;
+      border: none;
+    }
+
+    .qnt input {
+      padding: 0.1rem 0.25rem;
+      font-size: 0.65rem;
+      line-height: 1;
+      border-radius: 0;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      background-color: transparent;
+    }
+    .x {
+      color: rgb(130, 143, 160);
+    }
+    .last {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+    .mrgn,
+    .totalPrice {
+      margin-top: 20px;
+      margin-left: 0;
+      color: black;
+    }
+
+    .form-select,
+    .form-control {
+      border-radius: 0;
+    }
+
+    .btn-primary {
+      display: inline;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 0;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background-color: grey;
+    }
+
+    .input-group {
+      border: none;
+      border-radius: 0;
+      background-color: white;
+    }
+    .codeBtn {
+      border: none;
+      border-radius: 0;
+      color: black;
+    }
+  </style>
+  <body>
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="background mt-5">
+        <h3 class="mt-3 ms-4">Shopping Cart</h3>
+        <div class="row mt-3 ms-4 me-3 firstItem">
+          <hr />
+          <div class="col-2">
+            <img
+              src="https://image-resizing.booztcdn.com/gant-clothing/gcl2003184_cwhite.webp?has_grey=1&has_webp=1&size=w1300"
+              alt="white t-shirt"
+            />
+          </div>
+          <div class="col-3 d-flex flex-column justify-content-center">
+            <h4>Shirt</h4>
+            <h5>Cotton T-shirt</h5>
+          </div>
+
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="input-group qnt">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="reduceQuant(event, 'quantity')"
+              >
+                -
+              </button>
+
+              <input type="text" class="form-control text-center" id="quantity" value="1" />
+
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="changeQuantity(event,'quantity')"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="col-3 d-flex justify-content-center align-items-center">
+            <p>€44.00</p>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <a href="#" onclick="deleteItem(event,'.firstItem')"><p class="x">X</p></a>
+          </div>
+        </div>
+
+        <div class="row mt-3 ms-4 me-3 secondItem">
+          <hr />
+          <div class="col-2">
+            <img
+              src="https://image-resizing.booztcdn.com/gant-clothing/gcl2003184_ceveningblue.webp?has_grey=1&has_webp=1&size=w400&dpr=2.5"
+              alt="white t-shirt"
+            />
+          </div>
+          <div class="col-3 d-flex flex-column justify-content-center">
+            <h4>Shirt</h4>
+            <h5>Cotton T-shirt</h5>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="input-group qnt">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="reduceQuant(event, 'quantity2')"
+              >
+                -
+              </button>
+
+              <input type="number" class="form-control text-center" id="quantity2" value="1" />
+
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="changeQuantity(event,'quantity2')"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="col-3 d-flex justify-content-center align-items-center">
+            <p>€44.00</p>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <a href="#" onclick="deleteItem(event,'.secondItem')"><p class="x">X</p></a>
+          </div>
+        </div>
+
+        <div class="row mt-3 ms-4 me-3 thirdItem">
+          <hr />
+          <div class="col-2">
+            <img
+              src="https://image-resizing.booztcdn.com/gant-clothing/gcl2003184_cgreymelange.webp?has_grey=1&has_webp=1&size=w1300"
+              alt="white t-shirt"
+            />
+          </div>
+          <div class="col-3 d-flex flex-column justify-content-center">
+            <h4>Shirt</h4>
+            <h5>Cotton T-shirt</h5>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="input-group qnt">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="reduceQuant(event, 'quantity3')"
+              >
+                -
+              </button>
+
+              <input type="text" class="form-control text-center" id="quantity3" value="1" />
+
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="changeQuantity(event,'quantity3')"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="col-3 d-flex justify-content-center align-items-center">
+            <p>€44.00</p>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <a href="#" onclick="deleteItem(event,'.thirdItem')"><p class="x">X</p></a>
+          </div>
+          <hr class="mt-3" />
+        </div>
+
+        <a href="#"><p class="last ms-4">Back to shop</p></a>
+      </div>
+
+      <div class="background2 mt-5">
+        <div class="mt-3 ms-4 me-3">
+          <h3 class="mt-4">Summary</h3>
+          <hr />
+          <div class="row">
+            <div class="col-5"><h4 class="mrgn">ITEMS</h4></div>
+            <div class="col-3"></div>
+            <div class="col-4 d-flex justify-content-end"><p class="totalPrice">€132.00</p></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-12"><h4 class="mrgn">SHIPPING</h4></div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <select class="form-select" id="floatingSelect" onchange="shipping()">
+                <option value="1">Standart-Delivery 5eur</option>
+                <option value="2">DPD express 8eur</option>
+                <option value="3">Parcel pickup 0 eur</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-2 mb-2">
+            <div class="col-12"><h4 class="mrgn">GIVE CODE</h4></div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter your code" id="code" />
+                <button
+                  class="btn btn-outline-secondary codeBtn"
+                  type="button"
+                  id="button-addon2"
+                  onclick="promoCode()"
+                >
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr class="mt-5" />
+          <div class="row">
+            <div class="col-5"><h4 class="mrgn">TOTAL PRICE</h4></div>
+            <div class="col-3"></div>
+            <div class="col-4 d-flex justify-content-end">
+              <p class="totalPrice checkout"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary btn-block">CHECKOUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function changeQuantity(e, id) {
+        e.preventDefault()
+        const quant = document.getElementById(id)
+        let quantity = parseInt(quant.value)
+        quantity++
+        quant.value = quantity
+      }
+      function reduceQuant(e, id) {
+        e.preventDefault()
+        const quant = document.getElementById(id)
+        let quantity = parseInt(quant.value)
+        if (quantity > 0) {
+          quantity--
+          quant.value = quantity
+        }
+      }
+      function deleteItem(e, item) {
+        e.preventDefault()
+        if (!confirm('Ar tikrai norite išimti prekę iš krepšelio?')) return
+        document.querySelector(item).innerHTML = ''
+        // const index = products.findIndex(val => val.id === id)
+        // products.splice(index, 1)
+        // showList()
+      }
+      let price = 44
+
+      function shipping() {
+        const shippingMethod = document.getElementById('floatingSelect').value
+
+        if (shippingMethod === '1') {
+          price += 5
+        } else if (shippingMethod === '2') {
+          price += 8
+        } else {
+          price += 0
+        }
+        document.querySelector('.checkout').textContent = `€${price.toFixed(2)}`
+      }
+      function promoCode() {
+        const promo = document.getElementById('code').value
+
+        if (promo === 'FULLSTACK' || promo === 'fullstack') {
+          const discount = price * 0.1
+          price -= discount
+          document.querySelector('.checkout').textContent = `-10%: €${price.toFixed(2)}`
+        }
+      }
+    </script>
+  </body>
+</html>

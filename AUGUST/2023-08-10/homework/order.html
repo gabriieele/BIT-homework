@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      margin: 0 auto;
+      background-color: rgb(193, 193, 193);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .background {
+      width: 700px;
+      height: 300px;
+      background-color: white;
+      border-radius: 7px;
+
+      position: relative;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="background mt-3 d-flex align-items-center justify-content-start">
+        <div id="details" class="ms-3"></div>
+      </div>
+    </div>
+    <script>
+      const details = document.getElementById('details')
+      const cartInfo = JSON.parse(localStorage.getItem('cartInfo'))
+
+      if (cartInfo) {
+        let itemsHTML = '<h2>Order Details</h2><p>Order No: 123</p>'
+        itemsHTML += '<ul>'
+        cartInfo.items.forEach(item => {
+          itemsHTML += `<li>T-shirt Quantity: ${item.quantity},Price: €${item.price.toFixed(
+            2
+          )}</li> `
+        })
+        if (cartInfo.shippingMethod === '1') {
+          cartInfo.shippingMethod = 'Standart-Delivery 5eur'
+        } else if (cartInfo.shippingMethod === '2') {
+          cartInfo.shippingMethod = 'DPD express 8eur'
+        } else {
+          cartInfo.shippingMethod = 'Parcel pickup 0 eur'
+        }
+        itemsHTML += `</ul> Total price: €${cartInfo.totalPrice.toFixed(2)} <br>Shipping method: ${
+          cartInfo.shippingMethod
+        }`
+
+        details.innerHTML = itemsHTML
+      } else {
+        details.innerHTML = '<p>Cart info not found</p>'
+      }
+    </script>
+  </body>
+</html>

@@ -267,7 +267,7 @@
             </div>
           </div>
           <div class="col-3 d-flex justify-content-center align-items-center">
-            <p class="prc">€0.00</p>
+            <p class="prc">€44.00</p>
           </div>
           <div class="col-2 d-flex justify-content-center align-items-center">
             <a href="#" onclick="deleteItem(event,'.thirdItem')"><p class="x">X</p></a>
@@ -337,6 +337,7 @@
     </div>
     <script>
       let totalQuantity = 0
+      let shippingMethod = '1'
       function changeQuantity(e, id) {
         e.preventDefault()
         const quant = document.getElementById(id)
@@ -420,7 +421,7 @@
       let price = 0
 
       function shipping() {
-        const shippingMethod = document.getElementById('floatingSelect').value
+        shippingMethod = document.getElementById('floatingSelect').value
         const checkoutElements = document.querySelectorAll('.checkout')
 
         if (shippingMethod === '1') {
@@ -452,16 +453,16 @@
           items: [], //cia bus talpinama visa prekes info
           totalPrice: totalPrice,
           totalQuantity: totalQuantity,
+          shippingMethod: shippingMethod,
         }
 
         document.querySelectorAll('.qnt input').forEach(input => {
-          const itemId = input.id // id=quantity
           const itemPrice = parseFloat(input.getAttribute('data-price')) //konvertuoja teksta, i skaiciu su kableliu
           const itemQuantity = parseInt(input.value)
           cartData.items.push({
-            id: itemId,
             price: itemPrice,
             quantity: itemQuantity,
+            shipping: shippingMethod,
           })
         })
         localStorage.setItem('cartInfo', JSON.stringify(cartData))

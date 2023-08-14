@@ -337,6 +337,8 @@
     <script>
       let totalQuantity = 1
       let shippingMethod = '1'
+
+      //didina kieki inpute
       function changeQuantity(e, id) {
         e.preventDefault()
         const quant = document.getElementById(id) //inputas
@@ -348,6 +350,7 @@
         updateTotalPrice()
       }
 
+      //mazina kieki inpute
       function reduceQuant(e, id) {
         e.preventDefault()
         const quant = document.getElementById(id)
@@ -362,6 +365,7 @@
         }
       }
 
+      //kiekis prie Items
       function totalQuant() {
         totalQuantity = 0
         document.querySelectorAll('.qnt input').forEach(input => {
@@ -372,6 +376,7 @@
         totalQnt.innerHTML = `ITEMS ${totalQuantity}`
       }
 
+      //kainos funkcija, bendra kaina ir vienos prekes keiciama kaina
       function updateItemPrice(id) {
         const quant = document.getElementById(id) //preke
         const itemPrice = parseFloat(quant.getAttribute('data-price')) //paimama kaina
@@ -387,12 +392,13 @@
         const row = quant.parentElement.parentElement.parentElement //kreipiames i tevinio tevinius elementus kad susirast kur talpinsim kaina
         //vienos prekes kiekis
         const totalPrc = itemPrice * quantity
-        const totalPrcEl = row.querySelector('.col-3 p') //raso tevinio el col-3
+        const totalPrcEl = row.querySelector('.col-3 p') // tevinio el col-3
         totalPrcEl.textContent = `€${totalPrc.toFixed(2)}` //kablelis
       }
 
       let totalPrice = 0
 
+      //galutine kaina visu prekiu ir su shippingu
       function updateTotalPrice() {
         totalPrice = 0
         document.querySelectorAll('.qnt input').forEach(input => {

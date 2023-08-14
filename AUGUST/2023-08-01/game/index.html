@@ -58,16 +58,28 @@
         color: white;
         position: absolute;
         top: 60px;
-        left: 67%; /* Change this value to center the timer */
+        left: 80%;
+      }
+      .points1 {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        margin-right: 20px;
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <div class="points1">
+        <div class="player">Player Points:</div>
+        <div class="computer">Computer Points:</div>
+        <div class="winner"></div>
+      </div>
+      <div class="points"></div>
       <div class="bckgrnd">
-        <h1>Pradėti žaidimą</h1>
+        <h1>Start the game</h1>
         <button type="button" class="btn btn-light" onclick="startGame(event)">Start</button>
-        <div class="square"></div>
+        <div class="square" onclick="pointsSum()"></div>
       </div>
       <div id="timer">0:30</div>
     </div>

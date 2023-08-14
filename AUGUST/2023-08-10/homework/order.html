@@ -22,18 +22,55 @@
       font-family: 'Montserrat', sans-serif;
     }
     .background {
-      width: 700px;
-      height: 450px;
+      width: 600px;
+      height: 400px;
       background-color: white;
       border-radius: 7px;
+      padding: 20px;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      flex-direction: column;
+    }
 
-      position: relative;
+    .details {
+      width: 100%;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+    }
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .quantity {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .finalDetails {
+      font-size: 13px;
+      color: rgb(98, 98, 98);
+    }
+    hr {
+      color: rgb(170, 170, 170);
+      margin: 5px 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
+
   <body>
     <div class="container">
-      <div class="background mt-3 d-flex align-items-center justify-content-start">
-        <div id="details" class="ms-3"><hr /></div>
+      <div class="background mt-3">
+        <div id="details" class="details"></div>
       </div>
     </div>
     <script>
@@ -41,10 +78,10 @@
       const cartInfo = JSON.parse(localStorage.getItem('cartInfo'))
 
       if (cartInfo) {
-        let html = '<h2>Order Details</h2><p>Order No: 123</p>'
-        html += '<ul>'
+        let html = '<h2>Order Details</h2><p>Order No: 123</p><hr>'
+        html += '<ul class="list">'
         cartInfo.items.forEach(item => {
-          html += `<li>T-shirt Quantity: ${item.quantity},</li><hr> `
+          html += `<li class="list-item"><div class="product-name">Shirt<br> <div style="color: grey; font-size:13px; font-weight: 500">Cotton t-shirt</div></div><div class="quantity">Qty: ${item.quantity}</div></li><hr>`
         })
         if (cartInfo.shippingMethod === '1') {
           cartInfo.shippingMethod = 'Standart-Delivery 5eur'
@@ -53,15 +90,15 @@
         } else {
           cartInfo.shippingMethod = 'Parcel pickup 0 eur'
         }
-        html += `</ul> Total quantity: ${
+        html += `</ul> <div class="finalDetails">Total quantity: ${
           cartInfo.totalQuantity
         }<br>Total price: €${cartInfo.totalPrice.toFixed(2)} <br>Shipping method: ${
           cartInfo.shippingMethod
-        } <br>Total price with shipping: €${cartInfo.ttlPrice.toFixed(2)}`
+        } <br><div style="font-weight: 600">Total price with shipping: €${cartInfo.ttlPrice.toFixed(
+          2
+        )}</div></div>`
 
         details.innerHTML = html
-      } else {
-        details.innerHTML = '<p>Cart info not found</p>'
       }
     </script>
   </body>

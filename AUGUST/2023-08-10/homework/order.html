@@ -23,7 +23,7 @@
     }
     .background {
       width: 700px;
-      height: 300px;
+      height: 450px;
       background-color: white;
       border-radius: 7px;
 
@@ -33,7 +33,7 @@
   <body>
     <div class="container">
       <div class="background mt-3 d-flex align-items-center justify-content-start">
-        <div id="details" class="ms-3"></div>
+        <div id="details" class="ms-3"><hr /></div>
       </div>
     </div>
     <script>
@@ -41,12 +41,10 @@
       const cartInfo = JSON.parse(localStorage.getItem('cartInfo'))
 
       if (cartInfo) {
-        let itemsHTML = '<h2>Order Details</h2><p>Order No: 123</p>'
-        itemsHTML += '<ul>'
+        let html = '<h2>Order Details</h2><p>Order No: 123</p>'
+        html += '<ul>'
         cartInfo.items.forEach(item => {
-          itemsHTML += `<li>T-shirt Quantity: ${item.quantity},Price: €${item.price.toFixed(
-            2
-          )}</li> `
+          html += `<li>T-shirt Quantity: ${item.quantity},</li><hr> `
         })
         if (cartInfo.shippingMethod === '1') {
           cartInfo.shippingMethod = 'Standart-Delivery 5eur'
@@ -55,11 +53,13 @@
         } else {
           cartInfo.shippingMethod = 'Parcel pickup 0 eur'
         }
-        itemsHTML += `</ul> Total price: €${cartInfo.totalPrice.toFixed(2)} <br>Shipping method: ${
+        html += `</ul> Total quantity: ${
+          cartInfo.totalQuantity
+        }<br>Total price: €${cartInfo.totalPrice.toFixed(2)} <br>Shipping method: ${
           cartInfo.shippingMethod
-        }`
+        } <br>Total price with shipping: €${cartInfo.ttlPrice.toFixed(2)}`
 
-        details.innerHTML = itemsHTML
+        details.innerHTML = html
       } else {
         details.innerHTML = '<p>Cart info not found</p>'
       }

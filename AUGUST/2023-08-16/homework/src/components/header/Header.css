@@ -1,0 +1,57 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(40, 52, 75);
+  font-size: 12px;
+}
+p {
+  margin: 0;
+}
+img {
+  width: 30px;
+}
+
+.nav-item a {
+  color: white;
+  text-transform: uppercase;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  background-color: rgb(40, 52, 75);
+}
+
+.navbar ul,
+.navbar ul .nav-link.active {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-logo .logoTitle {
+  display: flex;
+  align-items: flex-start;
+}
+
+.nav-item a:hover {
+  color: rgb(161, 161, 161);
+}
+.logoTitle {
+  font-weight: 800;
+  color: white;
+  font-size: 15px;
+}
+
+.navbar ul .nav-link.active {
+  border: 1px solid white;
+  width: 120%;
+  height: 25px;
+  border-radius: 100px;
+  color: white;
+}

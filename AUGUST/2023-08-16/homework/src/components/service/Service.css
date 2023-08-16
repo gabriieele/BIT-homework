@@ -1,0 +1,16 @@
+.ttl h1 {
+  text-align: center;
+  color: white;
+  letter-spacing: normal;
+}
+
+.icn {
+  width: 200px;
+}
+
+.descr {
+  color: white;
+  line-height: 27px;
+  text-align: center;
+  padding: 10px;
+}

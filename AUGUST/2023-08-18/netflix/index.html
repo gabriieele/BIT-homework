@@ -56,6 +56,20 @@
       z-index: 1;
     }
 
+    .title h1 {
+      font-weight: 700;
+      font-size: 50px;
+    }
+
+    h2,
+    h3 {
+      font-size: 25px;
+      font-weight: 400;
+    }
+    h3 {
+      font-size: 20px;
+    }
+
     section {
       padding-top: 120px;
       padding-bottom: 120px;
@@ -72,8 +86,35 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
       z-index: 0;
+    }
+
+    .group {
+      width: 30%;
+      height: 50px;
+      display: flex;
+    }
+
+    input[type='email'] {
+      color: white;
+    }
+
+    .form-control {
+      background-color: rgba(0, 0, 0, 0.196);
+      border-radius: 2px;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+    .btn-outline-secondary {
+      background-color: red;
+      border: none;
+      color: white;
+      border-radius: 2px;
+      margin-left: 2px;
+      width: 160px;
     }
   </style>
   <body>
@@ -96,15 +137,27 @@
     </div>
 
     <section class="section1">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-12 title"><h1>Unlimited movies, TV shows, and more</h1></div>
+      <div class="row">
+        <div class="col-12 title"><h1 class="pb-3">Unlimited movies, TV shows, and more</h1></div>
       </div>
       <div class="row">
-        <div class="col-12 title"><h2>Watch anywhere. Cancel anytime.</h2></div>
+        <div class="col-12 title"><h2 class="pb-3">Watch anywhere. Cancel anytime.</h2></div>
       </div>
       <div class="row">
         <div class="col-12 title">
-          <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
+          <h3 class="pb-3">
+            Ready to watch? Enter your email to create or restart your membership.
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <div class="group mb-3">
+            <input type="email" class="form-control" placeholder="Email address" />
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+              Get Started >
+            </button>
+          </div>
         </div>
       </div>
     </section>

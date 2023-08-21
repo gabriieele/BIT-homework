@@ -1,0 +1,308 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(netflix.jpg);
+  background-size: cover no-repeat;
+}
+img {
+  max-width: 100%;
+}
+
+.logo {
+  width: 150px;
+}
+
+.header {
+  position: relative;
+  color: white;
+}
+.btn-primary {
+  background-color: red;
+  border: none;
+  border-radius: 3px;
+  width: 80px;
+}
+
+.btn-primary:hover,
+.btn-outline-secondary:hover {
+  background-color: rgb(173, 0, 0);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul,
+.navbar ul .nav-link.active {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 50px;
+}
+
+h2,
+h3 {
+  font-size: 25px;
+  font-weight: 400;
+}
+h3 {
+  font-size: 20px;
+}
+
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  width: 100%;
+}
+
+.section1 {
+  position: relative;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  z-index: 0;
+}
+
+.group {
+  width: 30%;
+  height: 50px;
+  display: flex;
+  position: relative;
+}
+
+input[type='email'] {
+  border-radius: 2px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  background-color: transparent;
+  outline: none;
+  transition: padding 0.3s;
+}
+
+input[type='email']:focus {
+  background-color: transparent;
+  padding-bottom: 30px;
+  border-color: white;
+}
+
+input[type='email']:focus::placeholder {
+  font-size: 10px;
+  padding-bottom: 40px;
+}
+
+input[type='email']::placeholder {
+  color: white;
+}
+
+.btn-outline-secondary {
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  margin-left: 3px;
+  width: 160px;
+}
+
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+footer {
+  background-color: black;
+  border-top: 10px solid rgba(128, 128, 128, 0.382);
+
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  text-align: left;
+}
+
+.section2.title h3 {
+  text-align: left;
+}
+
+.anim,
+.anim1 {
+  position: relative;
+}
+
+.anim img,
+.anim1 img {
+  width: 100%;
+}
+.anim video {
+  overflow: hidden;
+  position: absolute;
+  top: 20%;
+  left: 13%;
+  z-index: -1;
+  width: 80%;
+}
+.anim1 video {
+  overflow: hidden;
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  z-index: -1;
+  width: 59%;
+}
+
+.faq {
+  list-style: none;
+}
+.question {
+  border: none;
+  background-color: #2d2d2d;
+  color: white;
+  padding: 28px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.question.active {
+  max-height: 500px;
+}
+
+.question:hover {
+  background-color: #525252;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, margin 0.6s ease-in-out;
+}
+
+.question.active .answer {
+  margin-top: 30px;
+  max-height: 500px;
+  transition: max-height 0.5s ease-in-out, margin 0.6s ease-in-out;
+}
+
+footer {
+  color: #ffffffb3;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+footer a {
+  color: #ffffffb3;
+}
+
+footer ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+footer ul li {
+  padding: 0;
+  margin: 0;
+  text-indent: 0;
+  margin-bottom: 7px;
+}
+
+.dropdown button {
+  background-color: transparent;
+  width: 140px;
+  text-align: left;
+}
+
+.dropdown button {
+  display: flex;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.638);
+  height: 650px;
+  width: 450px;
+  padding: 15px 35px;
+  color: white;
+}
+
+.modal-title {
+  color: rgb(255, 255, 255);
+}
+
+.subttl,
+.subttl1 {
+  margin-top: 90px;
+  text-align: left;
+  color: #ffffffb3;
+}
+
+.subttl a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.subttl1 {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.check a,
+label {
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: #ffffffb3;
+}
+
+.form-check-input {
+  background-color: #ffffffb3;
+}
+#exampleModal {
+  margin: 5px 30px;
+}
+
+.modal-backdrop {
+  background-color: rgba(215, 204, 204, 0.182);
+  opacity: 0.1;
+}
+input[type='text'],
+input[type='password'] {
+  background-color: #333;
+  color: white;
+  border: none;
+  height: 50px;
+}
+
+input[type='text']::placeholder,
+input[type='password']::placeholder {
+  color: #ffffffb3;
+}
+
+.btn-close {
+  background-color: #ffffffb3;
+}
+.signInButton {
+  width: 100%;
+  height: 50px;
+}

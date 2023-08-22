@@ -95,7 +95,7 @@ input[type='email'] {
   border-radius: 2px;
   width: 300px;
   padding: 10px;
-  border: 1px solid rgb(158, 158, 158);
+  border: 1px solid #ffffffb3;
   background-color: transparent;
   outline: none;
   transition: padding 0.3s;
@@ -186,6 +186,10 @@ footer {
   cursor: pointer;
   margin-bottom: 8px;
   font-size: 20px;
+}
+
+.section6 ul {
+  padding: 0;
 }
 
 .question.active {
@@ -322,6 +326,51 @@ input[type='password']::placeholder {
   height: 50px;
 }
 
-.hidden {
-  display: none;
+.anim11 {
+  position: relative;
+}
+
+.square {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ffffffb3;
+  max-width: 350px;
+  width: 100%;
+}
+
+.square img {
+  max-width: 20%;
+}
+
+.promoText {
+  text-align: left;
+  color: white;
+  font-size: 14px;
+}
+
+.promoText h5,
+.promoText p {
+  margin: 0;
+  padding: 0;
+}
+
+.promoText p {
+  color: blue;
+}
+
+.animation {
+  max-width: 100%;
+  width: 40px !important;
+  max-height: 100%;
 }

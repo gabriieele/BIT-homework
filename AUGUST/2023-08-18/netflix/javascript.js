@@ -26,9 +26,9 @@ const signInModal = new bootstrap.Modal(document.getElementById('exampleModal'))
 const header = document.querySelector('header')
 const footer = document.querySelector('footer')
 const sections = document.querySelectorAll('section')
+const close = document.querySelector('.btn-close')
 
 signInButton.addEventListener('click', () => {
-  isClicked = true
   signInModal.show()
   sections.forEach(section => {
     section.style.display = 'none'
@@ -37,12 +37,10 @@ signInButton.addEventListener('click', () => {
   footer.style.display = 'none'
 })
 
-// signInModal.addEventListener('hidden.bs.modal', () => {
-//   if (isClicked === false) {
-//     sections.forEach(section => {
-//       section.style.display = 'block'
-//     })
-//     header.style.display = 'block'
-//     footer.style.display = 'block'
-//   }
-// })
+close.addEventListener('click', () => {
+  sections.forEach(section => {
+    section.style.display = 'block'
+  })
+  header.style.display = 'block'
+  footer.style.display = 'block'
+})

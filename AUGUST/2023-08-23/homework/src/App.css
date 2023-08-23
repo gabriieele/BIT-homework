@@ -1,0 +1,45 @@
+body {
+  margin: 0 auto;
+  background-color: #0a2d4d;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.heading p {
+  text-align: center;
+  color: white;
+}
+
+.display p {
+  color: white;
+  font-weight: 700;
+  text-align: left;
+  display: flex;
+  align-items: start;
+}
+
+.bg-light-subtle {
+  width: 60%;
+}
+
+.chooseBox {
+  background-color: #0a253c;
+  width: 60%;
+  color: white;
+  gap: 20px;
+}
+
+.flexi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  color: white;
+  text-align: center;
+}

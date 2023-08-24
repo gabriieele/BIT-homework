@@ -51,7 +51,24 @@ const Password = () => {
       <div className="display flexi flex-column">
         <p>Generated password: </p>
 
-        <div className="p-3 text-primary-emphasis bg-light-subtle rounded-3">{password}</div>
+        <div className="p-3 text-primary-emphasis bg-light-subtle rounded-3">
+          {/* /* split padalaina i masyva simbolius 
+          tada tikinama ar symbols/numbers yra true ir ar char turi savyje kazka is duotu simboliu
+          jei includes, tada pridedamos klases */}
+          {password.split('').map(char => (
+            <span
+              className={
+                symbols && '~!@#$%^&*()-_+={}|;:<>?/'.includes(char)
+                  ? 'red'
+                  : numbers && '0123456789'.includes(char)
+                  ? 'blue'
+                  : ''
+              }
+            >
+              {char}
+            </span>
+          ))}
+        </div>
       </div>
       <div className="flexi mt-4">
         <div className="p-3 rounded-3 chooseBox flexi justify-content-start ">

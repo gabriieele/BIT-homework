@@ -78,8 +78,8 @@ const Password = () => {
                 value=""
                 id="flexCheckNumbers"
                 //jei uzchekinta, tai reiksme false
-                checked={symbols}
-                onChange={() => setSymbols(!symbols)}
+                checked={numbers}
+                onChange={() => setNumbers(!numbers)}
               />
               <label className="form-check-label" htmlFor="flexCheckNumbers">
                 Numbers
@@ -91,8 +91,8 @@ const Password = () => {
                 type="checkbox"
                 value=""
                 id="flexCheckSymbols"
-                checked={numbers}
-                onChange={() => setNumbers(!numbers)}
+                checked={symbols}
+                onChange={() => setSymbols(!symbols)}
               />
               <label className="form-check-label" htmlFor="flexCheckSymbols">
                 Symbols

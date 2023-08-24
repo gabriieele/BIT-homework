@@ -95,7 +95,7 @@ const Password = () => {
                 onChange={() => setNumbers(!numbers)}
               />
               <label className="form-check-label" htmlFor="flexCheckSymbols">
-                Symbols {password}
+                Symbols
               </label>
             </div>
           </div>

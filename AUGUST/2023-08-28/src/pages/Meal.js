@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { Ingredients } from './Ingredients'
 
 const Meal = () => {
   const [data, setData] = useState()
@@ -16,24 +17,6 @@ const Meal = () => {
         setData(meal)
       })
   }, [])
-
-  const Ingredients = () => {
-    const ingredients = []
-
-    for (let i = 1; i <= 20; i++) {
-      const ingredient = data['strIngredient' + i]
-      const measure = data['strMeasure' + i]
-
-      ingredient &&
-        ingredients.push(
-          <li key={i}>
-            {ingredient} {measure}
-          </li>
-        )
-    }
-
-    return ingredients
-  }
 
   return (
     <div className="container">
@@ -57,12 +40,17 @@ const Meal = () => {
             <ul>
               <li>
                 Category:
-                <Link to={'/category/' + data.strCategory}>{data.strCategory}</Link>
+                <Link to={'/category/' + data.strCategory}> {data.strCategory}</Link>
               </li>
-              <li>Area: {data.strArea}</li>
+              <li>
+                Area:
+                <Link to={'/area/' + data.strArea}> {data.strArea}</Link>
+              </li>
             </ul>
             <h3>Ingredients</h3>
-            <Ingredients />
+            <Link to={`/ingredients/${data.ingredients}`}>
+              <Ingredients data={data} />
+            </Link>
           </div>
         </div>
       )}

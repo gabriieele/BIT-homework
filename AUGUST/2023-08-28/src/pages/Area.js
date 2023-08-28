@@ -1,22 +1,22 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const Category = () => {
-  const { name } = useParams()
+const Area = () => {
+  const { area } = useParams()
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('https:/www.themealdb.com/api/json/v1/1/filter.php?c=' + name)
+    fetch('https:/www.themealdb.com/api/json/v1/1/filter.php?a=' + area)
       .then(resp => resp.json())
       .then(resp => {
-        const ctgr = resp.meals
-        setData(ctgr)
+        const mealArea = resp.meals
+        setData(mealArea)
       })
   }, [])
 
   return (
     <>
-      <h1>Category: {name}</h1>
+      <h1>Area: {area}</h1>
       <div className="row mt-5">
         {data.map(value => (
           <div className="col-6 mb-3" key={value.idMeal}>
@@ -31,4 +31,4 @@ const Category = () => {
   )
 }
 
-export default Category
+export default Area

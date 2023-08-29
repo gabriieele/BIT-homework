@@ -16,6 +16,9 @@ const Area = () => {
 
   return (
     <>
+      <div className="mb-2">
+        <Link to={'/'}>Home</Link>
+      </div>
       <h1>Area: {area}</h1>
       <div className="row mt-5">
         {data.map(value => (

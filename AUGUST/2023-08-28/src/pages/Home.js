@@ -1,23 +1,26 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Ingredients } from './Ingredients'
-import FilterByLetter from './FilterByLetter'
 
 const Home = () => {
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
   const [randomMeal, setRandomMeal] = useState([])
+  const [showMeal, setShowMeal] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
-
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + search)
       .then(resp => resp.json())
-      .then(resp => setData(resp.meals))
+      .then(resp => {
+        setData(resp.meals)
+      })
   }
 
   const handleRandomMeal = e => {
     e.preventDefault()
+    setData([])
+    setShowMeal(true)
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
       .then(resp => resp.json())
       .then(resp => {
@@ -55,7 +58,7 @@ const Home = () => {
         <button className="btn btn-primary">Search</button>
       </form>
 
-      <div>{letters.map(letter => handleLetters(letter))}</div>
+      <div className="mt-3">{letters.map(letter => handleLetters(letter))}</div>
 
       <button className="btn btn-primary mt-3" onClick={handleRandomMeal}>
         I'm lucky
@@ -70,7 +73,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-      {randomMeal && (
+      {showMeal && (
         <div className="row">
           {randomMeal.map(value => (
             <>

@@ -11,7 +11,9 @@ export const Ingredients = ({ data }) => {
     ingredient &&
       ingredients.push(
         <li key={i}>
-          {ingredient} {measure}
+          <Link to={'/ingredients/' + ingredient}>
+            {ingredient} {measure}
+          </Link>
         </li>
       )
   }
@@ -27,16 +29,19 @@ const FilterByIngredient = () => {
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingr)
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp.meal)
+        console.log(resp)
         setData(resp.meals)
       })
       .catch(error => {
-        console.error('Error fetching data:', error)
+        console.error('Error', error)
       })
   }, [])
 
   return (
     <>
+      <div className="mb-2">
+        <Link to={'/'}>Home</Link>
+      </div>
       <h1>Meals which include {ingr}</h1>
       <div className="row mt-5">
         {data.map(value => (

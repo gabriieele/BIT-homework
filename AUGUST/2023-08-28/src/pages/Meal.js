@@ -20,7 +20,10 @@ const Meal = () => {
 
   return (
     <div className="container">
-      <h1>Patiekalo informacija: {id}</h1>
+      <div className="mb-2">
+        <Link to={'/'}>Home</Link>
+      </div>
+      <h1>Meal {id} details</h1>
       {data && (
         <div className="row mt-5">
           <div className="col-6">
@@ -48,9 +51,7 @@ const Meal = () => {
               </li>
             </ul>
             <h3>Ingredients</h3>
-            <Link to={`/ingredients/${data.ingredients}`}>
-              <Ingredients data={data} />
-            </Link>
+            <Ingredients data={data} />
           </div>
         </div>
       )}

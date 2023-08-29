@@ -14,12 +14,15 @@ const FilterByLetter = () => {
         }
       })
       .catch(err => {
-        console.error('Error fetching data:', err)
+        console.error('Error', err)
       })
   }, [])
 
   return (
     <>
+      <div className="mb-2">
+        <Link to={'/'}>Home</Link>
+      </div>
       <h1>Meals by letter {letter}</h1>
       {/* tikrinama ar yra patiekalu is tokios raides */}
       {data.length ? (

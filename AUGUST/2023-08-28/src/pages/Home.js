@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Ingredients } from './Ingredients'
 
@@ -7,8 +7,11 @@ const Home = () => {
   const [data, setData] = useState([])
   const [randomMeal, setRandomMeal] = useState([])
   const [showMeal, setShowMeal] = useState(false)
+  const [categories, setCategories] = useState([])
 
+  //all meals
   const handleSubmit = e => {
+    setShowMeal(false)
     e.preventDefault()
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + search)
       .then(resp => resp.json())
@@ -16,7 +19,7 @@ const Home = () => {
         setData(resp.meals)
       })
   }
-
+  //random meal
   const handleRandomMeal = e => {
     e.preventDefault()
     setData([])
@@ -45,6 +48,26 @@ const Home = () => {
   for (let i = 65; i <= 90; i++) {
     letters.push(String.fromCharCode(i))
   }
+
+  //select
+
+  useEffect(() => {
+    fetch('https:/www.themealdb.com/api/json/v1/1/categories.php')
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log('bandymas', resp)
+        setCategories(resp.categories)
+      })
+  }, [])
+
+  const handleSelect = selectedCategory => {
+    fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + selectedCategory)
+      .then(resp => resp.json())
+      .then(resp => {
+        setData(resp.meals)
+      })
+  }
+
   return (
     <>
       <h1>Meal database search</h1>
@@ -57,15 +80,30 @@ const Home = () => {
         />
         <button className="btn btn-primary">Search</button>
       </form>
+      {/* select */}
+      <select
+        className="form-select mt-3"
+        aria-label="Default select example "
+        onChange={e => handleSelect(e.target.value)}
+      >
+        <option selected>Select category</option>
+        {categories &&
+          categories.map((val, index) => (
+            <option value={val.strCategory} key={index}>
+              {val.strCategory}
+            </option>
+          ))}
+      </select>
 
       <div className="mt-3">{letters.map(letter => handleLetters(letter))}</div>
 
       <button className="btn btn-primary mt-3" onClick={handleRandomMeal}>
         I'm lucky
       </button>
-      <div className="row mt-5">
+      {/*  meals */}
+      <div className="row mb-3">
         {data.map(value => (
-          <div className="col-6 mb-3" key={value.idMeal}>
+          <div className="col-6 mt-4 mb-3" key={value.idMeal}>
             <Link to={'/meal/' + value.idMeal}>
               <img src={value.strMealThumb} alt={value.strMeal} />
             </Link>
@@ -73,29 +111,30 @@ const Home = () => {
           </div>
         ))}
       </div>
+      {/* im lucky content */}
       {showMeal && (
-        <div className="row">
+        <div className="row mt-4 mb-5">
           {randomMeal.map(value => (
             <>
               <div className="col-6">
-                <img src={value.strMealThumb} alt={value.strMeal} className="mb-3" />
+                <img src={value.strMealThumb} alt={value.strMeal} />
               </div>
               <div className="col-6">
                 <h2>{value.strMeal}</h2>
-                <ul>
-                  <li>
-                    Category:
-                    <Link to={'/category/' + value.strCategory}> {value.strCategory}</Link>
-                  </li>
-                  <li>
-                    Area:
-                    <Link to={'/area/' + value.strArea}> {value.strArea}</Link>
-                  </li>
-                </ul>
-                <h3>Ingredients</h3>
-                <Link to={'/ingredients/' + value.ingredient}>
-                  <Ingredients data={value} />
-                </Link>
+
+                <li>
+                  Category:
+                  <Link to={'/category/' + value.strCategory}> {value.strCategory}</Link>
+                </li>
+                <li>
+                  Area:
+                  <Link to={'/area/' + value.strArea}> {value.strArea}</Link>
+                </li>
+
+                <h3 className="mt-3">Ingredients</h3>
+                <Ingredients data={value} />
+                <h3 className="mt-3">Instructions</h3>
+                <p>{value.strInstructions}</p>
               </div>
             </>
           ))}

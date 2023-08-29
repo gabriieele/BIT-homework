@@ -25,7 +25,7 @@ const Meal = () => {
       </div>
       <h1>Meal {id} details</h1>
       {data && (
-        <div className="row mt-5">
+        <div className="row mt-3 mb-3">
           <div className="col-6">
             <img src={data.strMealThumb} alt={data.strMeal} className="mb-3" />
             <iframe
@@ -40,18 +40,20 @@ const Meal = () => {
           </div>
           <div className="col-6">
             <h2>{data.strMeal}</h2>
-            <ul>
-              <li>
-                Category:
-                <Link to={'/category/' + data.strCategory}> {data.strCategory}</Link>
-              </li>
-              <li>
-                Area:
-                <Link to={'/area/' + data.strArea}> {data.strArea}</Link>
-              </li>
-            </ul>
-            <h3>Ingredients</h3>
+
+            <li>
+              Category:
+              <Link to={'/category/' + data.strCategory}> {data.strCategory}</Link>
+            </li>
+            <li>
+              Area:
+              <Link to={'/area/' + data.strArea}> {data.strArea}</Link>
+            </li>
+
+            <h3 className="mt-3">Ingredients</h3>
             <Ingredients data={data} />
+            <h3 className="mt-3">Instructions</h3>
+            <p>{data.strInstructions}</p>
           </div>
         </div>
       )}

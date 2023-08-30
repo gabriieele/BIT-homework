@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "image": "https://www.iv.lt/wp-content/uploads/2023/08/KAS-YRA-DVIEJU-VEIKSNIU-AUTENTIFIKAVIMAS.svg",
+      "title": "Virtuali klasė: Hostingo vaidmuo mokymo įstaigoje",
+      "Content": "<p>Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu –&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių klasių sritį.</p>",
+      "excerpt": "Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu -&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių…",
+      "author": "Vilius",
+      "category": "Naujienos",
+      "date": "2023-08-30",
+      "id": 1
+    },
+    {
+      "image": "https://www.iv.lt/wp-content/uploads/2023/08/reCAPTCHA-1146x600.jpg",
+      "title": "Svetainės apsauga naudojant reCAPTCHA",
+      "Content": "<p>Tobulėjant interneto technologijoms, tobulėja ir kenkėjiškų botų metodai, su tiksu pasinaudoti svetainių silpnomis vietomis. Viena iš saugumo priemonių galinti užkirsti tam kelią yra CAPTCHA, kuri pastaruoju metu tapo pažangesne sistema, vadinama reCAPTCHA. Šiame straipsnyje nagrinėsime CAPTCHA ir reCAPTCHA skirtumus, jų svarbą užkertant kelią brukalui ir pažeidimams, taip pat sužinosime, kaip įdiegti „Google“ reCAPTCHA savo „WordPress“ svetainėje.</p>",
+      "excerpt": "Tobulėjant interneto technologijoms, tobulėja ir kenkėjiškų botų metodai, su tiksu pasinaudoti svetainių silpnomis vietomis. Viena iš saugumo priemonių galinti užkirsti tam kelią yra CAPTCHA, kuri pastaruoju metu tapo pažangesne sistema, vadinama reCAPTCHA. Šiame straipsnyje nagrinėsime CAPTCHA ir reCAPTCHA skirtumus, jų svarbą užkertant kelią brukalui ir pažeidimams, taip pat sužinosime, kaip įdiegti \"Google\" reCAPTCHA savo \"WordPress\"…",
+      "author": "Vilius",
+      "category": "Naujienos",
+      "date": "2023-08-30",
+      "id": 2
+    }
+  ]
+}

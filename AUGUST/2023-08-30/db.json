@@ -4,10 +4,11 @@
       "image": "https://www.iv.lt/wp-content/uploads/2023/08/KAS-YRA-DVIEJU-VEIKSNIU-AUTENTIFIKAVIMAS.svg",
       "title": "Virtuali klasė: Hostingo vaidmuo mokymo įstaigoje",
       "Content": "<p>Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu –&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių klasių sritį.</p>",
-      "excerpt": "Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu -&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių…",
+      "excerpt": "Jau kurį laiką naršyklių kūrėjų ir SSL sertifikatų leidėjų susitarimu yra trumpinamas maksimalus sertifikatų galiojimo laikas. Iki 2018 metų pradžios SSL sertifikatai galėjo būti išduodami iki 3 metų laikotarpiui, 2018 metais šis laikotarpis buvo sutrumpintas iki 2 metų. Pernai sertifikatų leidėjų ir naršyklių kūrėjų susirinkime „Apple“ atstovai pranešė, kad visi nuo 2020 m. rugsėjo 1 d. išduoti sertifikatai, kurie galios ilgiau nei 398 dienas (13 mėn.), bus laikomi nepatikimais, o tai reiškia, kad tokį sertifikatą naudojanti svetainė naršyklėje bus atvaizduojama kaip nesaugi. Šiuo metu dar nėra aišku, ar vartotojui bus pateikiamas saugumo įspėjimas, ar svetainė iš viso nebus atveriama, jei į ją bus kreipiamasi „https://“ protokolu. Ši diskusija tarp sertifikatų leidėjų ir naršyklių kūrėjų dėl sertifikatų laikotarpio trumpinimo trunka jau ne vienerius metus, tad šis pranešimas nieko nenustebino.",
       "author": "Vilius",
       "category": "Naujienos",
       "date": "2023-08-30",
+      "content": "Jau kurį laiką naršyklių kūrėjų ir SSL sertifikatų leidėjų susitarimu yra trumpinamas maksimalus sertifikatų galiojimo laikas. Iki 2018 metų pradžios SSL sertifikatai galėjo būti išduodami iki 3 metų laikotarpiui, 2018 metais šis laikotarpis buvo sutrumpintas iki 2 metų. Pernai sertifikatų leidėjų ir naršyklių kūrėjų susirinkime „Apple“ atstovai pranešė, kad visi nuo 2020 m. rugsėjo 1 d. išduoti sertifikatai, kurie galios ilgiau nei 398 dienas (13 mėn.), bus laikomi nepatikimais, o tai reiškia, kad tokį sertifikatą naudojanti svetainė naršyklėje bus atvaizduojama kaip nesaugi. Šiuo metu dar nėra aišku, ar vartotojui bus pateikiamas saugumo įspėjimas, ar svetainė iš viso nebus atveriama, jei į ją bus kreipiamasi „https://“ protokolu. Ši diskusija tarp sertifikatų leidėjų ir naršyklių kūrėjų dėl sertifikatų laikotarpio trumpinimo trunka jau ne vienerius metus, tad šis pranešimas nieko nenustebino.",
       "id": 1
     },
     {
@@ -19,6 +20,96 @@
       "category": "Naujienos",
       "date": "2023-08-30",
       "id": 2
+    },
+    {
+      "title": "test",
+      "author": "Gabriele",
+      "category": "Domenai",
+      "image": "https://images.ctfassets.net/pdf29us7flmy/6Uhj4pXfpAarxPQU3EZPDe/cbc11855edf6c5561bc494be675e1f26/url-domain-types.png",
+      "content": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+      "excerpt": "lalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalalla",
+      "date": "2023-08-31",
+      "id": 3
+    },
+    {
+      "title": "Testing",
+      "author": "G.B",
+      "category": "El. paštas",
+      "image": "https://www.iv.lt/wp-content/uploads/2023/08/KAS-YRA-DVIEJU-VEIKSNIU-AUTENTIFIKAVIMAS.svg",
+      "content": "Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu -&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių…",
+      "excerpt": "Švietimo pasaulis išgyvena nepaprastas permainas, kurias lemia nenumaldoma technologijų plėtra. Tradicinė klasė nebėra vienintelė mokymosi vieta, kadangi virtualios klasės, jau tapo nauja kasdienybe. Ši skaitmeninė evoliucija žada pokyčius, kurie neapsiriboja vien tik patogumu -&nbsp; ji formuoja pačią švietimo sklaidos esmę. Šiame naujovių pilname pasaulyje hostingas kartais gali būti nepelnytai primirštas herojus, tyliai skatinantis gyvybingą virtualių…",
+      "date": "2023-08-31",
+      "id": 4
+    },
+    {
+      "title": "Talpinimo įrašas",
+      "author": "Gabrielė",
+      "category": "Talpinimas",
+      "image": "https://www.iv.lt/wp-content/uploads/2023/08/KAS-YRA-DVIEJU-VEIKSNIU-AUTENTIFIKAVIMAS.svg",
+      "content": "lalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalallalalal",
+      "excerpt": "test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ",
+      "date": "2023-08-31",
+      "id": 5
+    },
+    {
+      "image": "https://www.iv.lt/wp-content/uploads/2023/08/KAS-YRA-DVIEJU-VEIKSNIU-AUTENTIFIKAVIMAS.svg",
+      "category": "Serveriai",
+      "title": "Serverių testas",
+      "author": "G.B",
+      "content": "test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ",
+      "excerpt": "test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ",
+      "date": "2023-08-31",
+      "id": 6
+    },
+    {
+      "title": "Kaip susikurti sėkmingą tinklaraštį?",
+      "excerpt": "Sukurti sėkmingą bog’ą gali atrodyti nelengva, ypatingai, jei esi pradedantysis, tačiau žinant visus konkrečius žingsnius, tai išties yra lengviau nei galvojai. Apie juos šiandien ir pakalbėsime šiame straipsnyje. ",
+      "content": "Sukurti sėkmingą bog’ą gali atrodyti nelengva, ypatingai, jei esi pradedantysis, tačiau žinant visus konkrečius žingsnius, tai išties yra lengviau nei galvojai. Apie juos šiandien ir pakalbėsime šiame straipsnyje. ",
+      "image": "https://www.iv.lt/wp-content/uploads/2023/03/blogpost.png",
+      "category": "Dizaino įrankis",
+      "author": "GB",
+      "date": "2023-08-31",
+      "id": 7
+    },
+    {
+      "title": " Iš ko susideda hostingo kaina?",
+      "author": "G.B",
+      "category": "Infrastruktūra",
+      "image": "https://www.iv.lt/wp-content/uploads/2020/12/IV_blogas_hostingo_kaina_1200x628-1146x600.png",
+      "content": "Paprastai į hostingo kainą įtraukiamos infrastruktūros išlaidos, o didelę dalį jų sudaro nuosavo duomenų centro (DC) turėjimas. Tai apima kelis reikšmingus veiksnius, susijusius su DC:\n\nĮrengimas. Statant duomenų centrą būtina atsižvelgti į geografinę padėtį. Čia turi būti tinkama aplinka infrastruktūrai kurti, reikiamiems komunikaciniams įvadams atvesti ir sudėtingiems technologiniams įrenginiams statyti. Tarpusavyje turi būti suderinta daugybė inžinerinių elementų, be to, viskas turi būti parengta pagal „Uptime Institute“ duomenų centrams taikomus standartus. Taip pat reikia atsižvelgti ir į tai, kiek įrangos planuojama talpinti – nuo to priklauso DC dydis, kiek papildomos technikos, įvadų, generatorių viskam prireiks.\n\nIšlaikymas. DC turi nemažai techninių elementų, kuriems reikia daug energijos. Nuo skaičiavimo išteklių, įrangos vėdinimo, serverių spintų, maitinimo šaltinių iki generatorių, energijos sąnaudos – vienos didžiausių DC patiriamų išlaidų per visą jo gyvavimo laiką. Galutinės elektros išlaidos taip pat įeina į hostingo plano kainą. Be to, reikia nepamiršti ir žmogiškųjų resursų – personalo, atsakingo už įrangos priežiūrą.\n\nApsauga. Hostingo kainą lemia ir fizinis DC saugumas, jo išlaikymas: priešlaikinės gaisro aptikimo sistemos, biometrinės prieigos kontrolė, 24/7 budintys apsaugos darbuotojai ir nenutraukiamas teritorijos stebėjimas vaizdo kameromis. Centre esančios papildomos gesinimo priemonės turi būti reguliariai prižiūrimos ir, esant reikalui, pakeičiamos naujomis.",
+      "excerpt": "Susikurti svetainę pagal save ir ją valdyti – įdomus ir kompleksiškas procesas. Daugeliu atvejų tai reiškia, kad pradedamas ar plečiamas esamas verslas, arba tiesiog vykdomas koks nors skaitmeninis projektas. Nesvarbu, kokiu tikslu kuriama svetainė – reikalinga patogi ir saugi prieiga prie jos. Tačiau yra daugybė hostingo (svetainės talpinimo) tipų; priklausomai nuo to ir planų dydžių, skiriasi jų kaina. Paslaugos teikėjai neretai siūlo skirtingas, atrodytų, to paties plano kainas. Kas iš tiesų lemia kainos dydį?",
+      "date": "2023-08-31",
+      "id": 8
+    },
+    {
+      "title": "Interviu su IV darbuotoju: Gintaras",
+      "author": "GB",
+      "category": "Žmonės",
+      "image": "https://www.iv.lt/wp-content/uploads/2023/04/gintaras-new.jpg",
+      "excerpt": "Nuo pat pirmųjų dienų Interneto Vizija stengiasi būti atidus hostingo partneris klientams, užtikrinantis pagalbą ir abipusį supratimą. Šių vertybių negalėtume puoselėti, jei ne mūsų klientų aptarnavimo komanda. Būtent jie yra tie žmonės, kurie pirmieji pasitinka mūsų klientus ir ištiesia pagalbos ranką iškilus bet kokiai problemai ar klausimui. Komandos priekyje – Gintaras, Klientų aptarnavimo skyriaus vadovas, mūsų įmonės veteranas, jau 11 metų augantis kartu su Interneto Vizija, puikiai matęs, kaip per visus šiuos metus viskas keitėsi, bei pats dalyvavęs tuose pokyčiuose. ",
+      "content": "Būdamas studentas, 2011-2012 m. kurį laiką dirbau klientų aptarnavimo skyriuje, vienoje telekomunikacijos įmonėje. Joje įgavau išties gerus klientų aptarnavimo pagrindus, tačiau jaučiau, kad ši darbovietė visgi ne man. Todėl pradėjau ieškoti naujo darbo, kuris man būtų arčiau širdies ir mano vertybių. Beieškant, akį patraukė Interneto Vizijos skelbimas – tuomet jie ieškojo klientų aptarnavimo specialisto, tad, daug negalvojęs, išsiunčiau savo CV ir buvau pakviestas į pokalbį! Vienas pokalbis vedė prie kito ir 2012 m. vasario 1 d. prisijungiau prie įmonės! Tuo metu buvau 17-tasis darbuotojas. ",
+      "date": "2023-08-31",
+      "id": 9
+    },
+    {
+      "title": "Interneto vizija – už švarų internetą",
+      "author": "GB",
+      "category": "Kita",
+      "image": "https://www.iv.lt/wp-content/uploads/2022/03/IV_Propaganda_1200x628-1146x600.png",
+      "excerpt": "„Interneto vizija“ priėmė sprendimą nutraukti sąsajas su svetainių, kuriose galimas propagandinis arba prorusiškas turinys, savininkais.\n\nPažymėtina, jog esame tik domenų registratorius, t. y. teikiamų paslaugų tarpininkai, tad nepageidaujamų domenų savininkai savo svetainių veiklą gali atnaujinti pas kitą paslaugos teikėją.\n\n„Tad kovojant su netinkamo turinio svetainėmis, geriausių rezultatų pasieksime tik tuomet, kai pečius surems institucijos, atsakingos už turinį tiek internete, tiek socialiniuose tinkluose bei televizijoje.“ – apibendrina Valentinas Čirba, UAB „Interneto vizija“ vadovas.\n\nKol laukiame konkrečių sprendimų iš atsakingų institucijų, kviečiame savarankiškai vertinti gaunamą bei internete aptinkamą turinį bei pranešti atitinkamoms institucijoms.",
+      "content": "Prasidėjus karui Ukrainoje, Lietuvoje ypatingai išaugo informacinio karo grėsmė. Tad kviečiame kiekvieną išlikti sąmoningais bei kritiškai vertinti aplink esančią informaciją bet kuriuose kanaluose. Dabartiniu metu didžiausia yra karo propagandos grėsmė ir tokia informacija plinta žaibišku greičiu tiek socialiniuose tinkluose, tiek ir visame internete. Todėl gaunant bent kokią informaciją verta įsidėmėti šiuos kelis punktus.\n\nPropagandiniais turiniu vadiname tuos tekstus, nuotraukas ir kt., kuriose atsikartoja specialiai suformuotos žinutės, skirtos sąmoningai klaidinti žmones bei formuoti tikslines pažiūras, kurios gali būti ir pavojingos. Savo esme propaganda yra atviras melas, kuris yra įvairiai užmaskuojamas bei naudojamas visuomenės manipuliavimui. Tad kaip atskirti, kur yra tik alternatyvi nuomonė, o kur – kryptingas melo skleidimas?",
+      "date": "2023-08-31",
+      "id": 10
+    },
+    {
+      "title": "Trumpinamas SSL sertifikatų galiojimo laikas",
+      "author": "GB",
+      "category": "Sertifikatai",
+      "image": "https://www.iv.lt/wp-content/uploads/2020/08/SSL_periodas-1146x600.jpg",
+      "content": "Jau kurį laiką naršyklių kūrėjų ir SSL sertifikatų leidėjų susitarimu yra trumpinamas maksimalus sertifikatų galiojimo laikas. Iki 2018 metų pradžios SSL sertifikatai galėjo būti išduodami iki 3 metų laikotarpiui, 2018 metais šis laikotarpis buvo sutrumpintas iki 2 metų. Pernai sertifikatų leidėjų ir naršyklių kūrėjų susirinkime „Apple“ atstovai pranešė, kad visi nuo 2020 m. rugsėjo 1 d. išduoti sertifikatai, kurie galios ilgiau nei 398 dienas (13 mėn.), bus laikomi nepatikimais, o tai reiškia, kad tokį sertifikatą naudojanti svetainė naršyklėje bus atvaizduojama kaip nesaugi. Šiuo metu dar nėra aišku, ar vartotojui bus pateikiamas saugumo įspėjimas, ar svetainė iš viso nebus atveriama, jei į ją bus kreipiamasi „https://“ protokolu. Ši diskusija tarp sertifikatų leidėjų ir naršyklių kūrėjų dėl sertifikatų laikotarpio trumpinimo trunka jau ne vienerius metus, tad šis pranešimas nieko nenustebino.",
+      "excerpt": "Jau kurį laiką naršyklių kūrėjų ir SSL sertifikatų leidėjų susitarimu yra trumpinamas maksimalus sertifikatų galiojimo laikas. Iki 2018 metų pradžios SSL sertifikatai galėjo būti išduodami iki 3 metų laikotarpiui, 2018 metais šis laikotarpis buvo sutrumpintas iki 2 metų. Pernai sertifikatų leidėjų ir naršyklių kūrėjų susirinkime „Apple“ atstovai pranešė, kad visi nuo 2020 m. rugsėjo 1 d. išduoti sertifikatai, kurie galios ilgiau nei 398 dienas (13 mėn.), bus laikomi nepatikimais, o tai reiškia, kad tokį sertifikatą naudojanti svetainė naršyklėje bus atvaizduojama kaip nesaugi. Šiuo metu dar nėra aišku, ar vartotojui bus pateikiamas saugumo įspėjimas, ar svetainė iš viso nebus atveriama, jei į ją bus kreipiamasi „https://“ protokolu.",
+      "date": "2023-08-31",
+      "id": 11
     }
   ]
 }

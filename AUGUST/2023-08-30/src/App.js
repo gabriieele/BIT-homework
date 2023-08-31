@@ -4,10 +4,11 @@ import Home from './pages/Home'
 import Post from './pages/Post'
 import Dashboard from './pages/Dashboard'
 import NewPost from './pages/NewPost'
+import EditPost from './pages/EditPost'
 
 import './App.css'
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Container>
@@ -16,6 +17,8 @@ function App() {
           <Route path="/post/:id" element={<Post />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/new-post" element={<NewPost />} />
+          <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/posts/:category" element={<Home />} />
         </Routes>
       </Container>
     </BrowserRouter>

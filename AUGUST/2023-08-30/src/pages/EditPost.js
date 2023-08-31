@@ -1,10 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 //Peradresavimo funkcija (Redirect Hook)
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const NewPost = () => {
-  const [data, setData] = useState({})
+const EditPost = () => {
+  const [data, setData] = useState({
+    title: '',
+    author: '',
+    category: '',
+    image: '',
+    content: '',
+    excerpt: '',
+  })
   const navigate = useNavigate()
+  const { id } = useParams()
+
+  useEffect(() => {
+    fetch('http://localhost:3000/posts/' + id)
+      .then(resp => resp.json())
+      .then(resp => {
+        delete resp.id
+        setData(resp)
+      })
+  }, [])
 
   const handleChange = e => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -13,21 +30,8 @@ const NewPost = () => {
   const handleForm = e => {
     e.preventDefault()
 
-    // const data = new FormData(e.target);
-    // const body = {};
-
-    // for(const el of data.entries()) {
-    //     body[el[0]] = el[1];
-    // }
-
-    //Datos formatavimas
-    //2023-08-31 10:30:00
-    // 8/31/2023 10:31:00
-    const date = new Date()
-    data.date = date.toLocaleDateString('lt-LT')
-
-    fetch('http://localhost:3000/posts', {
-      method: 'POST', //Metodo kuriuo siųsime užklausą nustatymas
+    fetch('http://localhost:3000/posts/' + id, {
+      method: 'PUT', //Metodo kuriuo siųsime užklausą nustatymas
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -39,7 +43,7 @@ const NewPost = () => {
 
   return (
     <>
-      <h2>Naujas įrašas</h2>
+      <h2>Įrašo redagavimas</h2>
       <form onSubmit={handleForm}>
         <div className="mb-3">
           <label>Pavadinimas:</label>
@@ -49,6 +53,7 @@ const NewPost = () => {
             name="title"
             onChange={handleChange}
             required={true}
+            value={data.title}
           />
         </div>
         <div className="mb-3">
@@ -59,6 +64,7 @@ const NewPost = () => {
             name="author"
             onChange={handleChange}
             required={true}
+            value={data.author}
           />
         </div>
         <div className="mb-3">
@@ -69,6 +75,7 @@ const NewPost = () => {
             name="category"
             onChange={handleChange}
             required={true}
+            value={data.category}
           />
         </div>
         <div className="mb-3">
@@ -79,6 +86,7 @@ const NewPost = () => {
             name="image"
             onChange={handleChange}
             required={true}
+            value={data.image}
           />
         </div>
         <div className="mb-3">
@@ -88,6 +96,7 @@ const NewPost = () => {
             name="content"
             onChange={handleChange}
             required={true}
+            value={data.content}
           ></textarea>
         </div>
         <div className="mb-3">
@@ -97,6 +106,7 @@ const NewPost = () => {
             name="excerpt"
             onChange={handleChange}
             required
+            value={data.excerpt}
           ></textarea>
         </div>
         <button className="btn btn-primary">Išssaugoti</button>
@@ -105,4 +115,4 @@ const NewPost = () => {
   )
 }
 
-export default NewPost
+export default EditPost

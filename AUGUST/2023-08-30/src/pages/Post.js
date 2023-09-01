@@ -23,7 +23,7 @@ const Post = () => {
           <span className="bg-secondary-subtle px-2 py-1">Kategorija: {data.category}</span>
         </div>
         <img src={data.image} alt={data.title} className="my-4" />
-        {data.Content}
+        {parse(data.content)}
       </div>
     )
   )

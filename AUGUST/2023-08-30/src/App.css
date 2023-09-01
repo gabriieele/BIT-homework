@@ -1,7 +1,22 @@
+body {
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 img {
   max-width: 100%;
 }
 
 aside {
   background-color: rgba(227, 227, 227, 0.405);
+}
+
+li {
+  list-style-type: square;
+  text-decoration: none;
+  margin-bottom: 5px;
 }

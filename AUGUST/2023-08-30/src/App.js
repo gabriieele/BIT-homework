@@ -18,7 +18,6 @@ const App = () => {
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/new-post" element={<NewPost />} />
           <Route path="/edit-post/:id" element={<EditPost />} />
-          <Route path="/posts/:category" element={<Home />} />
         </Routes>
       </Container>
     </BrowserRouter>

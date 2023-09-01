@@ -80,7 +80,7 @@ const Home = () => {
             </div>
           ))}
       </section>
-      <aside className="col-3 px-4">
+      <aside className="col-3 px-4 pb-4">
         <div className="bg-body-secondary"></div>
         <form onSubmit={handleSearch}>
           <div className="input-group mb-3 mt-4">
@@ -113,9 +113,7 @@ const Home = () => {
             </Link>
           ))}
         </div>
-        <Link onClick={handleAllCategories} className="mb-4">
-          Visos kategorijos
-        </Link>
+        <Link onClick={handleAllCategories}>Visos kategorijos</Link>
       </aside>
     </main>
   )

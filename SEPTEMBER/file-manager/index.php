@@ -93,12 +93,12 @@ function filterContents($dir) {
                         <th scope="col">Actions</th>
                     </tr>
                 </thead> <tbody>
-        <?php foreach ($directoryPaths as $directoryName => $directoryPath) : ?>
+        <?php foreach ($directoryPaths as $directoryName => $directoryPath)  {?>
           
                
                     <?php
                     $directoryList = filterContents($directoryPath);
-                    foreach ($directoryList as $file) :
+                    foreach ($directoryList as $file) {
                     ?>
                         <tr>
                             <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
@@ -109,10 +109,10 @@ function filterContents($dir) {
                             <td>Actions</td>
                         </tr>
                        
-                    <?php endforeach; ?>
+                    <?php }; ?>
                
             
-        <?php endforeach; ?> </tbody></table>
+        <?php } ?> </tbody></table>
     </div>
 </body>
 </html>

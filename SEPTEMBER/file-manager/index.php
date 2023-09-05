@@ -1,36 +1,11 @@
 <?php
-//nuorodu masyvas
-$directoryPaths = [
-    'audio' => 'directories/audio',
-    'demo' => 'directories/demo',
-    'embed' => 'directories/embed',
-    'images' => 'directories/images',
-    'video' => 'directories/video',
-];
-//vardai failu, kad nerodytu audio.php ir tt
-$directoryNames = [
-    'audio' => 'Audio',
-    'demo' => 'Demo',
-    'embed' => 'Embed',
-    'images' => 'Images',
-    'video' => 'Video',
-];
+$path = isset($_GET['path']) ? $_GET['path'] : '.';
+$files = scandir($path);
 
-$home = './index.php';
+unset($files[0]);
 
-//failai kataloguose
-function filterContents($dir) {
-    //scnadir - visas sarasas su failais ir kategorijom 
-    $files = scandir($dir);
-    $fileList = [];
-
-    foreach ($files as $file) {
-        //Jei nera nei ., nei .. kategorijoj, tada pridedamas prie tuscio amsyvo (pasalinama, nes nereikia atvaizduot)
-        if ($file !== '.' && $file !== '..') {
-            $fileList[] = $file;
-        }
-    }
-    return $fileList;
+if ($path === '.') {
+    unset($files[1]); 
 }
 ?>
 <!DOCTYPE html>
@@ -47,7 +22,7 @@ function filterContents($dir) {
     <nav class="navbar navbar-expand-lg justify-content-between">
   <div class="container-fluid">
     <div class="logo"><a class="navbar-brand" href="#">H3K DEMO</a>
-    <a class="navbar-brand" href=<?= $home; ?>><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+    <a class="navbar-brand" href=<?= "." ?>><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
   <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
 </svg></a></div>
     
@@ -93,26 +68,28 @@ function filterContents($dir) {
                         <th scope="col">Actions</th>
                     </tr>
                 </thead> <tbody>
-        <?php foreach ($directoryPaths as $directoryName => $directoryPath)  {?>
+        
           
                
                     <?php
-                    $directoryList = filterContents($directoryPath);
-                    foreach ($directoryList as $file) {
+                
+                    foreach ($files as $file) {
+                      
                     ?>
                         <tr>
                             <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td><a href="<?= $directoryPath . '/' . $file; ?>"><?= $directoryNames[$directoryName]; ?></a></td>
-                            <!-- //is_dir patikrina ar failas ar folderis -->
-                            <td><?= is_dir($directoryPath . '/' . $file) ? 'Folder' : 'File'; ?></td>
-                            <td><?= date('Y-m-d H:i', filemtime($directoryPath . '/' . $file)); ?></td>
+                            <td><a href="?path=<?=$path.'/'.$file?>"><?=$file?></a></td>
+                            <td>Folder</td>
+                            <td><?= date('Y-m-d H:i', filemtime($path . '/' . $file)); ?></td>
                             <td>Actions</td>
                         </tr>
-                       
-                    <?php }; ?>
+                        <?php
+                       }
+                      
+                    ?> 
                
             
-        <?php } ?> </tbody></table>
+         </tbody></table>
     </div>
 </body>
 </html>

@@ -1,12 +1,61 @@
 <?php
 $path = isset($_GET['path']) ? $_GET['path'] : '.';
+
 $files = scandir($path);
 
 unset($files[0]);
 
-if ($path === '.') {
-    unset($files[1]); 
+if($path === '.'){
+  unset($files[1]);
 }
+
+// Patikrinama ar failas egzistuoja ir ar didesnis nei 0 bits
+if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
+  if ($_FILES['failas']['size'] > 400000) {
+      echo 'Failo dydis yra per didelis';
+  } else {
+//pagrindine direktorija
+    $currentDirectory = './';
+//tikrinama ar linke esanti direktorija egzistuoja ir, jei taip, pridedama  tiksli direktorija, kur failas bus ikeltas
+    if(!empty($_GET['path'])){
+      $currentDirectory .= rtrim($_GET['path'], '/') . '/'; //rtrim pašalina visus galinius kablelius ir nereikalingus bruksnelius 
+    }
+
+    //pats failo pridejimas
+          move_uploaded_file($_FILES['failas']['tmp_name'], $currentDirectory . $_FILES['failas']['name']);
+          echo 'Failas sekmingai ikeltas';
+      }
+  }
+
+  
+  if (isset($_POST['createItem'])) {
+    if (isset($_POST['createType'])) {
+        header('Location: index.php?path=' . $path); // peradresavimas
+        //directory gaunama is inputo value
+        if ($_POST['createType'] === 'directory') {
+            $filePath = $path . '/' . $_POST['itemName'];
+            // kuriamas naujas folderis tam tikroj direktorijoj
+            if (!mkdir($filePath)) {
+                echo 'Klaida kuriant direktorija';
+            } else {
+                echo 'Direktorija sekmingai sukurta';
+            }
+            //file pareina is inputo value
+        } elseif ($_POST['createType'] === 'file') {
+            $filePath = $path . '/' . $_POST['itemName'];
+            //naujas failas
+            if (!touch($filePath)) {
+                echo 'Klaida kuriant faila';
+            } else {
+                echo 'Failas sekmingai sukurtas';
+            }
+        }
+    } else {
+        echo 'Pasirinkite failo tipa';
+    }
+}
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +85,13 @@ if ($path === '.') {
     
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"><svg class="me-1" style="color: grey" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
+          <a class="nav-link upld" aria-current="page" href="#"><svg class="me-1" style="color: grey" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
   <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
 </svg>Upload</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><svg class="me-1" style="color: grey" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+          <a class="nav-link newItem" href="#"><svg class="me-1" style="color: grey" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 </svg>New Item</a>
@@ -74,22 +123,72 @@ if ($path === '.') {
                     <?php
                 
                     foreach ($files as $file) {
+                      if($file !== "index.php" and $file !== "style.css"){
                       
                     ?>
                         <tr>
                             <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td><a href="?path=<?=$path.'/'.$file?>"><?=$file?></a></td>
+
+                            <td>
+                              <!-- dirname grazins tevinio folderio pavadinima -->
+                              <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
+                       kitu atveju, jei $file nėra '..', tai direktorija bus dabartinis kelias $path, pridedant $file su / -->
+                              <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
+                              <?= $file === '..' ? '..' : $file ?></a>
+                            </td>
                             <td>Folder</td>
                             <td><?= date('Y-m-d H:i', filemtime($path . '/' . $file)); ?></td>
                             <td>Actions</td>
                         </tr>
                         <?php
                        }
-                      
+                      }
                     ?> 
                
             
          </tbody></table>
+         <form class="upload" method="POST" enctype="multipart/form-data">
+      
+    </form>
+    <form class="create mt-3" method="POST">
+
+</form>
     </div>
+    <script>
+const upload = document.querySelector(".upload");
+const create = document.querySelector(".create");
+const btn = document.querySelector(".newItem");
+const btn2 = document.querySelector(".upld");
+
+btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  create.innerHTML = '<label for="itemName" class="form-label">File or directory name:</label>' +
+  '<input type="text" class="form-control" name="itemName" id="itemName">' +
+  '<div class="mt-2 mb-3 form-check">' +
+  '<input type="radio" class="form-check-input" id="createDirectory" name="createType" value="directory">' +
+  '<label class="form-check-label" for="createDirectory">Folder</label>' +
+  '</div>' +
+  '<div class="mb-3 form-check">' +
+  '<input type="radio" class="form-check-input" id="createFile" name="createType" value="file">' +
+  '<label class="form-check-label" for="createFile">File</label>' +
+  '</div>' +
+  '<div class="buttons mt-3">' +
+  '<button class="btn btn-primary" type="submit" name="createItem">Create</button>' +
+  '</div>'
+
+});
+btn2.addEventListener('click', (e) => {
+  e.preventDefault();
+  upload.innerHTML = ' <input type="file" class="form-control" name="failas"><div class="buttons mt-3"><button class="btn btn-primary">Upload</button> <button class=" hide btn btn-primary ms-2">Hide</button></div>'
+});
+
+const hide = document.querySelector(".hide")
+
+hide.addEventListener('click', () => {
+upload.innerHTML = ''
+});
+
+     
+    </script>
 </body>
 </html>

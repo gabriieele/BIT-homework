@@ -2,14 +2,12 @@ body {
   font-size: 13px;
   background-color: #f7f7f7;
 }
-a {
-  color: white;
-}
 
 th,
 td,
 .table {
   border: 1px solid #dee2e6;
+  font-size: 13px;
 }
 th:first-child,
 td:first-child {
@@ -50,4 +48,18 @@ a {
 
 td {
   background-color: #0000000d;
+}
+
+.buttons button {
+  font-size: 10px;
+  background-color: grey;
+  border: none;
+}
+
+.bttn {
+  margin: 0;
+}
+
+form {
+  width: 30%;
 }

@@ -77,13 +77,14 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
     if($path === '.'){
       unset($files[1]);
     }
-           
+  
           } else {
               echo "Klaida pervadinant faila";
           }
       }
   } 
 }
+
 
 
 ?>
@@ -135,15 +136,15 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
       
 
     
-        <form method="POST" class="editName inline-form">
-          
-        </form>
+        
 
-
-    <table class="table table-striped mt-4">   
+<button class="btn btn-primary selectAll mt-3">Select all</button>
+<button class="btn btn-primary mt-3">Delete</button>
+    <table class="table table-striped mt-3">   
       <thead>
+  
                     <tr>
-                        <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                        <th scope="col"><input class="form-check-input" type="checkbox" value="" name= "id[]" id="flexCheckDefault"></th>
                         <th scope="col">Name</th>
                         <th scope="col">Size</th>
                         <th scope="col">Modified</th>
@@ -198,6 +199,7 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
                         if ($fileExt['extension'] === 'js') {
                           $fileWithIcon = '<i class="bi bi-filetype-js"></i> ' . $file;
                         }
+                    
                        
                         }
                       else {
@@ -209,21 +211,23 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
                     
                         <tr>
                             <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                            <td>
+                            <td class="showForm">
                               <!-- dirname grazins tevinio folderio pavadinima -->
                               <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
                        kitu atveju, jei $file nėra '..', tai direktorija bus dabartinis kelias $path, pridedant $file su / -->
                        <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
                     <?= $file === '..' ? '..' : $fileWithIcon ?>
                 </a>
-      
+      <form method="POST" class="editName inline-form">
+          
+        </form>
             </td>
           
                    <td><?= is_dir($filePath) ? 'Folder' : round((filesize($filePath) / 1000),2) . ' KB' ?></td>
                             <td><?= date('Y-m-d H:i', filemtime($filePath)); ?></td>
                             <td>
                               <a href="#" class="edit" data-file="<?= $file ?>"><i class="bi bi-pencil-square"></i></a>
-                              <a href="#"><i class="bi bi-trash-fill ms-1"></i></a>
+                              <a href="#" ><i class="bi bi-trash-fill ms-1"></i></a>
                             </td>
                         </tr>
 
@@ -246,8 +250,7 @@ const upload = document.querySelector(".upload");
 const create = document.querySelector(".create");
 const btn = document.querySelector(".newItem");
 const btn2 = document.querySelector(".upld");
-const edit = document.querySelectorAll(".edit");
-const editName = document.querySelector(".editName");
+const showForm = document.querySelectorAll(".showForm");
 
 btn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -270,13 +273,19 @@ btn2.addEventListener('click', (e) => {
   e.preventDefault();
   upload.innerHTML = ' <input type="file" class="form-control" name="failas"><div class="buttons mt-3 mb-3"><button class="btn btn-primary">Upload</button> <button class=" hide btn btn-primary ms-2">Hide</button></div>'
 });
-edit.forEach(editButton => {
+
+const edit = document.querySelectorAll(".edit");
+const editName = document.querySelectorAll(".editName");
+
+edit.forEach((editButton, index) => {
   editButton.addEventListener('click', (e) => {
     e.preventDefault();
     const fileName = editButton.getAttribute('data-file');
-    editName.innerHTML = `<div class="mt-3 mb-2"><label>Rename file:</label></div><input type="text" name="newItem" class="form-control"  value="${fileName}"><input type="hidden" name="oldFIleName" value="${fileName}"><div class="buttons mt-3"><button type="submit" class="btn btn-small btn-primary">Rename</button></div>`;
+    const editForm = editName[index];
+    editForm.innerHTML = `<div class="mt-3 mb-2"><label>Rename file:</label></div><input type="text" name="newItem" class="form-control"  value="${fileName}"><input type="hidden" name="oldFIleName" value="${fileName}"><div class="buttons mt-3"><button type="submit" class="btn btn-small btn-primary">Rename</button></div>`;
   });
 });
+
 
 const hide = document.querySelectorAll(".hide")
 
@@ -285,6 +294,19 @@ hide.forEach(hideBtn => {
     upload.innerHTML = '';
   });
 });
+
+
+
+const selectAll = document.querySelector('.selectAll')
+selectAll.addEventListener('click', (e) =>{
+  e.preventDefault();
+ const ckeckboxes =document.querySelectorAll('.form-check-input').forEach(el =>{
+  el.checked = !el.checked;
+ })
+  
+})
+
+
 
      
     </script>

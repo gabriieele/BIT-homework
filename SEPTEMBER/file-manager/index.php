@@ -1,12 +1,11 @@
 <?php
 $path = isset($_GET['path']) ? $_GET['path'] : '.';
-
 $files = scandir($path);
-unset($files[0]);
-if($path === '.'){
-  unset($files[1]);
-}
 
+unset($files[0]);
+if ($path === '.') {
+    unset($files[1]);
+}
 // Patikrinama ar failas egzistuoja ir ar didesnis nei 0 bits
 if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
   if ($_FILES['failas']['size'] > 400000) {
@@ -74,8 +73,8 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
     //duomenu atnaujinimas pasikeitus failu pavadinimams, nes filesize gauna errora, nes vis dar tikrina sena faila
     $files = scandir($path);
     unset($files[0]);
-    if($path === '.'){
-      unset($files);
+    if ($path === '.') {
+        unset($files[1]);
     }
   
           } else {
@@ -86,13 +85,17 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
 }
 
 
-
-
 if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'])) {
   $deleteFile = $path . '/' . $_GET['item'];
   if (file_exists($deleteFile)) {
     //istrynimas su unlink
-      unlink($deleteFile);
+    if (file_exists($deleteFile)) {
+      if (is_dir($deleteFile)){
+        rmdir($deleteFile);
+      }
+      else{
+         unlink($deleteFile);
+      }
 
       //atnaujinami duomenys
       $files = scandir($path);
@@ -101,7 +104,32 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
           unset($files[1]);
       }
   } 
+}}
+
+
+if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_POST['checkputs'])) {
+  foreach ($_POST['checkputs'] as $selectedFile) {
+    $deleteFile = $path . '/' . $selectedFile;
+    if (file_exists($deleteFile)) {
+      if (is_dir($deleteFile)){
+        rmdir($deleteFile);
+      }
+      else{
+         unlink($deleteFile);
+      }
+     
+    }
+ 
+  }
+  header('Location: index.php?path=' . $path);
 }
+
+
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -149,18 +177,17 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
 </nav>
     </header>
     <div class="container">
-      
-
-    
-        
+ 
+    <form method="POST" action="index.php?action=deleteMultiple&path=<?= $path ?>">
 
 <button class="btn btn-primary selectAll mt-3">Select all</button>
-<button class="btn btn-primary mt-3">Delete</button>
+<button class="btn btn-primary mt-3" name="deleteButton">Delete</button>
+
     <table class="table table-striped mt-3">   
       <thead>
   
                     <tr>
-                        <th scope="col"><input class="form-check-input" type="checkbox" value="" name= "id[]" id="flexCheckDefault"></th>
+                        <th ></th>
                         <th scope="col">Name</th>
                         <th scope="col">Size</th>
                         <th scope="col">Modified</th>
@@ -170,7 +197,7 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
                 </thead> <tbody>
    
                     <?php
-                
+             
                     foreach ($files as $file) {
                       if($file !== "index.php" and $file !== "style.css"){
                         //tikrinant ar tai failas ar folderis, reikia visa kelia nurodyt, kitu atveju subdirektorijose neskaiciuos faily dydziu
@@ -221,12 +248,13 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
                       else {
                  $fileWithIcon = '<i class="bi bi-file-earmark"></i>' . $file; 
                       }
-
+                    
                       
                     ?>
                     
                         <tr>
-                            <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                            <th scope="row"><input class="form-check-input" type="checkbox" name="checkputs[]" value="<?= $file ?>" id="flexCheckDefault"></th>
+                            
                             <td class="showForm">
                               <!-- dirname grazins tevinio folderio pavadinima -->
                               <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
@@ -234,7 +262,7 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
                        <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
                     <?= $file === '..' ? '..' : $fileWithIcon ?>
                 </a>
-      <form method="POST" class="editName inline-form">
+      <form method="POST" class="editName">
           
         </form>
             </td>
@@ -255,7 +283,7 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'
                     ?> 
                                        
             
-         </tbody></table>
+         </tbody></table></form>
          <form class="upload" method="POST" enctype="multipart/form-data"></form>
          <form class="create" method="POST" enctype="multipart/form-data"></form>
     </div>
@@ -317,6 +345,8 @@ selectAll.addEventListener('click', (e) =>{
  })
   
 })
+
+
  
     </script>
 </body>

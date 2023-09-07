@@ -75,7 +75,7 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
     $files = scandir($path);
     unset($files[0]);
     if($path === '.'){
-      unset($files[1]);
+      unset($files);
     }
   
           } else {
@@ -86,6 +86,22 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
 }
 
 
+
+
+if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'])) {
+  $deleteFile = $path . '/' . $_GET['item'];
+  if (file_exists($deleteFile)) {
+    //istrynimas su unlink
+      unlink($deleteFile);
+
+      //atnaujinami duomenys
+      $files = scandir($path);
+      unset($files[0]);
+      if ($path === '.') {
+          unset($files[1]);
+      }
+  } 
+}
 
 ?>
 <!DOCTYPE html>
@@ -227,7 +243,8 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
                             <td><?= date('Y-m-d H:i', filemtime($filePath)); ?></td>
                             <td>
                               <a href="#" class="edit" data-file="<?= $file ?>"><i class="bi bi-pencil-square"></i></a>
-                              <a href="#" ><i class="bi bi-trash-fill ms-1"></i></a>
+                              <a href="?action=delete&item=<?=$file?>&path=<?=$path ?>"><i class="bi bi-trash-fill ms-1"></i></a>
+
                             </td>
                         </tr>
 
@@ -241,9 +258,6 @@ if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
          </tbody></table>
          <form class="upload" method="POST" enctype="multipart/form-data"></form>
          <form class="create" method="POST" enctype="multipart/form-data"></form>
-      
-    
-
     </div>
     <script>
 const upload = document.querySelector(".upload");
@@ -295,8 +309,6 @@ hide.forEach(hideBtn => {
   });
 });
 
-
-
 const selectAll = document.querySelector('.selectAll')
 selectAll.addEventListener('click', (e) =>{
   e.preventDefault();
@@ -305,10 +317,7 @@ selectAll.addEventListener('click', (e) =>{
  })
   
 })
-
-
-
-     
+ 
     </script>
 </body>
 </html>

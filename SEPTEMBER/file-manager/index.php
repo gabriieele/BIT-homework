@@ -6,6 +6,10 @@ unset($files[0]);
 if ($path === '.') {
     unset($files[1]);
 }
+
+
+
+
 // Patikrinama ar failas egzistuoja ir ar didesnis nei 0 bits
 if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
   if ($_FILES['failas']['size'] > 400000) {
@@ -53,40 +57,21 @@ if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
     }
 }
 
-if (isset($_POST['newItem']) && isset($_POST['oldFIleName'])) {
-  $newName = $_POST['newItem'];
-  $oldName = $_POST['oldFIleName'];
 
-   //ar pasirinktas failas egzistuoja
-  if (file_exists($path . '/' . $oldName)) {
-      $oldPath = $path . '/' . $oldName;
-      $newPath = $path . '/' . $newName;
 
-//ar jau nera tokio pat failo pavadinimo
-      if (file_exists($newPath)) {
-        echo "Toks pavadinimas jau egzistuoja";
-      } else {
-         //pervadinimas failu
-          if (rename($oldPath, $newPath)) {
-           
-            echo "Failas pervadintas sekmingai";
-    //duomenu atnaujinimas pasikeitus failu pavadinimams, nes filesize gauna errora, nes vis dar tikrina sena faila
-    $files = scandir($path);
-    unset($files[0]);
-    if ($path === '.') {
-        unset($files[1]);
-    }
-  
-          } else {
-              echo "Klaida pervadinant faila";
-          }
-      }
-  } 
+
+if (isset($_GET['action']) && $_GET['action'] === "edit" && isset($_GET['file'])) {
+  $editFile = $_GET['file']; // Store the file to be edited separately
+  $form = '<form method="POST" class="input-group my-2" style="width: 50%" "><label>Rename file:</label></div><input type="text" name="newName" class="form-control" value="' . $editFile . '"> <input type="hidden" name="renameItem" value="' . $editFile . '"><div class="buttons mt-3"><button type="submit" class="btn btn-small btn-primary">Rename</button></form>';
+} else {
+  $form = "";
 }
 
 
-if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['item'])) {
-  $deleteFile = $path . '/' . $_GET['item'];
+
+
+if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'])) {
+  $deleteFile = $path . '/' . $_GET['file'];
   if (file_exists($deleteFile)) {
     //istrynimas su unlink
     if (file_exists($deleteFile)) {
@@ -125,9 +110,20 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
 }
 
 
+if (isset($_POST['newName'])) {
+  $newFileName = $_POST['newName'];
+  $oldFileName = $_POST['renameItem'];
+  $oldFilePath = $path . '/' . $oldFileName;
+  $newFilePath = $path . '/' . $newFileName;
 
-
-
+  if (rename($oldFilePath, $newFilePath)) {
+      echo 'Failas pervadintas sėkmingai';
+      header('Location: index.php?path=' . $path);
+    
+  } else {
+      echo 'Klaida pervadinant failą';
+  }
+}
 
 
 
@@ -205,8 +201,18 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
                         //failp visai info, is ten bus imamamas parametras extension
                         $fileExt = pathinfo($file);
                         $fileWithIcon = $file;
-         
+             
 
+                     
+                      
+                      
+                      
+                      
+                      
+                      
+
+                   
+        
                         if (is_dir($filePath)) {
                           $fileWithIcon = '<i class="bi bi-folder"></i> ' . $file;
                         }
@@ -255,24 +261,21 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
                         <tr>
                             <th scope="row"><input class="form-check-input" type="checkbox" name="checkputs[]" value="<?= $file ?>" id="flexCheckDefault"></th>
                             
-                            <td class="showForm">
+                            <td>
                               <!-- dirname grazins tevinio folderio pavadinima -->
                               <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
                        kitu atveju, jei $file nėra '..', tai direktorija bus dabartinis kelias $path, pridedant $file su / -->
                        <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
                     <?= $file === '..' ? '..' : $fileWithIcon ?>
                 </a>
-      <form method="POST" class="editName">
-          
-        </form>
+                <?=(isset($_GET['file']) and $file === $_GET['file']) ? $form : '';?>
             </td>
           
                    <td><?= is_dir($filePath) ? 'Folder' : round((filesize($filePath) / 1000),2) . ' KB' ?></td>
                             <td><?= date('Y-m-d H:i', filemtime($filePath)); ?></td>
                             <td>
-                              <a href="#" class="edit" data-file="<?= $file ?>"><i class="bi bi-pencil-square"></i></a>
-                              <a href="?action=delete&item=<?=$file?>&path=<?=$path ?>"><i class="bi bi-trash-fill ms-1"></i></a>
-
+                              <a href="?action=edit&file=<?=$file?>&path=<?=$path ?>"><i class="bi bi-pencil-square"></i></a>
+                              <a href="?action=delete&file=<?=$file?>&path=<?=$path ?>"><i class="bi bi-trash-fill ms-1"></i></a>
                             </td>
                         </tr>
 
@@ -282,7 +285,7 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
                       }
                     ?> 
                                        
-            
+
          </tbody></table></form>
          <form class="upload" method="POST" enctype="multipart/form-data"></form>
          <form class="create" method="POST" enctype="multipart/form-data"></form>
@@ -292,7 +295,6 @@ const upload = document.querySelector(".upload");
 const create = document.querySelector(".create");
 const btn = document.querySelector(".newItem");
 const btn2 = document.querySelector(".upld");
-const showForm = document.querySelectorAll(".showForm");
 
 btn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -316,17 +318,7 @@ btn2.addEventListener('click', (e) => {
   upload.innerHTML = ' <input type="file" class="form-control" name="failas"><div class="buttons mt-3 mb-3"><button class="btn btn-primary">Upload</button> <button class=" hide btn btn-primary ms-2">Hide</button></div>'
 });
 
-const edit = document.querySelectorAll(".edit");
-const editName = document.querySelectorAll(".editName");
 
-edit.forEach((editButton, index) => {
-  editButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    const fileName = editButton.getAttribute('data-file');
-    const editForm = editName[index];
-    editForm.innerHTML = `<div class="mt-3 mb-2"><label>Rename file:</label></div><input type="text" name="newItem" class="form-control"  value="${fileName}"><input type="hidden" name="oldFIleName" value="${fileName}"><div class="buttons mt-3"><button type="submit" class="btn btn-small btn-primary">Rename</button></div>`;
-  });
-});
 
 
 const hide = document.querySelectorAll(".hide")

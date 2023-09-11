@@ -61,26 +61,46 @@ if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
 
 
 if (isset($_GET['action']) && $_GET['action'] === "edit" && isset($_GET['file'])) {
-  $editFile = $_GET['file']; // Store the file to be edited separately
+  $editFile = $_GET['file']; 
   $form = '<form method="POST" class="input-group my-2" style="width: 50%" "><label>Rename file:</label></div><input type="text" name="newName" class="form-control" value="' . $editFile . '"> <input type="hidden" name="renameItem" value="' . $editFile . '"><div class="buttons mt-3"><button type="submit" class="btn btn-small btn-primary">Rename</button></form>';
 } else {
   $form = "";
 }
 
 
+function remove_recursively($path) {
+  $files = scandir($path);
+
+  for($i = 2; $i < count($files); $i++) {
+      $target = $path . '/' . $files[$i];
+
+      if(is_dir($target)) {
+          remove_recursively($target);
+          //rmdir($target);
+      } else {
+          unlink($target);
+      }
+  }
+
+  rmdir($path);
+}
+
+
+
 
 
 if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'])) {
   $deleteFile = $path . '/' . $_GET['file'];
-  if (file_exists($deleteFile)) {
+  
+ 
     //istrynimas su unlink
     if (file_exists($deleteFile)) {
       if (is_dir($deleteFile)){
-        rmdir($deleteFile);
-      }
-      else{
-         unlink($deleteFile);
-      }
+        remove_recursively($deleteFile);
+         }
+         else{
+            unlink($deleteFile);
+         }
 
       //atnaujinami duomenys
       $files = scandir($path);
@@ -89,15 +109,16 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'
           unset($files[1]);
       }
   } 
-}}
+}
 
 
 if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_POST['checkputs'])) {
   foreach ($_POST['checkputs'] as $selectedFile) {
     $deleteFile = $path . '/' . $selectedFile;
+    
     if (file_exists($deleteFile)) {
       if (is_dir($deleteFile)){
-        rmdir($deleteFile);
+     remove_recursively($deleteFile);
       }
       else{
          unlink($deleteFile);
@@ -200,16 +221,6 @@ if (isset($_POST['newName'])) {
                         $fileExt = pathinfo($file);
                         $fileWithIcon = $file;
              
-
-                     
-                      
-                      
-                      
-                      
-                      
-                      
-
-                   
         
                         if (is_dir($filePath)) {
                           $fileWithIcon = '<i class="bi bi-folder"></i> ' . $file;
@@ -253,7 +264,6 @@ if (isset($_POST['newName'])) {
                  $fileWithIcon = '<i class="bi bi-file-earmark"></i>' . $file; 
                       }
                     
-                      
                     ?>
                     
                         <tr>
@@ -315,8 +325,6 @@ btn2.addEventListener('click', (e) => {
   e.preventDefault();
   upload.innerHTML = ' <input type="file" class="form-control" name="failas"><div class="buttons mt-3 mb-3"><button class="btn btn-primary">Upload</button> <button class=" hide btn btn-primary ms-2">Hide</button></div>'
 });
-
-
 
 
 const hide = document.querySelectorAll(".hide")

@@ -125,8 +125,6 @@ if (isset($_POST['newName'])) {
   }
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

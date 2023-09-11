@@ -244,6 +244,7 @@ if (isset($_POST['newName'])) {
                         else if (array_key_exists('extension', $fileExt) && isset($allIcons[$fileExt['extension']])) {
                           $icon = $allIcons[$fileExt['extension']];
                         }
+                       
                           else{
                             $icon = 'bi bi-file-earmark ';
                           }
@@ -259,17 +260,21 @@ if (isset($_POST['newName'])) {
                               <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
                        kitu atveju, jei $file nėra '..', tai direktorija bus dabartinis kelias $path, pridedant $file su / -->
                        <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
-                    <?= $file === '..' ? '..' : $fileWithIcon ?>
+                    <?= $file === '..' ? '<i class="bi bi-arrow-left-circle"></i> ' : $fileWithIcon ?>
                 </a>
                 <?=(isset($_GET['file']) and $file === $_GET['file']) ? $form : '';?>
             </td>
           
-                   <td><?= is_dir($filePath) ? 'Folder' : round((filesize($filePath) / 1000),2) . ' KB' ?></td>
-                            <td><?= date('Y-m-d H:i', filemtime($filePath)); ?></td>
+                   <td><?=$file !== '..' ? (is_dir($filePath) ? 'Folder' : round((filesize($filePath) / 1000),2) . ' KB') : ' '; ?></td>
+                            <td><?= $file !== '..' ? date('Y-m-d H:i', filemtime($filePath)): ' '; ?></td>
                             <td>
-                              <a href="?action=edit&file=<?=$file?>&path=<?=$path ?>"><i class="bi bi-pencil-square"></i></a>
-                              <a href="?action=delete&file=<?=$file?>&path=<?=$path ?>"><i class="bi bi-trash-fill ms-1"></i></a>
-                            </td>
+    <?php
+    if ($file !== '..') {
+        echo '<a href="?action=edit&file=' . $file . '&path=' . $path . '"><i class="bi bi-pencil-square"></i></a>' .
+             '<a href="?action=delete&file=' . $file . '&path=' . $path . '"><i class="bi bi-trash-fill ms-1"></i></a>';
+    }
+    ?>
+</td>
                         </tr>
 
                         <?php

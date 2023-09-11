@@ -2,6 +2,9 @@
 $path = isset($_GET['path']) ? $_GET['path'] : '.';
 $files = scandir($path);
 
+
+
+
 unset($files[0]);
 if ($path === '.') {
     unset($files[1]);
@@ -217,53 +220,35 @@ if (isset($_POST['newName'])) {
                       if($file !== "index.php" and $file !== "style.css"){
                         //tikrinant ar tai failas ar folderis, reikia visa kelia nurodyt, kitu atveju subdirektorijose neskaiciuos faily dydziu
                         $filePath = $path . '/' . $file;
-                        //failp visai info, is ten bus imamamas parametras extension
+                        //pathinfo visai info, is ten bus imamamas parametras extension
                         $fileExt = pathinfo($file);
-                        $fileWithIcon = $file;
-             
-        
+                        $allIcons = [
+                          'jpg' => 'bi bi-image',
+                          'png' => 'bi bi-image-alt',
+                          'php' => 'bi bi-filetype-php',
+                          'pdf' => 'bi bi-file-pdf',
+                          'doc' => 'bi bi-file-earmark-word',
+                          'docx' => 'bi bi-file-earmark-word',
+                          'txt' => 'bi bi-body-text',
+                          'mp3' => 'bi bi-music-note-beamed',
+                          'mp4' => 'bi bi-film',
+                          'avi' => 'bi bi-film',
+                          'html' => 'bi bi-filetype-html',
+                          'css' => 'bi bi-filetype-css',
+                          'js' => 'bi bi-filetype-js',
+                        ];
+
                         if (is_dir($filePath)) {
-                          $fileWithIcon = '<i class="bi bi-folder"></i> ' . $file;
+                          $icon = 'bi bi-folder';
                         }
-                        else if (array_key_exists('extension', $fileExt)) {
-                          
-                        if ($fileExt['extension'] === 'png' OR $fileExt['extension'] === 'jpeg') {
-                          $fileWithIcon = '<i class="bi bi-image"></i> ' . $file;
+                        else if (array_key_exists('extension', $fileExt) && isset($allIcons[$fileExt['extension']])) {
+                          $icon = $allIcons[$fileExt['extension']];
                         }
-                        if ($fileExt['extension'] === 'php') {
-                          $fileWithIcon = '<i class="bi bi-filetype-php"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'pdf') {
-                          $fileWithIcon = '<i class="bi bi-file-pdf"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'doc' or $fileExt['extension'] === 'docx') {
-                          $fileWithIcon = '<i class="bi bi-file-earmark-word"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'txt') {
-                          $fileWithIcon = '<i class="bi bi-body-text"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'mp3') {
-                          $fileWithIcon = '<i class="bi bi-music-note-beamed"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'mp4' or $fileExt['extension'] === 'avi') {
-                          $fileWithIcon = '<i class="bi bi-film"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'html') {
-                          $fileWithIcon = '<i class="bi bi-filetype-html"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'css') {
-                          $fileWithIcon = '<i class="bi bi-filetype-css"></i> ' . $file;
-                        }
-                        if ($fileExt['extension'] === 'js') {
-                          $fileWithIcon = '<i class="bi bi-filetype-js"></i> ' . $file;
-                        }
-                    
-                       
-                        }
-                      else {
-                 $fileWithIcon = '<i class="bi bi-file-earmark"></i>' . $file; 
-                      }
-                    
+                          else{
+                            $icon = 'bi bi-file-earmark ';
+                          }
+                $fileWithIcon ='<i class="' . $icon . '"></i> ' . $file;
+            
                     ?>
                     
                         <tr>

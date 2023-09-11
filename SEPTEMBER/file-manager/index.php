@@ -1,18 +1,11 @@
 <?php
 $path = isset($_GET['path']) ? $_GET['path'] : '.';
 $files = scandir($path);
-
-
-
-
 unset($files[0]);
 if ($path === '.') {
     unset($files[1]);
 }
-
-
-
-
+ 
 // Patikrinama ar failas egzistuoja ir ar didesnis nei 0 bits
 if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
   if ($_FILES['failas']['size'] > 400000) {
@@ -28,13 +21,16 @@ if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
     //pats failo pridejimas
           move_uploaded_file($_FILES['failas']['tmp_name'], $currentDirectory . $_FILES['failas']['name']);
           echo 'Failas sekmingai ikeltas';
+          //duomenu atnaujinimas
+          header('Location: index.php?path=' . $path);
       }
   }
 
   
   if (isset($_POST['createItem'])) {
     if (isset($_POST['createType'])) {
-        header('Location: index.php?path=' . $path); // peradresavimas
+        header('Location: index.php?path=' . $path); 
+        //folderi kurimas
         //directory gaunama is inputo value
         if ($_POST['createType'] === 'directory') {
             $filePath = $path . '/' . $_POST['itemName'];
@@ -44,10 +40,10 @@ if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
             } else {
                 echo 'Direktorija sekmingai sukurta';
             }
+            //failo kurimas
             //file pareina is inputo value
         } elseif ($_POST['createType'] === 'file') {
             $filePath = $path . '/' . $_POST['itemName'];
-            //naujas failas
             //failo sukūrimui naudojama touch
             if (!touch($filePath)) {
                 echo 'Klaida kuriant faila';
@@ -79,7 +75,6 @@ function remove_recursively($path) {
 
       if(is_dir($target)) {
           remove_recursively($target);
-          //rmdir($target);
       } else {
           unlink($target);
       }
@@ -87,10 +82,6 @@ function remove_recursively($path) {
 
   rmdir($path);
 }
-
-
-
-
 
 if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'])) {
   $deleteFile = $path . '/' . $_GET['file'];
@@ -104,13 +95,7 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'
          else{
             unlink($deleteFile);
          }
-
-      //atnaujinami duomenys
-      $files = scandir($path);
-      unset($files[0]);
-      if ($path === '.') {
-          unset($files[1]);
-      }
+      header('Location: index.php?path=' . $path);
   } 
 }
 
@@ -128,7 +113,6 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
       }
      
     }
- 
   }
   header('Location: index.php?path=' . $path);
 }
@@ -165,9 +149,7 @@ if (isset($_POST['newName'])) {
     <nav class="navbar navbar-expand-lg justify-content-between">
   <div class="container-fluid">
     <div class="logo"><a class="navbar-brand" href="#">H3K DEMO</a>
-    <a class="navbar-brand" href=<?= "." ?>><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-</svg></a></div>
+    <a class="navbar-brand" href=<?= "." ?>><i class="bi bi-house-door-fill"></i></a></div>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -285,8 +267,8 @@ if (isset($_POST['newName'])) {
                                        
 
          </tbody></table></form>
-         <form class="upload" method="POST" enctype="multipart/form-data"></form>
-         <form class="create" method="POST" enctype="multipart/form-data"></form>
+         <form class="upload" method="POST" ></form>
+         <form class="create" method="POST"></form>
     </div>
     <script>
 const upload = document.querySelector(".upload");
@@ -308,6 +290,7 @@ btn.addEventListener('click', (e) => {
   '</div>' +
   '<div class="buttons">' +
   '<button class="btn btn-primary" type="submit" name="createItem">Create</button>' +
+  '<button class="hide ms-2 btn btn-primary">Hide</button>' + 
   '</div>'
 
 });
@@ -317,12 +300,12 @@ btn2.addEventListener('click', (e) => {
 });
 
 
-const hide = document.querySelectorAll(".hide")
-
-hide.forEach(hideBtn => {
-  hideBtn.addEventListener('click', () => {
-    upload.innerHTML = '';
-  });
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('hide')) {
+    e.preventDefault();
+    const form = e.target.closest('form');
+    form.innerHTML = '';
+  }
 });
 
 const selectAll = document.querySelector('.selectAll')
@@ -334,8 +317,6 @@ selectAll.addEventListener('click', (e) =>{
   
 })
 
-
- 
     </script>
 </body>
 </html>

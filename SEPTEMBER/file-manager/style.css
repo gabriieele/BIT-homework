@@ -28,10 +28,6 @@ td:first-child {
   align-items: center;
 }
 
-svg {
-  color: blue;
-}
-
 a {
   text-decoration: none;
   color: black;

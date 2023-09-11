@@ -85,26 +85,33 @@ function remove_recursively($path) {
 
 if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'])) {
   $deleteFile = $path . '/' . $_GET['file'];
-  
- 
-    //istrynimas su unlink
-    if (file_exists($deleteFile)) {
+//pagrindiniu failu apsauga
+      if ($_GET['file'] !== 'index.php' AND $_GET['file'] !== 'style.css' && file_exists($deleteFile)) {
       if (is_dir($deleteFile)){
         remove_recursively($deleteFile);
          }
          else{
+          //istrynimas su unlink
             unlink($deleteFile);
          }
-      header('Location: index.php?path=' . $path);
+   
+      header('Location: index.php?path=' . $path); 
+   }
+   else{
+    echo 'Pagrindinio failo negalima ištrinti';
+  }
+ 
   } 
-}
+
 
 
 if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_POST['checkputs'])) {
+  
+  
   foreach ($_POST['checkputs'] as $selectedFile) {
     $deleteFile = $path . '/' . $selectedFile;
-    
-    if (file_exists($deleteFile)) {
+  
+    if ($selectedFile !== 'index.php' && $selectedFile !== 'style.css') {
       if (is_dir($deleteFile)){
      remove_recursively($deleteFile);
       }
@@ -112,9 +119,17 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
          unlink($deleteFile);
       }
      
-    }
+     header('Location: index.php?path=' . $path);
   }
-  header('Location: index.php?path=' . $path);
+    else{
+      echo 'Pagrindinio failo negalima ištrinti';
+    }
+  
+
+}
+
+
+
 }
 
 
@@ -124,13 +139,20 @@ if (isset($_POST['newName'])) {
   $oldFilePath = $path . '/' . $oldFileName;
   $newFilePath = $path . '/' . $newFileName;
 
+
+  if($oldFileName !== 'index.php' && $oldFileName !== 'style.css'){
   if (rename($oldFilePath, $newFilePath)) {
       echo 'Failas pervadintas sėkmingai';
       header('Location: index.php?path=' . $path);
-    
-  } else {
+  } 
+  
+  else {
       echo 'Klaida pervadinant failą';
   }
+ }
+ else{
+  echo 'Pagrindinis failas negali būti pervadintas';
+ }
 }
 
 ?>
@@ -199,7 +221,7 @@ if (isset($_POST['newName'])) {
                     <?php
              
                     foreach ($files as $file) {
-                      if($file !== "index.php" and $file !== "style.css"){
+                      if($file !== "index.php" && $file !== "style.css"){
                         //tikrinant ar tai failas ar folderis, reikia visa kelia nurodyt, kitu atveju subdirektorijose neskaiciuos faily dydziu
                         $filePath = $path . '/' . $file;
                         //pathinfo visai info, is ten bus imamamas parametras extension

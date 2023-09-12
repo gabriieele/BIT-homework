@@ -156,6 +156,40 @@ if (isset($_POST['newName'])) {
 }
 
 
+//zipinimas
+function addFilesRecursively($archive, $path) {
+  $files = scandir($path);
+  unset($files[0]);
+  unset($files[1]);
+
+  foreach ($files as $file) {
+    $dir = $path . '/' . $file;
+      if (is_dir($dir)) {
+          $archive->addEmptyDir($dir);
+          addFilesRecursively($archive, $dir);
+      } else {
+          $archive->addFile($dir, $dir);
+      }
+  }
+}
+
+if (isset($_GET['action']) && $_GET['action'] === 'zip' && isset($_GET['file'])) {
+  $zippedFolder = $_GET['file'];
+  $newZip = $zippedFolder . '.zip';
+
+  $archive = new ZipArchive;
+  $archive->open($newZip, ZipArchive::CREATE);
+    $archive->addEmptyDir($zippedFolder);
+      addFilesRecursively($archive, $zippedFolder);
+      
+      //pabaigiamas zipinimas
+      $archive->close();
+      header('Location: ?path=' . $path);
+      
+  
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -241,6 +275,7 @@ if (isset($_POST['newName'])) {
                           'html' => 'bi bi-filetype-html',
                           'css' => 'bi bi-filetype-css',
                           'js' => 'bi bi-filetype-js',
+                          'zip' => 'bi bi-file-earmark-zip'
                         ];
 
                         if (is_dir($filePath)) {
@@ -277,7 +312,9 @@ if (isset($_POST['newName'])) {
     if ($file !== '..') {
         echo '<a href="?action=edit&file=' . $file . '&path=' . $path . '"><i class="bi bi-pencil-square"></i></a>' .
              '<a href="?action=delete&file=' . $file . '&path=' . $path . '"><i class="bi bi-trash-fill ms-1"></i></a>';
-             
+             if (is_dir($filePath)) {
+            echo '<a href="?action=zip&file=' . $file . '&path=' . $path . '"><i class="bi bi-file-earmark-zip ms-1"></i></a>';
+        }
     }
 
     ?>

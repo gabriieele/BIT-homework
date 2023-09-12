@@ -5,7 +5,7 @@ unset($files[0]);
 if ($path === '.') {
     unset($files[1]);
 }
- 
+
 // Patikrinama ar failas egzistuoja ir ar didesnis nei 0 bits
 if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
   if ($_FILES['failas']['size'] > 400000) {
@@ -22,14 +22,14 @@ if (isset($_FILES['failas']) && $_FILES['failas']['size'] > 0) {
           move_uploaded_file($_FILES['failas']['tmp_name'], $currentDirectory . $_FILES['failas']['name']);
           echo 'Failas sekmingai ikeltas';
           //duomenu atnaujinimas
-          header('Location: index.php?path=' . $path);
+          header('Location: ?path=' . $path);
       }
   }
 
   
   if (isset($_POST['createItem'])) {
     if (isset($_POST['createType'])) {
-        header('Location: index.php?path=' . $path); 
+        header('Location: ?path=' . $path); 
         //folderi kurimas
         //directory gaunama is inputo value
         if ($_POST['createType'] === 'directory') {
@@ -95,7 +95,7 @@ if (isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['file'
             unlink($deleteFile);
          }
    
-      header('Location: index.php?path=' . $path); 
+      header('Location: ?path=' . $path); 
    }
    else{
     echo 'Pagrindinio failo negalima ištrinti';
@@ -119,7 +119,7 @@ if (isset($_GET['action']) && $_GET['action'] === "deleteMultiple" && isset($_PO
          unlink($deleteFile);
       }
      
-     header('Location: index.php?path=' . $path);
+     header('Location: ?path=' . $path);
   }
     else{
       echo 'Pagrindinio failo negalima ištrinti';
@@ -143,7 +143,7 @@ if (isset($_POST['newName'])) {
   if($oldFileName !== 'index.php' && $oldFileName !== 'style.css'){
   if (rename($oldFilePath, $newFilePath)) {
       echo 'Failas pervadintas sėkmingai';
-      header('Location: index.php?path=' . $path);
+      header('Location: ?path=' . $path);
   } 
   
   else {
@@ -154,6 +154,7 @@ if (isset($_POST['newName'])) {
   echo 'Pagrindinis failas negali būti pervadintas';
  }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -200,7 +201,7 @@ if (isset($_POST['newName'])) {
     </header>
     <div class="container">
  
-    <form method="POST" action="index.php?action=deleteMultiple&path=<?= $path ?>">
+    <form method="POST" action="?action=deleteMultiple&path=<?= $path ?>">
 
 <button class="btn btn-primary selectAll mt-3">Select all</button>
 <button class="btn btn-primary mt-3" name="deleteButton">Delete</button>
@@ -276,7 +277,9 @@ if (isset($_POST['newName'])) {
     if ($file !== '..') {
         echo '<a href="?action=edit&file=' . $file . '&path=' . $path . '"><i class="bi bi-pencil-square"></i></a>' .
              '<a href="?action=delete&file=' . $file . '&path=' . $path . '"><i class="bi bi-trash-fill ms-1"></i></a>';
+             
     }
+
     ?>
 </td>
                         </tr>

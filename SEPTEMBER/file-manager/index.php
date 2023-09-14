@@ -190,6 +190,16 @@ if (isset($_GET['action']) && $_GET['action'] === 'zip' && isset($_GET['file']))
 }
 
 
+//failo atsisiuntimas
+if (isset($_GET['action']) and ($_GET['action']) === "download") {
+  $file = $_GET['file'];
+  header("Content-Description: File Transfer");
+  header("Content-Type: application/octet-stream");
+  header("Content-Disposition: attachment; filename=\"" . basename($file) . "\"");
+  readfile($file);
+  exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -299,9 +309,14 @@ if (isset($_GET['action']) && $_GET['action'] === 'zip' && isset($_GET['file']))
                               <!-- dirname grazins tevinio folderio pavadinima -->
                               <!-- Jei $file yra '..', tai nuoroda ves i tevini folderi, naudojant dirname($path) funkcija (vienu lygiu auksciau)
                        kitu atveju, jei $file nėra '..', tai direktorija bus dabartinis kelias $path, pridedant $file su / -->
+                     
                        <a href="?path=<?= $file === '..' ? dirname($path) : ($file === '..' ? '' : $path . '/' . $file) ?>">
-                    <?= $file === '..' ? '<i class="bi bi-arrow-left-circle"></i> ' : $fileWithIcon ?>
+                       <!-- jei failas, leis atsisiusti  -->
+                       <?= $file === '..' ? '<i class="bi bi-arrow-left-circle"></i> ' : (is_file($filePath) ? "<a href='?action=download&file=$filePath'>$fileWithIcon</a>" : $fileWithIcon) ?>
+
+
                 </a>
+              <!-- edit forma -->
                 <?=(isset($_GET['file']) and $file === $_GET['file']) ? $form : '';?>
             </td>
           

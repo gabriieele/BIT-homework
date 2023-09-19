@@ -1,0 +1,19 @@
+.categories {
+  gap: 20px;
+}
+
+.btn-light {
+  background-color: rgb(239, 238, 238);
+  font-size: 14px;
+}
+
+.selected-btn {
+  background-color: black;
+  color: white;
+}
+
+.btn-light:hover {
+  background-color: rgb(63, 63, 63);
+  color: rgb(255, 255, 255);
+  outline: none;
+}

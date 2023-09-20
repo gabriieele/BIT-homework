@@ -15,6 +15,16 @@ if ($result->num_rows > 0) {
     $videos = $result->fetch_all(MYSQLI_ASSOC);
 }
 
+//search
+if (isset($_POST['search'])) {
+    $video =  $_POST['search'];
+    $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
+    $videos = $result->fetch_all(MYSQLI_ASSOC);
+} else {
+    $result = $db->query("SELECT * FROM uploads");
+    $videos = $result->fetch_all(MYSQLI_ASSOC);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +46,9 @@ if ($result->num_rows > 0) {
       <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="120" alt="Youtube Logo PNG Transparent Image" />
       
     </a>
-    <form class="d-flex" role="search">
+    <form class="d-flex" role="search" method="POST">
         <div class="input-group">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button></div>
       </form>
   </div>

@@ -8,28 +8,30 @@ try {
     exit;
 }
 
-$result = $db->query("SELECT * FROM uploads");
-
-if ($result->num_rows > 0) {
-    $videos = $result->fetch_all(MYSQLI_ASSOC);
-}
-
 $res = $db->query("SELECT * FROM categories");
 if ($res->num_rows > 0) {
     $categories = $res->fetch_all(MYSQLI_ASSOC);
 }
 
-
-
 //search
+
+$videos = [];
 if (isset($_POST['search'])) {
-    $video =  $_POST['search'];
+    $video = $_POST['search'];
     $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
-    $videos = $result->fetch_all(MYSQLI_ASSOC);
-} else {
+}  elseif (isset($_GET['category'])) {
+    $id = $_GET['category'];
+    $result = $db->query("SELECT * FROM uploads WHERE category_id = $id");
+} 
+
+ else{
     $result = $db->query("SELECT * FROM uploads");
+ }
+
+ if ($result->num_rows > 0) {
     $videos = $result->fetch_all(MYSQLI_ASSOC);
 }
+    
 
 ?>
 
@@ -61,17 +63,17 @@ if (isset($_POST['search'])) {
 </nav>
   <div class="container">
     <div class="categories d-flex mt-3 mb-3">
-    <a href="index.php"><button class="btn btn-light <?= !isset($_GET['id']) ? 'selected-btn' : '' ?>">All categories</button></a>
+    <a href="index.php"><button class="btn btn-light <?= !isset($_GET['category']) || isset($_POST['search'])? 'selected-btn' : '' ?>">All categories</button></a>
     <?php foreach ($categories as $category) : ?>
         <!-- pasirinkta kategorija - juodas mygtukas -->
-        <a href="?page=id&id=<?= $category['id'] ?>"><button class="btn btn-light <?= ($page === 'id' && isset($_GET['id']) && $_GET['id'] == $category['id']) ? 'selected-btn' : '' ?>"><?= $category['name'] ?></button></a>
+        <a href="?category=<?= $category['id'] ?>"><button class="btn btn-light <?= (isset($_GET['category']) && $_GET['category'] == $category['id']) ? (isset($_POST['search']) ? '' : 'selected-btn') : '' ?>"><?= $category['name'] ?></button></a>
         <?php endforeach; ?>
     </div>
 
     <?php
     
     switch ($page) {
-        case "id":
+        case "category":
             include './categories/categories.php';
             break;
         case "video":

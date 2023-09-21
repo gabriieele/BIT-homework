@@ -1,7 +1,7 @@
 
 <?php
 
-$id = $_GET['id'];
+$id = $_GET['category'];
 
 foreach($categories as $category){
     if($category['id'] === $id)

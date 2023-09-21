@@ -63,7 +63,8 @@ if (isset($_POST['search'])) {
     <div class="categories d-flex mt-3 mb-3">
     <a href="index.php"><button class="btn btn-light <?= !isset($_GET['id']) ? 'selected-btn' : '' ?>">All categories</button></a>
     <?php foreach ($categories as $category) : ?>
-        <a href="?page=id&id=<?=$category['id']?>"><button class="btn btn-light <?= ($page === $category['id']) ? 'selected-btn' : '' ?>"><?=$category['name']?></button></a>
+        <!-- pasirinkta kategorija - juodas mygtukas -->
+        <a href="?page=id&id=<?= $category['id'] ?>"><button class="btn btn-light <?= ($page === 'id' && isset($_GET['id']) && $_GET['id'] == $category['id']) ? 'selected-btn' : '' ?>"><?= $category['name'] ?></button></a>
         <?php endforeach; ?>
     </div>
 
@@ -83,7 +84,7 @@ if (isset($_POST['search'])) {
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">
-       <a href="?page=video&id=<?=$video['id']?>"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
+       <a href="?page=video&id=<?=$video['id']?>"><img src="<?= $video['thumbnail'] ?>" class="mb-2" alt="youtube thumbnail" width="415px"></img></a>
            <h6><?= $video['name'] ?></h6>
        </div>
     <?php endforeach; ?>

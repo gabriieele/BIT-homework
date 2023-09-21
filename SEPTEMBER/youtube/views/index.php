@@ -1,7 +1,5 @@
 <?php
-$page = isset($_GET['id']) ? $_GET['id'] : false;
-
-
+$page = isset($_GET['page']) ? $_GET['page'] : false;
 
 try {
     $db = new mysqli('localhost', 'root', '', 'youtube');
@@ -65,22 +63,27 @@ if (isset($_POST['search'])) {
     <div class="categories d-flex mt-3 mb-3">
     <a href="index.php"><button class="btn btn-light <?= !isset($_GET['id']) ? 'selected-btn' : '' ?>">All categories</button></a>
     <?php foreach ($categories as $category) : ?>
-        <a href="?id=<?=$category['id']?>"><button class="btn btn-light <?= ($page === $category['id']) ? 'selected-btn' : '' ?>"><?=$category['name']?></button></a>
+        <a href="?page=id&id=<?=$category['id']?>"><button class="btn btn-light <?= ($page === $category['id']) ? 'selected-btn' : '' ?>"><?=$category['name']?></button></a>
         <?php endforeach; ?>
     </div>
 
     <?php
     
-    //filter
-       if ($page) {
-            include "./categories/categories.php";        
+    switch ($page) {
+        case "id":
+            include './categories/categories.php';
+            break;
+        case "video":
+            include './video/video.php';
+            break;
+  
     }
 
        ?>
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">
-       <a href="?page=video"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
+       <a href="?page=video&id=<?=$video['id']?>"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
            <h6><?= $video['name'] ?></h6>
        </div>
     <?php endforeach; ?>

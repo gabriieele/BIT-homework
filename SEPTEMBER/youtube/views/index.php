@@ -15,6 +15,11 @@ if ($result->num_rows > 0) {
     $videos = $result->fetch_all(MYSQLI_ASSOC);
 }
 
+$res = $db->query("SELECT * FROM categories");
+if ($res->num_rows > 0) {
+    $categories = $res->fetch_all(MYSQLI_ASSOC);
+}
+
 //search
 if (isset($_POST['search'])) {
     $video =  $_POST['search'];
@@ -56,11 +61,9 @@ if (isset($_POST['search'])) {
   <div class="container">
     <div class="categories d-flex mt-3 mb-3">
     <a href="index.php"><button class="btn btn-light <?= !isset($_GET['id']) ? 'selected-btn' : '' ?>">All categories</button></a>
-<a href="?id=1"><button class="btn btn-light <?= ($page === '1') ? 'selected-btn' : '' ?>">Fashion</button></a>
-<a href="?id=2"><button class="btn btn-light <?= ($page === '2') ? 'selected-btn' : '' ?>">Comedy</button></a>
-<a href="?id=3"><button class="btn btn-light <?= ($page === '3') ? 'selected-btn' : '' ?>">Movie trailers</button></a>
-<a href="?id=4"><button class="btn btn-light <?= ($page === '4') ? 'selected-btn' : '' ?>">Music</button></a>
-<a href="?id=5"><button class="btn btn-light <?= ($page === '5') ? 'selected-btn' : '' ?>">News</button></a>
+    <?php foreach ($categories as $category) : ?>
+        <a href="?id=<?=$category['id']?>"><button class="btn btn-light <?= ($page === $category['id']) ? 'selected-btn' : '' ?>"><?=$category['name']?></button></a>
+        <?php endforeach; ?>
     </div>
 
     <?php
@@ -82,13 +85,17 @@ if (isset($_POST['search'])) {
             case '5':
                 include './categories/news.php';
                 break;
+                case "video":
+                include './video/video.php';
+                break;
 
         }
+
        ?>
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">
-           <img width="415" src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail"></img>
+       <a href="?video=<?= $video['id']?>"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
            <h6><?= $video['name'] ?></h6>
        </div>
     <?php endforeach; ?>

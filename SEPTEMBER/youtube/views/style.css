@@ -17,3 +17,7 @@
   color: rgb(255, 255, 255);
   outline: none;
 }
+
+img {
+  max-width: 100%;
+}

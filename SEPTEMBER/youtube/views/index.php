@@ -88,7 +88,7 @@ if (isset($_POST['search'])) {
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">
-           <iframe width="415" height="270" src="<?= $video['video-url'] ?>" title="YouTube video" allowfullscreen></iframe>
+           <img width="415" src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail"></img>
            <h6><?= $video['name'] ?></h6>
        </div>
     <?php endforeach; ?>

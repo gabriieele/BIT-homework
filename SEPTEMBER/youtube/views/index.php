@@ -2,6 +2,7 @@
 $page = isset($_GET['id']) ? $_GET['id'] : false;
 
 
+
 try {
     $db = new mysqli('localhost', 'root', '', 'youtube');
 } catch(Exception $klaida) {
@@ -19,6 +20,8 @@ $res = $db->query("SELECT * FROM categories");
 if ($res->num_rows > 0) {
     $categories = $res->fetch_all(MYSQLI_ASSOC);
 }
+
+
 
 //search
 if (isset($_POST['search'])) {
@@ -67,35 +70,17 @@ if (isset($_POST['search'])) {
     </div>
 
     <?php
-       
-
-        switch ($page) {
-            case '1':
-                include './categories/fashion.php';
-                break;
-            case '2':
-                include './categories/comedy.php';
-                break;
-            case '3':
-                include './categories/movie-trailers.php';
-                break;
-            case '4':
-                include './categories/music.php';
-                break;
-            case '5':
-                include './categories/news.php';
-                break;
-                case "video":
-                include './video/video.php';
-                break;
-
-        }
+    
+    //filter
+       if ($page) {
+            include "./categories/categories.php";        
+    }
 
        ?>
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">
-       <a href="?video=<?= $video['id']?>"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
+       <a href="?page=video"><img src="<?= $video['thumbnail'] ?>" alt="youtube thumbnail" width="415px"></img></a>
            <h6><?= $video['name'] ?></h6>
        </div>
     <?php endforeach; ?>

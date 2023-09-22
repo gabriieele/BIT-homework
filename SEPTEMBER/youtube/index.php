@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $page = isset($_GET['page']) ? $_GET['page'] : false;
 
 try {
@@ -58,8 +60,13 @@ if (isset($_POST['search'])) {
         <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button></div>
       </form>
       <div>
+    <?php if(isset($_SESSION['loggedin']) AND $_SESSION['loggedin']) : ?>
+        <a href="?page=upload"><button class="btn btn-primary">Upload a video</button></a>
+        <a href="?page=logout"><button class="btn btn-primary">Log out</button></a>
+        <?php else : ?>
       <a href="?page=login"><button class="btn btn-primary">Log in</button></a>
         <a href="?page=signup"><button class="btn btn-primary">Sign up</button></a>
+        <?php endif ?>
     </div>
   </div>
 </nav>
@@ -85,10 +92,14 @@ if (isset($_POST['search'])) {
         case "signup":
             include './views/signup.php';
             break;
+        case "login":
+            include './views/login.php';
+            break;
+        case "upload":
+            include './views/upload.php';
+            break;
             default:
             include './views/main.php';
-
-  
     }
 
        ?>

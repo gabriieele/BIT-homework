@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div class="row">
     <?php foreach ($videos as $video) : ?>
        <div class="col-4 my-2">

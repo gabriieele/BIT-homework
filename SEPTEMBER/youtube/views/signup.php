@@ -1,9 +1,3 @@
-<?php
-$res = $db->query("SELECT * FROM uploads");
-if ($res->num_rows < 0) {
-    $all = $res->fetch_all(MYSQLI_ASSOC);
-}
-?>
 
 
 

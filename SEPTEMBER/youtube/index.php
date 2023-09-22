@@ -14,8 +14,6 @@ if ($res->num_rows > 0) {
 }
 
 //search
-
-$videos = [];
 if (isset($_POST['search'])) {
     $video = $_POST['search'];
     $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
@@ -50,15 +48,19 @@ if (isset($_POST['search'])) {
 
 <nav class="navbar bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php">
       <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="120" alt="Youtube Logo PNG Transparent Image" />
       
     </a>
-    <form class="d-flex" role="search" method="POST">
+    <form class="d-flex justify-content-between search" role="search" method="POST">
         <div class="input-group">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button></div>
       </form>
+      <div>
+      <a href="?page=login"><button class="btn btn-primary">Log in</button></a>
+        <a href="?page=signup"><button class="btn btn-primary">Sign up</button></a>
+    </div>
   </div>
 </nav>
   <div class="container">
@@ -68,29 +70,29 @@ if (isset($_POST['search'])) {
         <!-- pasirinkta kategorija - juodas mygtukas -->
         <a href="?category=<?= $category['id'] ?>"><button class="btn btn-light <?= (isset($_GET['category']) && $_GET['category'] == $category['id']) ? (isset($_POST['search']) ? '' : 'selected-btn') : '' ?>"><?= $category['name'] ?></button></a>
         <?php endforeach; ?>
+
     </div>
 
     <?php
     
     switch ($page) {
         case "category":
-            include './categories/categories.php';
+            include './views/categories/categories.php';
             break;
         case "video":
-            include './video/video.php';
+            include './views/video/video.php';
             break;
+        case "signup":
+            include './views/signup.php';
+            break;
+            default:
+            include './views/main.php';
+
   
     }
 
        ?>
-<div class="row">
-    <?php foreach ($videos as $video) : ?>
-       <div class="col-4 my-2">
-       <a href="?page=video&id=<?=$video['id']?>"><img src="<?= $video['thumbnail'] ?>" class="mb-2" alt="youtube thumbnail" width="415px"></img></a>
-           <h6><?= $video['name'] ?></h6>
-       </div>
-    <?php endforeach; ?>
-</div>
+
        
        
        

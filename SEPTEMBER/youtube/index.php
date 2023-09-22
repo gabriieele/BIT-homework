@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 $page = isset($_GET['page']) ? $_GET['page'] : false;
 
 try {
@@ -9,6 +11,7 @@ try {
     echo 'Nepavyko prisijungti';
     exit;
 }
+
 
 $res = $db->query("SELECT * FROM categories");
 if ($res->num_rows > 0) {
@@ -32,6 +35,10 @@ if (isset($_POST['search'])) {
     $videos = $result->fetch_all(MYSQLI_ASSOC);
 }
     
+$successMessage = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : null;
+
+// nuimamas kintamasis kai zinute parodoma
+unset($_SESSION['success_message']);
 
 ?>
 
@@ -77,9 +84,13 @@ if (isset($_POST['search'])) {
         <!-- pasirinkta kategorija - juodas mygtukas -->
         <a href="?category=<?= $category['id'] ?>"><button class="btn btn-light <?= (isset($_GET['category']) && $_GET['category'] == $category['id']) ? (isset($_POST['search']) ? '' : 'selected-btn') : '' ?>"><?= $category['name'] ?></button></a>
         <?php endforeach; ?>
-
     </div>
-
+    <!-- sekmingai ikelus video, parodomas pranesimas -->
+      <?php if ($successMessage) : ?>
+    <div id="successMessage" class="alert alert-success">
+        <?= $successMessage ?>
+    </div>
+    <?php endif; ?>
     <?php
     
     switch ($page) {
@@ -98,6 +109,9 @@ if (isset($_POST['search'])) {
         case "upload":
             include './views/upload.php';
             break;
+        case "logout":
+            include './views/logout.php';
+            break;
             default:
             include './views/main.php';
     }
@@ -108,5 +122,13 @@ if (isset($_POST['search'])) {
        
        
 </div>
+<script>
+    setTimeout(function () {
+        var successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }, 3500);
+</script>
 </body>
 </html>

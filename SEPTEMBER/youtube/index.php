@@ -26,6 +26,10 @@ if (isset($_POST['search'])) {
     $id = $_GET['category'];
     $result = $db->query("SELECT * FROM uploads WHERE category_id = $id");
 } 
+elseif(isset($_GET['page']) AND $_GET['page'] === 'video'){
+    $id = $_GET['id'];
+    $result = $db->query("SELECT * FROM uploads WHERE id = $id");
+}
 
  else{
     $result = $db->query("SELECT * FROM uploads");
@@ -61,7 +65,7 @@ unset($_SESSION['success_message']);
       <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="120" alt="Youtube Logo PNG Transparent Image" />
       
     </a>
-    <form class="d-flex justify-content-between search" role="search" method="POST">
+    <form class="d-flex justify-content-between search" role="search" method="POST" action="index.php">
         <div class="input-group">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button></div>

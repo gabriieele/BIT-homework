@@ -14,12 +14,15 @@ isset($_POST['password'])) {
         
         );
 
-        if($result) {
-            header('Location: ?page=login');
-            exit;
+        $user = $db->query(sprintf("SELECT * FROM users WHERE email='%s' or username='%s'",$_POST['email'], $_POST['username'] ));
+        if ($user->num_rows > 0) {
+            $message = 'This email or username is already registered';
         } else {
-            $message = 'This email is already registered';
+            $result = $db->query(
+                sprintf("INSERT INTO users (username, email, password) VALUES ('%s', '%s', '%s')", $_POST['username'], $_POST['email'], md5($_POST['password']))
+            );
         }
+
     } else {
         $message = 'Please enter a valid email, password, and/or username (each with at least 4 characters)';
     }

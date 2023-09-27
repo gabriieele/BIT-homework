@@ -48,8 +48,9 @@ public function text() {
 
     $this->kanalas = 8;
     $this->garsas = 76;
+    $this->gamintojas = 'Sony';
     
-return "Televizorius 'Sony' šiuo metu rodo $this->kanalas kanalą, o jo garso lygis $this->garsas";
+return "Televizorius '$this->gamintojas' šiuo metu rodo $this->kanalas kanalą, o jo garso lygis $this->garsas";
 }
 }
 

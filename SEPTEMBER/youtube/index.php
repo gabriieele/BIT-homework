@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 $page = isset($_GET['page']) ? $_GET['page'] : false;
 
 try {
@@ -19,17 +17,36 @@ if ($res->num_rows > 0) {
 }
 
 //search
-if (isset($_POST['search'])) {
-    $video = $_POST['search'];
-    $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
-}  elseif (isset($_GET['category'])) {
+
+if (isset($_GET['search'])) {
+    $video = $_GET['search'];
+    // Check if the filter parameter is set and apply the filter accordingly
+    if (isset($_GET['filter'])){
+        $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%' ORDER BY views DESC");
+    } else {
+        $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
+    }
+}
+
+elseif (isset($_GET['category'])) {
     $id = $_GET['category'];
-    $result = $db->query("SELECT * FROM uploads WHERE category_id = $id");
+    if (isset($_GET['filter'])){
+        $result = $db->query("SELECT * FROM uploads WHERE category_id = $id ORDER BY views DESC");  
+    }
+    else{
+      $result = $db->query("SELECT * FROM uploads WHERE category_id = $id");  
+    }
 } 
+
 elseif(isset($_GET['page']) AND $_GET['page'] === 'video'){
     $id = $_GET['id'];
     $result = $db->query("SELECT * FROM uploads WHERE id = $id");
 }
+
+elseif (isset($_GET['filter'])) {
+    $result = $db->query("SELECT * FROM uploads ORDER BY views DESC");
+} 
+
 
  else{
     $result = $db->query("SELECT * FROM uploads");
@@ -65,9 +82,9 @@ unset($_SESSION['success_message']);
       <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="120" alt="Youtube Logo PNG Transparent Image" />
       
     </a>
-    <form class="d-flex justify-content-between search" role="search" method="POST" action="index.php">
+    <form class="d-flex justify-content-between search" role="search" method="GET" action="index.php">
         <div class="input-group">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+        <input class="form-control search" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button></div>
       </form>
       <div>
@@ -83,10 +100,10 @@ unset($_SESSION['success_message']);
 </nav>
   <div class="container">
     <div class="categories d-flex mt-3 mb-3">
-    <a href="index.php"><button class="btn btn-light <?= !isset($_GET['category']) || isset($_POST['search'])? 'selected-btn' : '' ?>">All categories</button></a>
+    <a href="index.php"><button class="btn btn-light <?= !isset($_GET['category']) || isset($_GET['search'])? 'selected-btn' : '' ?>">All categories</button></a>
     <?php foreach ($categories as $category) : ?>
         <!-- pasirinkta kategorija - juodas mygtukas -->
-        <a href="?category=<?= $category['id'] ?>"><button class="btn btn-light <?= (isset($_GET['category']) && $_GET['category'] == $category['id']) ? (isset($_POST['search']) ? '' : 'selected-btn') : '' ?>"><?= $category['name'] ?></button></a>
+        <a href="?category=<?= $category['id'] ?>"><button class="btn btn-light <?= (isset($_GET['category']) && $_GET['category'] == $category['id']) ? (isset($_GET['search']) ? '' : 'selected-btn') : '' ?>"><?= $category['name'] ?></button></a>
         <?php endforeach; ?>
     </div>
     <!-- sekmingai ikelus video, parodomas pranesimas -->
@@ -99,10 +116,10 @@ unset($_SESSION['success_message']);
     
     switch ($page) {
         case "category":
-            include './views/categories/categories.php';
+            include './views/categories.php';
             break;
         case "video":
-            include './views/video/video.php';
+            include './views/video.php';
             break;
         case "signup":
             include './views/signup.php';

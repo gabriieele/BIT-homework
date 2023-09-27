@@ -2,9 +2,12 @@
   gap: 20px;
 }
 
-.btn-light {
-  background-color: rgb(239, 238, 238);
+.btn {
+  border-radius: 15px;
   font-size: 14px;
+}
+.btn-light {
+  background-color: #0000000d;
 }
 
 .selected-btn,
@@ -29,6 +32,9 @@ img {
   width: 50%;
 }
 
+.search {
+  border-radius: 15px;
+}
 .signUp {
   width: 70%;
 }
@@ -36,4 +42,14 @@ img {
 .plc::placeholder {
   font-size: 13px;
   color: rgb(207, 207, 207);
+}
+
+.bckgrnd {
+  background-color: #0000000d;
+  border-radius: 15px;
+  padding: 20px 15px;
+}
+
+iframe {
+  border-radius: 15px;
 }

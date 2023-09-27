@@ -51,7 +51,7 @@ isset($_POST['category'])) {
       <input type="text" class="form-control plc mb-4" id="floatingInput" placeholder="Enter video title" name="title" required>
 
    <label for="floatingInput">Description</label>
-      <input type="text" class="form-control plc mb-4" id="floatingInput" placeholder="Enter video description" name="description" required>
+      <textarea class="form-control plc mb-4" id="floatingInput" placeholder="Enter video description" name="description" rows="4" required></textarea>
 
 
       <label for="floatingInput">Category</label>
@@ -69,7 +69,7 @@ isset($_POST['category'])) {
       </div>
     <?php endif; ?>
 
-    <button class="btn btn-primary w-100 py-2" type="submit">Upload</button>
+    <button class="btn btn-primary w-100 py-2 mb-4" type="submit">Upload</button>
 
   </form>
 </div>

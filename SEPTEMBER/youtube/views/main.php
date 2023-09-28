@@ -28,18 +28,15 @@ $videos = array_slice($videos, $offset, $videosPerPage);
 <!-- video yra is search $video = $_GET['search']; -->
 <?php if ($category === '' && !isset($_GET['search'])) : ?>
     <div class="mb-3">
-        <?= 'visas sarasas' ?>
         <a href="?filter">Filter by Most Popular</a>
     </div>
 <?php elseif (isset($_GET['search'])) : ?>
     <div class="mb-3">
-        <?= 'paieksa sarasas' ?>
-        <a href="?search=<?=urldecode($video)?>&filter">Filter by Most Popular</a>
+        <a href="?search=<?=$video?>&filter">Filter by Most Popular</a>
     </div>
 <?php else : ?>
     <div class="mb-3">
-        <?= 'kategorijos sarasas' ?>
-        <a href="?category=<?= $category ?>&filter=1">Filter by Most Popular</a> 
+        <a href="?category=<?= $category ?>&filter">Filter by Most Popular</a> 
     </div>
 <?php endif; ?>
 

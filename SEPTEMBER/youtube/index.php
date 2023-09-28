@@ -20,14 +20,12 @@ if ($res->num_rows > 0) {
 
 if (isset($_GET['search'])) {
     $video = $_GET['search'];
-    // Check if the filter parameter is set and apply the filter accordingly
     if (isset($_GET['filter'])){
         $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%' ORDER BY views DESC");
     } else {
         $result = $db->query("SELECT * FROM uploads WHERE name LIKE '%$video%'");
     }
 }
-
 elseif (isset($_GET['category'])) {
     $id = $_GET['category'];
     if (isset($_GET['filter'])){
@@ -37,7 +35,6 @@ elseif (isset($_GET['category'])) {
       $result = $db->query("SELECT * FROM uploads WHERE category_id = $id");  
     }
 } 
-
 elseif(isset($_GET['page']) AND $_GET['page'] === 'video'){
     $id = $_GET['id'];
     $result = $db->query("SELECT * FROM uploads WHERE id = $id");
@@ -46,8 +43,6 @@ elseif(isset($_GET['page']) AND $_GET['page'] === 'video'){
 elseif (isset($_GET['filter'])) {
     $result = $db->query("SELECT * FROM uploads ORDER BY views DESC");
 } 
-
-
  else{
     $result = $db->query("SELECT * FROM uploads");
  }

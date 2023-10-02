@@ -1,0 +1,15 @@
+{
+    "name": "ignas/homework",
+    "autoload": {
+        "psr-4": {
+            "Ignas\\Homework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gabrielė Bataitytė",
+            "email": "bataitytegabriele991@gmail.com"
+        }
+    ],
+    "require": {}
+}

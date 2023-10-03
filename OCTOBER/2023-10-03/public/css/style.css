@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(237, 234, 234);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(18, 18, 18);
+}
+p {
+    color: grey;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.background {
+    width: 100%;
+    background-color: white;
+    padding: 35px 15px;
+    border: 1px solid rgb(211, 211, 211);
+}
+
+img {
+    max-width: 100%;
+}
+
+.round {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    object-fit: cover;
+}

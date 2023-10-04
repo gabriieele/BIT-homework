@@ -24,7 +24,8 @@ Route::get('/homepage', function () {
     Route::get('/students', function () {
         $file = '../database/data/data.json';
         $data = json_decode(file_get_contents($file), true);
-        return view('students', compact('data'));
+        // return view('students', compact($data));
+        return view('students', ['data' => $data]);
     });
 
 

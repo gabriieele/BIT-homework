@@ -8,7 +8,7 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <form method="POST" action="/new-song">
+    <form method="POST">
         <div class="mb-3">
             <label>Dainos pavadinimas:</label>
             <input type="text" name="name" class="form-control">

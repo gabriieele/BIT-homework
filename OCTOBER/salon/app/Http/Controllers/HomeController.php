@@ -24,8 +24,8 @@ class HomeController extends Controller
 
     public function letters()
     {
-         return response()->json([
-              'valueSize' => '200px'
+        return response()->json([
+              'valueSize' =>  rand(1, 300) . 'px'
          ]);
     }
 }

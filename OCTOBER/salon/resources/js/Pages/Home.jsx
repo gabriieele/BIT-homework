@@ -1,15 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Home({ color, size }) {
 
     const [letters, setLetters] = useState('100px');
 
+    const url = 'http://salon.test/letters';
+
     useEffect(_ => {
 
-        setTimeout(_ => {
-            setLetters('10px');
-        }, 2000);
+        // setInterval(_ => {
+                
+                axios.get(url).then(res => {
+    
+                    setLetters(res.data.valueSize);
+    
+                });
+        // }, 10000);
 
     }, []);
 

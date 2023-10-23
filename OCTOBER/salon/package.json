@@ -21,6 +21,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "bootstrap": "^5.3.2"
+        "bootstrap": "^5.3.2",
+        "sass": "^1.69.4",
+        "uuid": "^9.0.1"
     }
 }

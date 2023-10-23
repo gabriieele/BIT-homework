@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController as H;
+use App\Http\Controllers\SalonController as S;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,16 @@ Route::get('/home', [H::class, 'index'])->name('home');
 Route::get('/about', [H::class, 'about'])->name('about');
 
 route::get('/letters', [H::class, 'letters'])->name('letters');
+
+
+
+Route::prefix('/salons')->name('salon-')->group(function () {
+
+    Route::get('/', [S::class, 'index'])->name('index');
+    Route::post('/', [S::class, 'store'])->name('store');
+    Route::get('/list', [S::class, 'list'])->name('list');
+
+});
 
 
 

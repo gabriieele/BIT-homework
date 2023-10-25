@@ -3,14 +3,14 @@ import { SalonContext } from '@/Salons/SalonProvider';
 
 export default function Loading() {
 
-    const { salonCreate } = useContext(SalonContext);
+    const { salonStore } = useContext(SalonContext);
 
-    if (null === salonCreate) {
+    if (null === salonStore) {
         return null;
     }
 
     return (
-        <div className="modal">
+        <div className="loder-cover">
             <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </div>
     );

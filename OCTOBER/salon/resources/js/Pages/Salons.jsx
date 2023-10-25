@@ -5,6 +5,8 @@ import { SalonProvider } from '@/Salons/SalonProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../sass/salon.scss';
 import Messages from '@/AppComponets/Messages';
+import Delete from '@/Salons/Deleate';
+import Edit from '@/Salons/Edit';
 
 export default function Salons({urlSalons}) {
 
@@ -21,6 +23,8 @@ export default function Salons({urlSalons}) {
                 </div>
             </div>
         </div>
+        <Delete />
+        <Edit />
         <Loading />
         <Messages />
         </SalonProvider>

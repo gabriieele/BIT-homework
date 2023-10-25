@@ -3,7 +3,7 @@ import { SalonContext } from '@/Salons/SalonProvider';
 
 export default function List() {
 
-    const { salons } = useContext(SalonContext);
+    const { salons, setSalonDelete, setSalonEdit } = useContext(SalonContext);
 
     return (
         <div className="card mt-5">
@@ -17,6 +17,8 @@ export default function List() {
                             <th>Salon Name</th>
                             <th>Salon Address</th>
                             <th>Salon Phone</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,7 +26,17 @@ export default function List() {
                             <tr key={salon.id}>
                                 <td>{salon.name}</td>
                                 <td>{salon.address}</td>
-                                <td>{salon.phone}</td>
+                                <td><a href={`tel:+${salon.phone}`}>{salon.phone}</a></td>
+                                <td><button
+                                    type="button"
+                                    className="btn btn-outline-success"
+                                    onClick={_ => setSalonEdit(salon)}
+                                >Edit</button></td>
+                                <td><button
+                                    type="button"
+                                    className="btn btn-outline-danger"
+                                    onClick={_ => setSalonDelete(salon)}
+                                >X</button></td>
                             </tr>
                         ))}
                     </tbody>

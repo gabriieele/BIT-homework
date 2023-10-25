@@ -41,6 +41,8 @@ Route::prefix('/salons')->name('salon-')->group(function () {
     Route::get('/', [S::class, 'index'])->name('index');
     Route::post('/', [S::class, 'store'])->name('store');
     Route::get('/list', [S::class, 'list'])->name('list');
+    Route::delete('/{salon}', [S::class, 'destroy'])->name('destroy');
+    Route::put('/{salon}', [S::class, 'update'])->name('update');
 
 });
 

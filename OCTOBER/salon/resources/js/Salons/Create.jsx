@@ -7,7 +7,7 @@ export default function Create() {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
 
-    const { clearSalonInputs, setSalonClearInputs, setSalonCreate } = useContext(SalonContext);
+    const { clearSalonInputs, setSalonClearInputs, setSalonStore } = useContext(SalonContext);
 
     useEffect(_ => {
         if (clearSalonInputs) {
@@ -19,7 +19,7 @@ export default function Create() {
     }, [clearSalonInputs]);
 
     const create = _ => {
-        setSalonCreate({name, address, phone});
+        setSalonStore({name, address, phone});
     }
 
     return (

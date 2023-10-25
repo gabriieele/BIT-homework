@@ -24,7 +24,7 @@ class SalonController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|min:3|max:255',
             'address' => 'required|min:3|max:255',
-            'phone' => 'required|min:3|max:20',
+            'phone' => 'required|regex:/^370\d{8}$/'
         ], 
         [
             'name.required' => 'Tu pamiršai įvesti pavadinimą',
@@ -51,35 +51,32 @@ class SalonController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Salon $salon)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Salon $salon)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Salon $salon)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:255',
+            'address' => 'required|min:3|max:255',
+            'phone' => 'required|regex:/^370\d{8}$/'
+        ], 
+        [
+            'name.required' => 'Tu pamiršai įvesti pavadinimą',
+            'name.min' => 'Pavadinimas turi būti bent 3 simboliai',
+        ]);
+
+        $salon->update($validatedData);
+
+        return response()->json([
+            'message' => 'Salon updated successfully'
+        ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Salon $salon)
     {
-        //
+        $salon->delete();
+
+        return response()->json([
+            'message' => 'Salon deleted successfully'
+        ], 200);
     }
 }
